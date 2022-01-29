@@ -7,6 +7,13 @@ Il Pescaggio is a Web Application for an imaginary restaurant, with the possibil
 
 [TOC]
 
+## For developers
+### To do list
+- dd is "Da decidere"
+- design and create the database
+- file management
+- create a smart css
+
 ## Features
 ### For the customer
 - Shopping cart

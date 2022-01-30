@@ -8,7 +8,7 @@
 <body>
     <div class="container">
         <div class="left">
-            <img src="img/logo.png" alt="ciao" id="logo">
+            <img src="images/logo.png" alt="ciao" id="logo">
             <div class="log">
                 <h1>Accedi</h1>
                 <span>Accedi con i dati che hai inserito durante la registrazione.</span>

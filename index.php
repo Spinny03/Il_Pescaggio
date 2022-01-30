@@ -18,7 +18,7 @@
                 <label for="remeDev">Ricordami su questo dispositivo</label><br>
                 <input class="ConfButton" type="submit" value="Accedi">
             </form>
-            <p> <a class="linkToPage" href="dd1">Password dimenticata?</a> </p>
+            <p> <a class="linkToPage" href="dd1">Password dimenticata??</a> </p>
             <p>Non hai un account? <a class="linkToPage" href="dd2">Registrati</a> </p>
         </div>
         <div class="carousel">

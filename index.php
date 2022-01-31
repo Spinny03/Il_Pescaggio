@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width" />
         <link rel="stylesheet" href="css/styles.css">
         <link rel="icon" type="image/x-icon" href="images/favicon.ico">
         <title>Il Pescaggio</title>

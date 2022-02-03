@@ -117,7 +117,7 @@ input[type=checkbox]{
     background-size: cover;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
     .container{
         grid-template-columns: 1fr;
     }

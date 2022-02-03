@@ -1,5 +1,16 @@
 <?php 
-    session_start()
+    session_start();
+
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "myDB";
+    $tablename = "username";
+
+    $conn = new mysqli($servername, $username, $password);
+    $sql = "CREATE DATABASE " . $dbname;
+    $conn->query($sql);
+    
 ?>
 <!DOCTYPE html>
 <html>

@@ -17,7 +17,15 @@
                             background-color: rgba(200,0,0,0.4);
                         }
                     </style>';
-                    $_SESSION["exist"]=False;
+                $_SESSION["exist"]=False;
+            }
+            if(isset($_SESSION["check"]) && $_SESSION["check"]){
+                echo'<style>
+                        input[name="Cpsw"]{
+                            background-color: rgba(200,0,0,0.4);
+                        }
+                    </style>';
+                $_SESSION["check"]=False;
             }
         ?>
         <div class="container">

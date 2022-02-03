@@ -5,38 +5,34 @@
     $username = "root";
     $password = "";
     $dbname = "Il_Pescaggio";
-
     $conn = new mysqli($servername, $username, $password);
     if ($conn->connect_error){
         exit("Connessione fallita: " . $conn->connect_error);
     }
+    $conn->query("USE " . $dbname);
 
-    $sql = "USE " . $dbname;
-    $conn->query($sql);
 
     $email = $_POST["email"];
     $psw = $_POST["psw"];
     $checkPsw = $_POST["Cpsw"];
 
-    $tablename = "username";
-    $sql = "SELECT email FROM ".$tablename." WHERE email='". $email."';";
-    echo $sql;
-    $result=$conn->query($sql);
+    $result = $conn->query("SELECT email FROM username WHERE email='". $email."';");
+    $result = mysqli_fetch_assoc($result);
 
-    $result = implode("|", mysqli_fetch_assoc($result));
-
-    if(isset($result)){
+    if($result['email'] == $email){
         $_SESSION["exist"]=true;
         header("Location: ../signUp.php");
+        $conn->close();
         exit();
     }
- 
-    /*
+    
     if($psw == $checkPsw){
-        $sql = "INSERT INTO " . $tablename . " (email, pasw) VALUES ('".$email."', '".hash("sha256",$psw)."');";
-        $conn->query($sql);
+        $conn->query("INSERT INTO username (email, pasw) VALUES ('".$email."', '".hash("sha256",$psw)."');");
+        header("Location: ../index.php");
     }
-    else
-        */
-
+    else{
+        $_SESSION["check"]=true;
+        header("Location: ../signUp.php");
+    }
+    $conn->close();
 ?>

@@ -1,16 +1,5 @@
 <?php 
-    session_start();
-
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "myDB";
-    $tablename = "username";
-
-    $conn = new mysqli($servername, $username, $password);
-    $sql = "CREATE DATABASE " . $dbname;
-    $conn->query($sql);
-    
+    session_start(); 
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,18 +10,36 @@
         <title>Il Pescaggio</title>
     </head>
     <body>
+        <?php 
+            if(isset($_SESSION["emailFail"]) && $_SESSION["emailFail"]){
+                echo'<style>
+                        input[name="email"]{
+                            background-color: rgba(200,0,0,0.4);
+                        }
+                    </style>';
+                $_SESSION["emailFail"]=False;
+            }
+            if(isset($_SESSION["paswFail"]) && $_SESSION["paswFail"]){
+                echo'<style>
+                        input[name="psw"]{
+                            background-color: rgba(200,0,0,0.4);
+                        }
+                    </style>';
+                $_SESSION["paswFail"]=False;
+            }
+        ?>
         <div class="container">
             <div class="left">
                 <img src="images/logo.png" alt="logo" id="logo">
                 <div class="log">
                     <h1>Accedi</h1>
                     <span>Accedi con i dati che hai inserito durante la registrazione.</span>
-                    <form action="">
+                    <form action="access/loginDB.php" method="POST">
                         <label for="email"><b>Email</b></label>
-                        <input type="text" placeholder="name@example.com" name="email" required>
+                        <input type="text" placeholder="nome@esempio.com" name="email" required>
 
                         <label for="psw"><b>Password</b></label>
-                        <input type="password" placeholder="min. 8 characters" name="psw" required>
+                        <input type="password" placeholder="min. 8 caratteri" name="psw" minlength="8" required>
                         <label><input type="checkbox" id="remember" name="remember"><a id="labelCheck">Ricordami su questo dispositivo</a></label>
                         <button type="submit" name="login" class="logbtn">Accedi</button>
                     </form>

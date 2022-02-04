@@ -22,13 +22,30 @@
 
 
             <div class="chooseDish">  
-                <?php
-                    for($i=0;$i<6;$i++){
-                        echo'
-                        <div class="choice"> ciao</div>';
-                        
-                    }
-                ?>
+                <div class="choice"> 
+                    <img width="20%" height="40%" src="images/foodType/pizza.png" alt="pizza">
+                    <p>Pizza</p>
+                </div>
+                <div class="choice"> 
+                    <img width="20%" height="40%" src="images/foodType/burger.png" alt="burger">
+                    <p>Burger</p>
+                </div>
+                <div class="choice"> 
+                    <img width="20%" height="40%" src="images/foodType/meat.png" alt="carne">
+                    <p>Carne</p>
+                </div>
+                <div class="choice"> 
+                    <img width="20%" height="40%" src="images/foodType/fish.png" alt="pesce">
+                    <p>Pesce</p>
+                </div>
+                <div class="choice"> 
+                    <img width="20%" height="40%" src="images/foodType/vegan.png" alt="vegano">
+                    <p>Vegano</p>
+                </div>
+                <div class="choice"> 
+                    <img width="20%" height="40%"  src="images/foodType/cake.png" alt="dolci">
+                    <p>Dolci</p>
+                </div>
             </div>
 
 

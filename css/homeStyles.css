@@ -34,16 +34,18 @@ body{
 }
 
 .choice{
-    min-width: 160px;
-    width: 8vw;
+    width: 160px;
     height: 80px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 16px;
-    border: 1px solid #EDEEF2
+    border: 1px solid #EDEEF2;
 }
-
+.choice p{
+    margin: 0;
+}
 .title{
     margin-left: auto;
     margin-right: auto;
@@ -94,6 +96,9 @@ h2{
 @media screen and (max-width: 660px) {
     .chooseDish{
         width: 100%;
+    }
+    .choice{
+        width: 110px;
     }
 }
 

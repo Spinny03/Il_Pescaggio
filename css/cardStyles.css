@@ -13,7 +13,6 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 1rem;
-    margin: 2rem 2vw;
     padding: 0;
     list-style-type: none;
   }
@@ -26,6 +25,7 @@
     border-radius: 16px;
     overflow: hidden;
     text-decoration: none;
+    border: 1px solid #EDEEF2;
   }
   
   .card__image {      
@@ -78,3 +78,9 @@
     -webkit-line-clamp: 3;
     overflow: hidden;
   }    
+
+  @media screen and (max-width: 660px) {
+    .cards {
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    }
+  }

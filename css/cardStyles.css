@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300&display=swap');
+
 :root {
     --surface-color: #fff;
     --curve: 40;
@@ -8,8 +10,8 @@
   }
   
   body {
-    font-family: 'Noto Sans JP', sans-serif;
-    background-color: #fef8f8;
+    font-family: 'nunito';
+    background-color: #ffffff;
   }
   
   .cards {

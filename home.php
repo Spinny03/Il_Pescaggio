@@ -18,7 +18,24 @@
             
         </div>
         <div class="chooseDish">
-
+            <div class="choice">
+                ciao
+            </div>
+            <div class="choice">
+                ciao
+            </div>
+            <div class="choice">
+                ciao
+            </div>
+            <div class="choice">
+                ciao
+            </div>
+            <div class="choice">
+                ciao
+            </div>
+            <div class="choice">
+                ciao
+            </div>
         </div>
         <div class="title">
             <h2>Piatti Disponibili:</h2>

@@ -19,8 +19,22 @@ body{
 }
 
 .chooseDish{
-    background-color: red;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    background-color: white;
     display: flex;
+    justify-content: space-evenly;
+}
+
+.choice{
+    min-width: 160px;
+    width: 8vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+    border: 1px solid #EDEEF2
 }
 
 .title{
@@ -35,4 +49,10 @@ h2{
     background-color: black;
 }
 
-
+/*
+@media screen and (max-width: 900px) {
+    .container{
+        grid-template-columns: 1fr;
+    }
+    
+  }*/

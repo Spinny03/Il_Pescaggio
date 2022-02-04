@@ -13,6 +13,7 @@
 
 
     $email = $_POST["email"];
+    $_SESSION["user"] = $email;
     $psw = hash("sha256",$_POST["psw"]);
 
     //doppia query almeno possiamo dare come feedback l'errore se username o pasw 
@@ -25,7 +26,6 @@
         $result2 = mysqli_fetch_assoc($result2);
         
         if($result2['pasw'] == $psw ){
-            $_SESSION["user"] = $email;
             header("Location: ../home.php");
         }
         else{

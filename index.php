@@ -14,7 +14,7 @@
             if(isset($_SESSION["emailFail"]) && $_SESSION["emailFail"]){
                 echo'<style>
                         input[name="email"]{
-                            background-color: rgba(200,0,0,0.4);
+                            background-color: rgba(255, 78, 113, 0.7);
                         }
                     </style>';
                 $_SESSION["emailFail"]=False;
@@ -22,7 +22,7 @@
             if(isset($_SESSION["paswFail"]) && $_SESSION["paswFail"]){
                 echo'<style>
                         input[name="psw"]{
-                            background-color: rgba(200,0,0,0.4);
+                            background-color: rgba(255, 78, 113, 0.7);
                         }
                     </style>';
                 $_SESSION["paswFail"]=False;
@@ -36,7 +36,13 @@
                     <span>Accedi con i dati che hai inserito durante la registrazione.</span>
                     <form action="access/loginDB.php" method="POST">
                         <label for="email"><b>Email</b></label>
-                        <input type="text" placeholder="nome@esempio.com" name="email" required>
+                        <input type="text" placeholder="nome@esempio.com" name="email" 
+                            <?php
+                                if(isset($_SESSION["user"])){
+                                    echo "value='".$_SESSION["user"]."'";
+                                }
+                            ?> 
+                        required>
 
                         <label for="psw"><b>Password</b></label>
                         <input type="password" placeholder="min. 8 caratteri" name="psw" minlength="8" required>

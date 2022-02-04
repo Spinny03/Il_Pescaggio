@@ -9,6 +9,7 @@ Il Pescaggio is a Web Application for an imaginary restaurant, with the possibil
 
 ## For developers
 ### To do list
+- https://codepen.io/seyedi/pen/zYoeLEv
 - dd is "Da decidere"
 - design and create the database
 - file management

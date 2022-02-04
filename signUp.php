@@ -14,7 +14,7 @@
             if(isset($_SESSION["exist"]) && $_SESSION["exist"]){
                 echo'<style>
                         input[name="email"]{
-                            background-color: rgba(200,0,0,0.4);
+                            background-color: rgba(255, 78, 113, 0.4);
                         }
                     </style>';
                 $_SESSION["exist"]=False;
@@ -22,7 +22,7 @@
             if(isset($_SESSION["check"]) && $_SESSION["check"]){
                 echo'<style>
                         input[name="Cpsw"]{
-                            background-color: rgba(200,0,0,0.4);
+                            background-color: rgba(255, 78, 113, 0.4);
                         }
                     </style>';
                 $_SESSION["check"]=False;
@@ -37,7 +37,13 @@
                     <form action="access/registerDB.php" method="POST">
                         
                         <label for="email"><b>Email</b></label>
-                        <input type="text" placeholder="nome@esempio.com" name="email" required >
+                        <input type="text" placeholder="nome@esempio.com" name="email" 
+                            <?php
+                                if(isset($_SESSION["user"])){
+                                    echo "value='".$_SESSION["user"]."'";
+                                }
+                            ?> 
+                        required>
                         
                         <label for="psw"><b>Password</b></label>
                         <input type="password" placeholder="min. 8 caratteri" name="psw" minlength="8" required>

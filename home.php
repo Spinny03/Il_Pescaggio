@@ -1,6 +1,10 @@
 <?php 
     session_start(); 
-    //echo $_SESSION["user"];
+    $conn = new mysqli("localhost", "root", "");
+    if ($conn->connect_error){
+        exit("Connessione fallita: " . $conn->connect_error);
+    }
+    $conn->query("USE Il_Pescaggio");
 ?>
 
 <!DOCTYPE html>
@@ -19,8 +23,6 @@
             <div class="navBar">
                 
             </div>
-
-
             <div class="chooseDish">  
                 <div class="choice"> 
                     <img width="20%" height="40%" src="images/foodType/pizza.png" alt="pizza">
@@ -43,7 +45,7 @@
                     <p>Vegano</p>
                 </div>
                 <div class="choice"> 
-                    <img width="20%" height="40%"  src="images/foodType/cake.png" alt="dolci">
+                    <img width="20%" height="40%"  src="images/foodType/desserts.png" alt="dolci">
                     <p>Dolci</p>
                 </div>
             </div>
@@ -57,23 +59,24 @@
             <div class="dish">
                 <ul class="cards">
                     <?php
-                        for($i=0;$i<50;$i++){
+                        $result = $conn->query("SELECT * FROM dish;");
+                        while($row = $result->fetch_assoc()){
                             echo'
                             <li>
                                 <div  class="card">
-                                    <img src="images/carousel1.png" class="card__image" alt="nome cibo" />
+                                    <img src="images/photoDishes/'.$row["photoLink"].'" class="card__image" alt="'.$row["dishName"].'" />
                                     <div class="card__overlay">
                                         <div class="card__header">               
                                             <div class="card__header-text">
-                                                <h3 class="card__title">Jessica Parker</h3>            
+                                                <h3 class="card__title">'.$row["dishName"].'</h3>            
                                             </div>
                                         </div>
-                                        <p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, blanditiis?</p>
+                                        <p class="card__description">'.$row["description"].'</p>
                                     </div>
                                 </div>      
                             </li>';
-                            
                         }
+                        $conn->close();
                     ?>
                 </ul>
             </div>

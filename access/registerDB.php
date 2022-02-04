@@ -1,15 +1,11 @@
 <?php 
     session_start();
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "Il_Pescaggio";
-    $conn = new mysqli($servername, $username, $password);
+    $conn = new mysqli("localhost", "root", "");
     if ($conn->connect_error){
         exit("Connessione fallita: " . $conn->connect_error);
     }
-    $conn->query("USE " . $dbname);
+    $conn->query("USE Il_Pescaggio");
 
 
     $email = $_POST["email"];

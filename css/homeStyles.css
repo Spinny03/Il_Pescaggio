@@ -8,13 +8,18 @@ body{
     display: grid;
     grid-template-rows: 80px minmax(80px, 10vh) minmax(20px, 3vh) 1fr;
     width: calc(100vw - (100vw - 100%));
-    height: 100vh;
     gap: 24px;
 }
 .navBar{
+	position: sticky;
+	top: 0;
+    z-index: 100;
+    /*position: fixed;
+    overflow: hidden;*/
     height: 80px;
     position: sticky;
     background-color: blue;
+    border-bottom: 1px solid #EDEEF2;
 
 }
 
@@ -25,11 +30,13 @@ body{
     background-color: white;
     display: flex;
     justify-content: space-evenly;
+    overflow: auto;
 }
 
 .choice{
     min-width: 160px;
     width: 8vw;
+    height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,7 +45,10 @@ body{
 }
 
 .title{
-    background-color: grey;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+
 }
 
 h2{
@@ -46,5 +56,44 @@ h2{
     font-family: 'nunito';
 }
 .dish{
-    background-color: black;
+
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
+
+@media screen and (max-width: 1300px) {
+    .container{
+        grid-template-rows: 80px minmax(80px, 176px) minmax(20px, 3vh) 1fr;
+    }
+    .chooseDish{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        justify-items: center;
+        gap: 16px;
+        width: 60%;
+    }
+    .choice{
+        height: 80px;
+        width: 160px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 16px;
+        border: 1px solid #EDEEF2;
+    }
+
+}
+
+@media screen and (max-width: 900px) {
+    .chooseDish{
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 660px) {
+    .chooseDish{
+        width: 100%;
+    }
+}
+

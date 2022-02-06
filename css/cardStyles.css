@@ -40,9 +40,9 @@
     left: 0;
     right: 0;
     z-index: 1;          
-    background-color: var(--surface-color);      
-    transform: translateY(0);
-    transition: .2s ease-in-out;
+    background-color: var(--surface-color);
+    display: flex;
+    min-height: 9rem;
   }
   
   
@@ -54,10 +54,54 @@
     padding: 2em;
     /*border-radius: calc(var(--curve) * 1px) 0 0 0; */   
     background-color: var(--surface-color);
-    transform: translateY(0);
-    transition: .2s ease-in-out;
+    width: 18.75rem;
   }
-   
+  
+.divPrice{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  flex-direction: column;
+}
+
+.smallBtn{
+  font-family: 'nunito';
+  border: 0;
+  display: inline-block;
+  background-color: #4e60ff;
+  width: 1.5rem;
+  height: 1.5rem;
+  text-align: center;
+  border-radius: 1rem;
+  color: white;
+  cursor: pointer;
+}
+.dishNumber{
+  font-family: 'nunito';
+  border: 0;
+  display: inline-block;
+  background-color: #dcdada;
+  width: 3rem;
+  height: 1.5rem;
+  text-align: center;
+  border-radius: 1rem;
+  color: black;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
   .card__title {
     font-size: 1em;
     margin: 0 0 .3em;
@@ -83,5 +127,10 @@
   @media screen and (max-width: 660px) {
     .cards {
       grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    }
+  }
+  @media screen and (max-width: 530px) {
+    .card__header{
+      max-width: 10rem;
     }
   }

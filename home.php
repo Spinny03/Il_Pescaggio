@@ -71,10 +71,22 @@
                                     <div class="card__overlay">
                                         <div class="card__header">               
                                             <div class="card__header-text">
-                                                <h3 class="card__title">'.$row["dishName"].'</h3>            
+                                                <h3 class="card__title">'.$row["dishName"].'</h3>
+                                                <p>'.$row["description"].'</p>            
                                             </div>
                                         </div>
-                                        <p class="card__description">'.$row["description"].'</p>
+                                        <div class="divPrice">
+                                            <h3>'.$row["dishCost"].'€'.'</h3>
+                                            <div>
+                                                <button class="smallBtn" min="0">
+                                                    -
+                                                </button>
+                                                <input type="number" class="dishNumber" value="0">
+                                                <button class="smallBtn" min="0">
+                                                    +
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>      
                             ';

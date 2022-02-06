@@ -67,3 +67,9 @@ INSERT INTO `dish`(`id`, `dishCost`, `description`, `gluten`, `lactose`, `dishNa
 INSERT INTO `dish`(`id`, `dishCost`, `description`, `gluten`, `lactose`, `dishName`, `dishType`, `photoLink`) VALUES (13,10,"DESCRIZIONE DEL PIATTO",1,1,"Crostata"         ,"desserts","crostata.jpg");
 INSERT INTO `dish`(`id`, `dishCost`, `description`, `gluten`, `lactose`, `dishName`, `dishType`, `photoLink`) VALUES (14,10,"DESCRIZIONE DEL PIATTO",1,1,"Profiterol"       ,"desserts","profiterol.jpg");
 INSERT INTO `dish`(`id`, `dishCost`, `description`, `gluten`, `lactose`, `dishName`, `dishType`, `photoLink`) VALUES (15,10,"DESCRIZIONE DEL PIATTO",1,1,"Cheescake"        ,"desserts","cheescake.jpg");
+
+INSERT INTO `dish`(`id`, `dishCost`, `description`, `gluten`, `lactose`, `dishName`, `dishType`, `photoLink`) VALUES (16,10,"DESCRIZIONE DEL PIATTO",1,1,"Bufala"           ,"pizza","bufala.jpg");
+INSERT INTO `dish`(`id`, `dishCost`, `description`, `gluten`, `lactose`, `dishName`, `dishType`, `photoLink`) VALUES (17,10,"DESCRIZIONE DEL PIATTO",1,1,"Chicken Burger"   ,"burger","chickenBurger.jpg");
+INSERT INTO `dish`(`id`, `dishCost`, `description`, `gluten`, `lactose`, `dishName`, `dishType`, `photoLink`) VALUES (18,10,"DESCRIZIONE DEL PIATTO",1,1,"Tomahawk"         ,"meat","tom.jpeg");
+INSERT INTO `dish`(`id`, `dishCost`, `description`, `gluten`, `lactose`, `dishName`, `dishType`, `photoLink`) VALUES (19,10,"DESCRIZIONE DEL PIATTO",1,1,"Spaghetti allo scoglio","fish","scoglio.jpg");
+INSERT INTO `dish`(`id`, `dishCost`, `description`, `gluten`, `lactose`, `dishName`, `dishType`, `photoLink`) VALUES (20,10,"DESCRIZIONE DEL PIATTO",1,1,"spaghetti al pomodoro","vegan","pomodoro.jpg");

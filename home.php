@@ -22,7 +22,7 @@
         <div class="container">
 
             <div class="navBar">
-                
+                <img src="images/smallLogo.png" alt="logo" id="logo">
             </div>
             <div class="chooseDish">  
 
@@ -60,12 +60,12 @@
 
 
             <div class="dish">
-                <ul class="cards">
+                <div class="cards">
                     <?php
                         $result = $conn->query("SELECT * FROM dish;");
                         while($row = $result->fetch_assoc()){
                             echo'
-                            <li>
+                            
                                 <div  class="card '.$row["dishType"].'">
                                     <img src="images/photoDishes/'.$row["photoLink"].'" class="card__image" alt="'.$row["dishName"].'" />
                                     <div class="card__overlay">
@@ -77,7 +77,7 @@
                                         <p class="card__description">'.$row["description"].'</p>
                                     </div>
                                 </div>      
-                            </li>';
+                            ';
                         }
                         $conn->close();
                     ?>

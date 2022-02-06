@@ -18,10 +18,11 @@
   }
   
   .card {
+    font-family: 'nunito';
     position: relative;
     display: none;
+    min-height: 350px;
     height: 100%;
-    min-height: 400px;  
     border-radius: 16px;
     overflow: hidden;
     text-decoration: none;
@@ -72,7 +73,7 @@
     padding: 0 2em 2em;
     margin: 0;
     color: #D7BDCA;
-    font-family: "MockFlowFont";   
+    font-family: 'nunito'; 
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;

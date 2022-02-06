@@ -18,11 +18,18 @@ body{
     overflow: hidden;*/
     height: 80px;
     position: sticky;
-    background-color: blue;
+    background-color: white;
     border-bottom: 1px solid #EDEEF2;
 
 }
 
+#logo{
+    position: absolute;
+    width: 122px;
+    height: 74px;
+    left: 72px;
+    top: 1px;
+}
 
 .chooseDish{
     margin-left: auto;
@@ -35,6 +42,7 @@ body{
 }
 
 .choice{
+    font-family: 'nunito';
     width: 160px;
     height: 80px;
     display: flex;
@@ -42,16 +50,19 @@ body{
     justify-content: center;
     align-items: center;
     border-radius: 16px;
+    background-color: white;
     border: 1px solid #EDEEF2;
 }
+
 .choice:hover {
     background-color: #ddd;
-  }
+}
   
-  .choice.active {
-    background-color: #666;
-    color: white;
-  }
+.choice.active {
+    color: #4e60ff;
+    background-color: #f3f4ff;
+    border: 2px solid #4e60ff;
+}
 
 .choice p{
     margin: 0;

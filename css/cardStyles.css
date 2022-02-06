@@ -19,7 +19,7 @@
   
   .card {
     position: relative;
-    display: block;
+    display: none;
     height: 100%;
     min-height: 400px;  
     border-radius: 16px;

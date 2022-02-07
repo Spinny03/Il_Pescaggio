@@ -64,11 +64,14 @@
                     <?php
                         $result = $conn->query("SELECT * FROM dish;");
                         while($row = $result->fetch_assoc()){
+                            echo "<p>".getDate(strtotime($row["creationDate"]))["mday"]."</p>";
                             echo'
                             
                                 <div  class="card '.$row["dishType"].'">
-                                    <img src="images/photoDishes/'.$row["photoLink"].'" class="card__image" alt="'.$row["dishName"].'" />
-                                    <div class="card__overlay">
+                                    <img src="images/photoDishes/'.$row["photoLink"].'" class="card__image" alt="'.$row["dishName"].'" />';
+                                   // if($row["creationDate"]==)
+                                
+                            echo'        <div class="card__overlay">
                                         <div class="card__header">               
                                             <div class="card__header-text">
                                                 <h3 class="card__title">'.$row["dishName"].'</h3>

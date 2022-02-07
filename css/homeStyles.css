@@ -23,6 +23,15 @@ body{
 
 }
 
+.new{
+    font-size: 25px;
+    color: white;
+    border-radius: 8px;
+    position: absolute;
+    top: -25px;
+    right: 0;
+    background-color: #4e60ff;
+}
 #logo{
     position: absolute;
     width: 122px;

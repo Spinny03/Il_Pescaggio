@@ -5,6 +5,8 @@
         exit("Connessione fallita: " . $conn->connect_error);
     }
     $conn->query("USE Il_Pescaggio");
+    $result = $conn->query('SELECT SUM(quantity) FROM cart WHERE idUser="'.$_SESSION["user"].'";');
+    $result = mysqli_fetch_assoc($result); 
 ?>
 
 <!DOCTYPE html>
@@ -29,8 +31,8 @@
                     <a href="#" class="navLink">Ordini</a>
                 </ul>
                 
-                <a href="#" class="navBtn" id="shoppingCard">
-                    <span id="itemsNumber">0</span>
+                <a href="cart.php" class="navBtn" id="shoppingCard">
+                    <span id="itemsNumber"><?php echo  $result["SUM(quantity)"];?></span>
                     <img src="images/icons/blueBag.svg" alt="logo" id="shoppingSVG"> 
                 </a>
                 <a href="profile.php" class="navBtn" id="profileBtn">
@@ -78,6 +80,12 @@
                     <?php
                         $result = $conn->query("SELECT * FROM dish;");
                         while($row = $result->fetch_assoc()){
+                            $cart = $conn->query('SELECT quantity FROM cart, dish WHERE idUser="'.$_SESSION["user"].'" AND  dishName="'.$row["dishName"].'" AND dish.id = cart.idDish;');
+                            $cart = mysqli_fetch_assoc($cart);
+                            $quantity=0;
+                            if(!empty($cart["quantity"])){
+                                $quantity = $cart["quantity"];
+                            }
                             echo'
                                 <div  class="card '.$row["dishType"].'">
                                     <img src="images/photoDishes/'.$row["photoLink"].'" class="card__image" alt="'.$row["dishName"].'" />';
@@ -94,13 +102,15 @@
                                         <div class="divPrice">
                                             <h3>'.$row["dishCost"].'€'.'</h3>
                                             <div>
-                                                <button class="smallBtn" min="0">
-                                                    -
-                                                </button>
-                                                <input type="number" class="dishNumber" value="0">
-                                                <button class="smallBtn" min="0">
-                                                    +
-                                                </button>
+                                                <form action="access/cartDB.php" method="POST" >
+                                                    <button type="submit" class="smallBtn" name="less" value="'.$row["dishName"].'">
+                                                        -
+                                                    </button>
+                                                    <input type="number" class="dishNumber" readonly value="'.$quantity.'">
+                                                    <button type="submit" class="smallBtn" name="add" value="'.$row["dishName"].'">
+                                                        +
+                                                    </button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -109,7 +119,7 @@
                         }
                         $conn->close();
                     ?>
-                </div>
+                </ul>
             </div>
             
 

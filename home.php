@@ -23,7 +23,21 @@
 
             <div class="navBar">
                 <img src="images/smallLogo.png" alt="logo" id="logo">
+                <ul class="navItems">
+                    <a href="#" class="navLink" style="color: #4e60ff">Delivery</a>
+                    <a href="#" class="navLink">Catering</a>
+                    <a href="#" class="navLink">Ordini</a>
+                </ul>
+                
+                <a href="#" class="navBtn" id="shoppingCard">
+                    <span id="itemsNumber">0</span>
+                    <img src="images/navbar/shopping.svg" alt="logo" id="shoppingSVG"> 
+                </a>
+                <a href="#" class="navBtn" id="profileBtn">
+
+                </a>
             </div>
+            
             <div class="chooseDish">  
 
                 <button class="choice active" onclick="filterSelection('pizza')">
@@ -95,7 +109,7 @@
                         }
                         $conn->close();
                     ?>
-                </ul>
+                </div>
             </div>
             
 

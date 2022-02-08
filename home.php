@@ -32,7 +32,11 @@
                 </ul>
                 
                 <a href="cart.php" class="navBtn" id="shoppingCard">
-                    <span id="itemsNumber"><?php echo  $result["SUM(quantity)"];?></span>
+                    <?php 
+                        if(!empty($result["SUM(quantity)"])){
+                            echo '<span id="itemsNumber">'.$result["SUM(quantity)"].'</span>';
+                        }
+                    ?>
                     <img src="images/icons/blueBag.svg" alt="logo" id="shoppingSVG"> 
                 </a>
                 <a href="profile.php" class="navBtn" id="profileBtn">

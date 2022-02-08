@@ -119,7 +119,7 @@
                         }
                         $conn->close();
                     ?>
-                </ul>
+                </div>
             </div>
             
 

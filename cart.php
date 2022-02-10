@@ -1,5 +1,9 @@
 <?php 
     session_start(); 
+    if(!isset($_SESSION["user"]) || empty($_SESSION["user"])){
+        header("Location: index.php");
+        exit();
+    }
     $conn = new mysqli("localhost", "root", "");
     if ($conn->connect_error){
         exit("Connessione fallita: " . $conn->connect_error);

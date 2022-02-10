@@ -6,6 +6,7 @@ function filterSelection(c) {
     w3RemoveClass(x[i], "show");
     if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
   }
+  butRename(c);
 }
 
 function w3AddClass(element, name) {
@@ -30,7 +31,13 @@ function w3RemoveClass(element, name) {
 }
 
 
-// Add active class to the current button (highlight it)
+function butRename(c){
+  var current = document.getElementsByClassName("active");
+    if(current.length == 0){
+      document.getElementById(c).className += " active";
+    }
+}
+
 var btns = document.getElementsByClassName("choice");
 for (var i = 0; i < btns.length; i++) {
   btns[i].addEventListener("click", function(){

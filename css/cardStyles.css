@@ -28,7 +28,16 @@
     text-decoration: none;
     border: 1px solid #EDEEF2;
   }
-  
+
+  .card.cart {
+    background-color: #f3f4ff;
+    border: 2px solid #4e60ff;
+  }
+
+  .card__overlay.cart {
+    background-color: #f3f4ff;
+  }
+
   .card__image {      
     width: 100%;
     height: auto;
@@ -40,7 +49,7 @@
     left: 0;
     right: 0;
     z-index: 1;          
-    background-color: var(--surface-color);
+    background-color: white;
     display: flex;
     min-height: 9rem;
   }
@@ -53,7 +62,6 @@
     gap: 2em;
     padding: 2em;
     /*border-radius: calc(var(--curve) * 1px) 0 0 0; */   
-    background-color: var(--surface-color);
     width: 18.75rem;
   }
   

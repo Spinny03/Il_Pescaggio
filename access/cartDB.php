@@ -8,7 +8,8 @@
 
 
     if(isset($_POST["add"])){
-        $sql = 'SELECT dish.dishName FROM `cart`, `dish` WHERE idUser="'.$_SESSION["user"].'" AND dish.id = cart.idDish AND dishName="'.$_POST["add"].'";';  
+        $name = $_POST["add"];
+        $sql = 'SELECT dish.dishName, dishType FROM cart, dish WHERE idUser="'.$_SESSION["user"].'" AND dish.id = cart.idDish AND dishName="'.$_POST["add"].'";';  
         $result = $conn->query($sql); 
         $result = mysqli_fetch_assoc($result);
         if(!empty($result["dishName"])){
@@ -16,24 +17,31 @@
             $conn->query($sql1); 
         }
         else{
-            $sql1 = 'SELECT id FROM `dish` WHERE dishName="'.$_POST["add"].'";';
-            $result1 = $conn->query($sql1); 
-            $result1 = mysqli_fetch_assoc($result1);
-            $sql2 = ' INSERT INTO cart (`idUser`, `idDish`, `quantity`) VALUES ("'.$_SESSION["user"].'","'.$result1["id"].'",1);';
+            $sql = 'SELECT id, dishType FROM dish WHERE dishName="'.$_POST["add"].'";';
+            $result = $conn->query($sql); 
+            $result = mysqli_fetch_assoc($result);
+            $sql2 = ' INSERT INTO cart (`idUser`, `idDish`, `quantity`) VALUES ("'.$_SESSION["user"].'","'.$result["id"].'",1);';
             $conn->query($sql2); 
         }
     
     }
-    if(isset($_POST["less"])){
-        $sql = 'SELECT dish.dishName, quantity FROM `cart`, `dish` WHERE idUser="'.$_SESSION["user"].'" AND dish.id = cart.idDish AND dishName="'.$_POST["less"].'";';  
+    elseif(isset($_POST["less"])){
+        $name = $_POST["less"];
+        $sql = 'SELECT dish.dishName, quantity, dishType FROM `cart`, `dish` WHERE idUser="'.$_SESSION["user"].'" AND dish.id = cart.idDish AND dishName="'.$_POST["less"].'";';  
         $result = $conn->query($sql); 
         $result = mysqli_fetch_assoc($result);
-        if($result["dishName"]==$_POST["less"] && $result["quantity"] > 0){
+        if($result["dishName"]==$_POST["less"] && $result["quantity"] > 1){
             $sql = ' UPDATE cart, dish SET quantity = quantity - 1 WHERE idUser="'.$_SESSION["user"].'" AND dish.id = cart.idDish AND dishName="'.$_POST["less"].'";';
             $conn->query($sql); 
         }
+        elseif($result["quantity"] <= 1){
+            $sql = ' DELETE cart FROM cart, dish WHERE idUser="'.$_SESSION["user"].'" AND dish.id = cart.idDish AND dishName="'.$_POST["less"].'";';
+            $conn->query($sql); 
+        }
     }
-   
+    
+    $_SESSION["typefood"] = $result["dishType"];
+
     $conn->close();
     header("Location: ../home.php");
     exit;

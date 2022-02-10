@@ -5,8 +5,11 @@
         exit("Connessione fallita: " . $conn->connect_error);
     }
     $conn->query("USE Il_Pescaggio");
-    $result = $conn->query('SELECT SUM(quantity) FROM cart WHERE idUser="'.$_SESSION["user"].'";');
-    $result = mysqli_fetch_assoc($result); 
+    $bag = $conn->query('SELECT SUM(quantity) FROM cart WHERE idUser="'.$_SESSION["user"].'";');
+    $bag = mysqli_fetch_assoc($bag); 
+    if (!isset($_SESSION["typefood"])){
+        $_SESSION["typefood"] = "pizza";
+    }
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +27,9 @@
         <div class="container">
 
             <nav class="navBar">
-                <img src="images/smallLogo.png" alt="logo" id="logo">
+                <a href="home.php">
+                    <img src="images/smallLogo.png" alt="logo" id="logo">
+                </a>
                 <ul class="navItems" data-visible="false">
                     <a href="home.php" class="navLink" style="color: #4e60ff">Delivery</a>
                     <a href="#" class="navLink">Catering</a>
@@ -33,8 +38,8 @@
                 
                 <a href="cart.php" class="navBtn" id="shoppingCard">
                     <?php 
-                        if(!empty($result["SUM(quantity)"])){
-                            echo '<span id="itemsNumber">'.$result["SUM(quantity)"].'</span>';
+                        if(!empty($bag["SUM(quantity)"])){
+                            echo '<span id="itemsNumber">'.$bag["SUM(quantity)"].'</span>';
                         }
                     ?>
                     <img src="images/icons/blueBag.svg" alt="logo" id="shoppingSVG"> 
@@ -43,34 +48,34 @@
 
                 </a>
                 <button class="navBtn" id="respBtn">
-                    <img src="images/icons/respBtn.png" alt="logo" id="respImg">
+                    <img src="images/icons/respBtn.svg" alt="menu" id="respImg">
                 </button>
             </nav>
             
             <div class="chooseDish">  
 
-                <button class="choice active" onclick="filterSelection('pizza')">
+                <button class="choice" id="pizza" onclick="filterSelection('pizza')">
                     <img width="20%" height="40%" src="images/foodType/pizza.png" alt="pizza">
                     <p>Pizza</p>
                 </button>
                 
-                <button class="choice" onclick="filterSelection('burger')"> 
+                <button class="choice" id="burger" onclick="filterSelection('burger')"> 
                     <img width="20%" height="40%" src="images/foodType/burger.png" alt="burger">
                     <p>Burger</p>
                 </button>
-                <button class="choice" onclick="filterSelection('meat')"> 
+                <button class="choice" id="meat" onclick="filterSelection('meat')"> 
                     <img width="20%" height="40%" src="images/foodType/meat.png" alt="carne">
                     <p>Carne</p>
                 </button>
-                <button class="choice" onclick="filterSelection('fish')"> 
+                <button class="choice" id="fish" onclick="filterSelection('fish')"> 
                     <img width="20%" height="40%" src="images/foodType/fish.png" alt="pesce">
                     <p>Pesce</p>
                 </button>
-                <button class="choice" onclick="filterSelection('vegan')"> 
+                <button class="choice" id="vegan"  onclick="filterSelection('vegan')"> 
                     <img width="20%" height="40%" src="images/foodType/vegan.png" alt="vegano">
                     <p>Vegano</p>
                 </button>
-                <button class="choice" onclick="filterSelection('desserts')"> 
+                <button class="choice" id="desserts" onclick="filterSelection('desserts')"> 
                     <img width="20%" height="40%"  src="images/foodType/desserts.png" alt="dolci">
                     <p>Dolci</p>
                 </button>
@@ -85,21 +90,23 @@
             <div class="dish">
                 <div class="cards">
                     <?php
-                        $result = $conn->query("SELECT * FROM dish;");
-                        while($row = $result->fetch_assoc()){
+                        $dishs = $conn->query("SELECT * FROM dish;");
+                        while($row = $dishs->fetch_assoc()){
                             $cart = $conn->query('SELECT quantity FROM cart, dish WHERE idUser="'.$_SESSION["user"].'" AND  dishName="'.$row["dishName"].'" AND dish.id = cart.idDish;');
                             $cart = mysqli_fetch_assoc($cart);
                             $quantity=0;
+                            $inCart = "";
                             if(!empty($cart["quantity"])){
                                 $quantity = $cart["quantity"];
+                                $inCart = "cart";
                             }
                             echo'
-                                <div  class="card '.$row["dishType"].'">
+                                <div  class="card '.$row["dishType"].' '.$inCart.'">
                                     <img src="images/photoDishes/'.$row["photoLink"].'" class="card__image" alt="'.$row["dishName"].'" />';
                                     if(date("d") - getDate(strtotime($row["creationDate"]))["mday"] < 7 ){
                                         echo '<p class="new">&nbspNuovo&nbsp</p> ';
                                     }
-                            echo'   <div class="card__overlay">
+                            echo'   <div class="card__overlay '.$inCart.'">
                                         <div class="card__header">               
                                             <div class="card__header-text">
                                                 <h3 class="card__title">'.$row["dishName"].'</h3>
@@ -133,5 +140,5 @@
         </div>  
     </body>
     <script src="js/filterFood.js"></script>
-    <script >filterSelection("pizza")</script>
+    <script >filterSelection("<?php echo $_SESSION["typefood"];?>")</script>
 </html>

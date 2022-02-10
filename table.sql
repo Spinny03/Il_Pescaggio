@@ -21,6 +21,7 @@ CREATE TABLE username(
     civ int NOT NULL,
     cap int NOT NULL,
     tel int NOT NULL,
+    photoLink varchar(255) NOT NULL,
     pasw varchar(255) NOT NULL
 );
 

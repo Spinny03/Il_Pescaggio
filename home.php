@@ -15,7 +15,7 @@
         <meta name="viewport" content="width=device-width" />
         <link rel="stylesheet" href="css/cardStyles.css">
         <link rel="stylesheet" href="css/homeStyles.css">
-        
+        <script src="js/navbarRes.js" defer></script>
         
         <link rel="icon" type="image/x-icon" href="images/favicon.ico">
         <title>HOME</title>
@@ -23,9 +23,9 @@
     <body>
         <div class="container">
 
-            <div class="navBar">
+            <nav class="navBar">
                 <img src="images/smallLogo.png" alt="logo" id="logo">
-                <ul class="navItems">
+                <ul class="navItems" data-visible="false">
                     <a href="home.php" class="navLink" style="color: #4e60ff">Delivery</a>
                     <a href="#" class="navLink">Catering</a>
                     <a href="#" class="navLink">Ordini</a>
@@ -42,7 +42,10 @@
                 <a href="profile.php" class="navBtn" id="profileBtn">
 
                 </a>
-            </div>
+                <button class="navBtn" id="respBtn">
+                    <img src="images/icons/respBtn.png" alt="logo" id="respImg">
+                </button>
+            </nav>
             
             <div class="chooseDish">  
 

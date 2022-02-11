@@ -11,82 +11,6 @@ body{
     width: calc(100vw - (100vw - 100%));
     gap: 24px;
 }
-.navBar{
-	position: sticky;
-	top: 0;
-    z-index: 100;
-    /*position: fixed;
-    overflow: hidden;*/
-    height: 80px;
-    position: sticky;
-    background-color: white;
-    border-bottom: 1px solid #EDEEF2;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
-.navItems{
-    display: flex;
-    justify-content: space-around;
-    min-width: max(186px,18vw);
-    align-items: center;
-    margin-right: 1vw;
-    padding: 0;
-    list-style-type: none;
-}
-
-#itemsNumber{
-    display: block;
-    position: absolute;
-    top: -6px;
-    right: -6px;
-    background-color: #4e60ff;
-    width: 20px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    color: white;
-    font-size: 0.9rem;
-}
-
-.navBtn{
-    display: block;
-    width: 48px;
-    height: 48px;
-    border-radius: 1rem;
-    border: 0;
-    margin-right: 1vw;
-    background-color: #ddd;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-#profileBtn{
-    background: url("../images/icons/profile.png");
-    background-size: cover;
-    margin-right: 10vw;   
-}
-
-#respBtn{
-    display: none;
-    z-index: 10;
-}
-
-#shoppingSVG{
-    width: 24px;
-    height: 24px;
-}
-
-
-.navLink{
-    text-decoration: none;
-    color: black;
-    font-weight: 600;
-}
 
 .new{
     font-size: 1.3rem;
@@ -98,13 +22,6 @@ body{
     right: 0;
     padding: 3px;
     background-color: #4e60ff;
-}
-#logo{
-    position: absolute;
-    width: 122px;
-    height: 74px;
-    left: 72px;
-    top: 1px;
 }
 
 .chooseDish{
@@ -192,32 +109,6 @@ h2{
 @media screen and (max-width: 900px) {
     .chooseDish{
         width: 80%;
-    }
-    .navItems{
-        position: fixed;
-        inset: 0 0 0 40%;
-        background-color: rgba(221, 221, 221, 0.5);
-        backdrop-filter: blur(8px);
-        margin: 0;
-        flex-direction: column;
-        justify-content:flex-start;
-        align-items: flex-start;
-        padding-top: 30vh;
-        padding-left: 5vh;
-        gap: 50px;
-        transform: translateX(100%);
-        transition: transform 350ms ease-out;
-        z-index: 9;
-    }
-    .navItems[data-visible="true"]{
-        transform: translateX(0%);
-    }
-    #respBtn{
-        margin-right: 10vw;
-        display: block;
-    }
-    #profileBtn{
-        margin-right: 1vw;
     }
 }
 

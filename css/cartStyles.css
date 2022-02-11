@@ -1,0 +1,12 @@
+.container{
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 2fr;
+    gap: 15px;
+}
+.left{
+    margin-left: 15px;
+}
+.right{
+    margin-right: 15px;
+}

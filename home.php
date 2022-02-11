@@ -1,6 +1,10 @@
 <?php 
     session_start(); 
-    $conn = new mysqli("localhost", "root", "");
+    if(!isset($_SESSION["user"]) || empty($_SESSION["user"])){
+        header("Location: index.php");
+        exit();
+    }
+    $conn = new mysqli("localhost", "root", "");  
     if ($conn->connect_error){
         exit("Connessione fallita: " . $conn->connect_error);
     }
@@ -132,7 +136,6 @@
                                 </div>      
                             ';
                         }
-                        $conn->close();
                     ?>
                 </div>
             </div>
@@ -140,6 +143,7 @@
 
         </div>  
     </body>
+    <?php $conn->close(); ?>
     <script src="js/filterFood.js"></script>
     <script >filterSelection("<?php echo $_SESSION["typefood"];?>")</script>
 </html>

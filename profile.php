@@ -4,7 +4,7 @@
         header("Location: index.php");
         exit();
     }
-    $conn = new mysqli("localhost", "root", "");
+    $conn = new mysqli("localhost", "root", "");  
     if ($conn->connect_error){
         exit("Connessione fallita: " . $conn->connect_error);
     }
@@ -17,6 +17,7 @@
         <meta name="viewport" content="width=device-width" />
         <link rel="stylesheet" href="css/cardStyles.css">
         <link rel="stylesheet" href="css/homeStyles.css">
+        <link rel="stylesheet" href="css/navBarStyles.css">
         <script src="js/navbarRes.js" defer></script>
         
         <link rel="icon" type="image/x-icon" href="images/favicon.ico">

@@ -16,7 +16,7 @@ CREATE TABLE username(
     firstName varchar(255),
     surname varchar(255),
     registrationDate timestamp,
-    nCard int,
+    nCard varchar(255),
     via varchar(255),
     civ varchar(255),
     cap varchar(255),

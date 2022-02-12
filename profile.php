@@ -13,6 +13,14 @@
     $bag = mysqli_fetch_assoc($bag); 
     $data = $conn->query('SELECT * FROM username WHERE email ="'.$_SESSION["user"].'";');
     $data = mysqli_fetch_assoc($data); 
+    if(isset($_SESSION["emailFail"]) && $_SESSION["emailFail"]){
+        echo'<style>
+                input[name="email"]{
+                    background-color: rgba(255, 78, 113, 0.7);
+                }
+            </style>';
+        $_SESSION["emailFail"]=False;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -140,12 +148,12 @@
 
                     <div class="data" id="p50">
                         <label for="nCard"><b>Carta di credito</b></label>
-                        <input type="text" placeholder="0123 4567 7890" name="nCard" 
+                        <input type="text" placeholder="0123 4567 8910" name="nCard" 
                             <?php
                                 if(isset($data["nCard"])){
                                     echo "value='".$data["nCard"]."'";
                                 }
-                            ?> 
+                            ?> pattern="[0-9 ]{4} [0-9 ]{4} [0-9 ]{4}" title="Inserire nel formato 0123 4567 8910"
                         >
                     </div>
 
@@ -154,7 +162,8 @@
                         <input type="text" placeholder="Password1" name="changPasw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Deve contenere almeno un numero e una lettera maiuscola e minuscola e almeno 8 o più caratteri" minlength="8" >
                     </div>
 
-                    <button type="submit" name="login" class="logbtn">Salva le modifiche</button>
+                    <button type="submit" name="change" value="False"class="logbtn">Annulla modifiche</button>
+                    <button type="submit" name="change" value="True"class="logbtn">Salva le modifiche</button>
                 </form>
             </div>
         </div>  

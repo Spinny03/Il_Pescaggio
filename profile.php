@@ -51,7 +51,10 @@
                     <img src="images/icons/respBtn.svg" alt="menu" id="respImg">
                 </button>
             </nav>
+            <div class="settings">
 
+            </div>
+            .
         </div>  
     </body>
     <?php $conn->close(); ?>

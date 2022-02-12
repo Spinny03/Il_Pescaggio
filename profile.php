@@ -13,13 +13,19 @@
     $bag = mysqli_fetch_assoc($bag); 
     $data = $conn->query('SELECT * FROM username WHERE email ="'.$_SESSION["user"].'";');
     $data = mysqli_fetch_assoc($data); 
+    if(empty($data["photoLink"])){
+        $link = "images/icons/profile.png";
+    }
+    else{
+        $link = "images/userPhoto/".$data["photoLink"];
+    }
     if(isset($_SESSION["emailFail"]) && $_SESSION["emailFail"]){
         echo'<style>
                 input[name="email"]{
                     background-color: rgba(255, 78, 113, 0.7);
                 }
             </style>';
-        $_SESSION["emailFail"]=False;
+        $_SESSION["emailFail"] = False;
     }
 ?>
 
@@ -27,7 +33,7 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width" />
-        <link rel="stylesheet" href="css/profile.css">
+        <link rel="stylesheet" href="css/profileStyles.css">
         <link rel="stylesheet" href="css/navBarStyles.css">
         <link rel="stylesheet" href="css/formStyles.css">
         
@@ -66,9 +72,22 @@
             <div class="title">
                 <h2>Impostazioni Account</h2>
             </div>
-            <div class="pSettings">
-                <form action="access/profileDB.php" method="POST" >
 
+            <div class="pSettings">
+
+                
+                <form id="pform" action="access/photoDB.php" method="POST" enctype="multipart/form-data">
+                    <img width="200" height="200" src="<?php echo $link;?>">
+                    <label class="smallBtn" for="apply"><input class="inPhoto" type="file" name="pfile" name="pfile" id="apply" accept="image/*">Modifica</label>
+                    <button type="submit" name="change" value="False" class="smallBtn">Rimuovi</button>
+                </form>
+                <script>
+                    document.getElementById("apply").onchange = function() {
+                    document.getElementById("pform").submit();
+                }
+                </script>
+
+                <form action="access/profileDB.php" method="POST" >
                     <div class="data" id="p25">
                         <label for="name"><b>Nome</b></label>
                         <input type="text" placeholder="Mario" name="name"
@@ -162,8 +181,8 @@
                         <input type="text" placeholder="Password1" name="changPasw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Deve contenere almeno un numero e una lettera maiuscola e minuscola e almeno 8 o più caratteri" minlength="8" >
                     </div>
 
-                    <button type="submit" name="change" value="False"class="logbtn">Annulla modifiche</button>
-                    <button type="submit" name="change" value="True"class="logbtn">Salva le modifiche</button>
+                    <button type="submit" name="change" value="False" class="logbtn">Annulla modifiche</button>
+                    <button type="submit" name="change" value="True" class="logbtn">Salva le modifiche</button>
                 </form>
             </div>
         </div>  

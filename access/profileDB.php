@@ -60,7 +60,7 @@
         echo $sql;
         $conn->query($sql);
     }
-    //header("Location: ../profile.php");
+    header("Location: ../profile.php");
     $conn->close();
     exit();
 ?>

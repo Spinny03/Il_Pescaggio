@@ -1,3 +1,23 @@
+
+.smallBtn:hover {
+	background-color: cornflowerblue;
+}
+
+.smallBtn:active {
+	background-color: mediumaquamarine;
+}
+
+.inPhoto {
+	border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px; 
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
 .pSettings{
     margin-left: auto;
     margin-right: auto;
@@ -8,20 +28,37 @@
     padding: 10px;
     border-radius: 16px;
 }
+
 .conteinerP{
     display: grid;
     grid-template-rows: 80px 4vh 80vh;
     width: calc(100vw - (100vw - 100%));
     gap: 24px;
 }
+
 .title{
     margin-left: auto;
     margin-right: auto;
     width: 80%;
 }
+
 input{
     padding-right: 10px;
 }
+
+.smallBtn{
+    font-family: 'nunito';
+    border: 0;
+    display: inline-block;
+    background-color: #4e60ff;
+    width: 5rem;
+    height: 1.5rem;
+    text-align: center;
+    border-radius: 1rem;
+    color: white;
+    cursor: pointer;
+}
+
 .logbtn{
     margin-top: 30px;
     width: 100%;
@@ -47,15 +84,19 @@ input{
 #p25{
     width: 25%;
 }
+
 #p50{
     width: 50%;
 }
+
 #p30{
     width: 30%;
 }
+
 #p10{
     width: 10%;
 }
+
 @media screen and (max-width: 660px) {
     .pSettings{
         width: 90%;

@@ -13,15 +13,15 @@ CREATE TABLE rider(
 
 CREATE TABLE username(
     email varchar(255) PRIMARY KEY,
-    firstName varchar(255) NOT NULL,
-    surname varchar(255) NOT NULL,
-    registrationDate timestamp NOT NULL,
-    nCard int NOT NULL,
-    via varchar(255) NOT NULL,
-    civ int NOT NULL,
-    cap int NOT NULL,
-    tel int NOT NULL,
-    photoLink varchar(255) NOT NULL,
+    firstName varchar(255),
+    surname varchar(255),
+    registrationDate timestamp,
+    nCard int,
+    via varchar(255),
+    civ varchar(255),
+    cap varchar(255),
+    tel varchar(255),
+    photoLink varchar(255),
     pasw varchar(255) NOT NULL
 );
 

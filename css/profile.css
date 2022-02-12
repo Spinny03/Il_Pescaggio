@@ -1,0 +1,63 @@
+.pSettings{
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+    width: 80%;
+    border: 1px solid #EDEEF2;
+    background-color: white;
+    padding: 10px;
+    border-radius: 16px;
+}
+.conteinerP{
+    display: grid;
+    grid-template-rows: 80px 4vh 80vh;
+    width: calc(100vw - (100vw - 100%));
+    gap: 24px;
+}
+.title{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+input{
+    padding-right: 10px;
+}
+.logbtn{
+    margin-top: 30px;
+    width: 100%;
+    background-color: #4E60FF;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-family: 'nunito';
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+.data{
+    margin: 0; 
+    float:left;
+}
+
+#p25{
+    width: 25%;
+}
+#p50{
+    width: 50%;
+}
+#p30{
+    width: 30%;
+}
+#p10{
+    width: 10%;
+}
+@media screen and (max-width: 660px) {
+    .pSettings{
+        width: 90%;
+    }
+}

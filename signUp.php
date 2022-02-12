@@ -45,12 +45,12 @@
                                     echo "value='".$_SESSION["user"]."'";
                                 }
                             ?> 
-                        required>
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
                         
                         <label for="psw"><b>Password</b></label>
-                        <input type="password" placeholder="min. 8 caratteri" name="psw" minlength="8" required>
+                        <input type="password" placeholder="min. 8 caratteri" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Deve contenere almeno un numero e una lettera maiuscola e minuscola e almeno 8 o più caratteri" required>
                         <label for="Cpsw"><b>Conferma password</b></label>
-                        <input type="password" placeholder="inserisci la stessa password" name="Cpsw" minlength="8" required>
+                        <input type="password" placeholder="inserisci la stessa password" name="Cpsw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Deve contenere almeno un numero e una lettera maiuscola e minuscola e almeno 8 o più caratteri" required>
                         <button type="submit" name="register" class="logbtn">Registrati</button>
                     </form>
                 </div>

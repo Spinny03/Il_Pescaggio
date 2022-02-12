@@ -9,23 +9,27 @@
         exit("Connessione fallita: " . $conn->connect_error);
     }
     $conn->query("USE Il_Pescaggio");
+    $bag = $conn->query('SELECT SUM(quantity) FROM cart WHERE idUser="'.$_SESSION["user"].'";');
+    $bag = mysqli_fetch_assoc($bag); 
+    $data = $conn->query('SELECT * FROM username WHERE email ="'.$_SESSION["user"].'";');
+    $data = mysqli_fetch_assoc($data); 
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
         <meta name="viewport" content="width=device-width" />
-        <link rel="stylesheet" href="css/cardStyles.css">
-        <link rel="stylesheet" href="css/homeStyles.css">
+        <link rel="stylesheet" href="css/profile.css">
         <link rel="stylesheet" href="css/navBarStyles.css">
+        <link rel="stylesheet" href="css/formStyles.css">
+        
         <script src="js/navbarRes.js" defer></script>
         
         <link rel="icon" type="image/x-icon" href="images/favicon.ico">
         <title>HOME</title>
     </head>
     <body>
-        <div class="container">
-
+        <div class="conteinerP">
             <nav class="navBar">
                 <a href="home.php">
                     <img src="images/smallLogo.png" alt="logo" id="logo">
@@ -51,13 +55,109 @@
                     <img src="images/icons/respBtn.svg" alt="menu" id="respImg">
                 </button>
             </nav>
-            <div class="settings">
-
+            <div class="title">
+                <h2>Piatti Disponibili:</h2>
             </div>
-            .
+            <div class="pSettings">
+                <form action="access/profileDB.php" method="POST" >
+
+                    <div class="data" id="p25">
+                        <label for="name"><b>Nome</b></label>
+                        <input type="text" placeholder="Mario" name="name"
+                            <?php
+                                if(isset($data["firstName"])){
+                                    echo "value='".$data["firstName"]."'";
+                                }
+                            ?> 
+                        >
+                    </div>
+
+                    <div class="data" id="p25">
+                        <label for="surname"><b>Cognome</b></label>
+                        <input type="text" placeholder="Rossi" name="surname"
+                            <?php
+                                if(isset($data["surname"])){
+                                    echo "value='".$data["surname"]."'";
+                                }
+                            ?> 
+                        >
+                    </div>
+
+                    <div class="data" id="p50">
+                        <label for="email"><b>Email</b></label>
+                        <input type="text" placeholder="nome@esempio.com" name="email" 
+                            <?php 
+                                if(isset($data["email"])){
+                                    echo "value='".$data["email"]."'";
+                                }
+                            ?>  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                        >
+                    </div>
+
+                    <div class="data" id="p50">
+                        <label for="tel"><b>Numero di telefono</b></label>
+                        <input type="text" placeholder="123-456-7890" name="tel" 
+                            <?php
+                                if(isset($data["tel"])){
+                                    echo "value='".$data["tel"]."'";
+                                }
+                            ?> pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                        >
+                    </div>  
+                    
+                    <div class="data" id="p30">
+                        <label for="via"><b>Via</b></label>
+                        <input type="text" placeholder="Via Sestri" name="via" 
+                            <?php
+                                if(isset($data["via"])){
+                                    echo "value='".$data["via"]."'";
+                                }
+                            ?> 
+                        >
+                    </div>
+
+                    <div class="data" id="p10">
+                        <label for="civ"><b>Civ</b></label>
+                        <input type="text" placeholder="17/11" name="civ" 
+                            <?php
+                                if(isset($data["civ"])){
+                                    echo "value='".$data["civ"]."'";
+                                }
+                            ?> 
+                        >
+                    </div>
+
+                    <div class="data" id="p10">
+                        <label for="cap"><b>Cap</b></label>
+                        <input type="text" placeholder="16154" name="cap" 
+                            <?php
+                                if(isset($data["cap"])){
+                                    echo "value='".$data["cap"]."'";
+                                }
+                            ?> 
+                        >
+                    </div>
+
+                    <div class="data" id="p50">
+                        <label for="nCard"><b>Carta di credito</b></label>
+                        <input type="text" placeholder="0123 4567 7890" name="nCard" 
+                            <?php
+                                if(isset($data["nCard"])){
+                                    echo "value='".$data["nCard"]."'";
+                                }
+                            ?> 
+                        >
+                    </div>
+
+                    <div class="data" id="p50">
+                        <label for="ChangPasw"><b>Cambia Password</b></label>
+                        <input type="text" placeholder="Password1" name="ChangPasw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Deve contenere almeno un numero e una lettera maiuscola e minuscola e almeno 8 o più caratteri" minlength="8" >
+                    </div>
+
+                    <button type="submit" name="login" class="logbtn">Salva le modifiche</button>
+                </form>
+            </div>
         </div>  
     </body>
     <?php $conn->close(); ?>
-    <script src="js/filterFood.js"></script>
-    <script >filterSelection("<?php echo $_SESSION["typefood"];?>")</script>
 </html>

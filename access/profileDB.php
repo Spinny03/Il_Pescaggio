@@ -7,7 +7,16 @@
     }
     $conn->query("USE Il_Pescaggio");
 
-    header("Location: ../profile.php");
+    echo $_POST["name"]."<br>";
+    echo $_POST["surname"]."<br>";
+    echo $_POST["email"]."<br>";
+    echo $_POST["tel"]."<br>";
+    echo $_POST["address1"]."<br>";
+    echo $_POST["address2"]."<br>";
+    echo $_POST["postcode"]."<br>";
+    echo $_POST["nCard"]."<br>";
+    echo $_POST["changPasw"]."<br>";
+    //header("Location: ../profile.php");
     $conn->close();
     exit();
 ?>

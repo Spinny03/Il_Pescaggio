@@ -56,7 +56,7 @@
                 </button>
             </nav>
             <div class="title">
-                <h2>Piatti Disponibili:</h2>
+                <h2>Impostazioni Account</h2>
             </div>
             <div class="pSettings">
                 <form action="access/profileDB.php" method="POST" >
@@ -101,13 +101,13 @@
                                 if(isset($data["tel"])){
                                     echo "value='".$data["tel"]."'";
                                 }
-                            ?> pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                            ?> pattern="[0-9]{10}"
                         >
                     </div>  
                     
                     <div class="data" id="p30">
                         <label for="via"><b>Via</b></label>
-                        <input type="text" placeholder="Via Sestri" name="via" 
+                        <input type="text" placeholder="Via Sestri" name="address1" 
                             <?php
                                 if(isset($data["via"])){
                                     echo "value='".$data["via"]."'";
@@ -118,7 +118,7 @@
 
                     <div class="data" id="p10">
                         <label for="civ"><b>Civ</b></label>
-                        <input type="text" placeholder="17/11" name="civ" 
+                        <input type="text" placeholder="17/11" name="address2" 
                             <?php
                                 if(isset($data["civ"])){
                                     echo "value='".$data["civ"]."'";
@@ -129,7 +129,7 @@
 
                     <div class="data" id="p10">
                         <label for="cap"><b>Cap</b></label>
-                        <input type="text" placeholder="16154" name="cap" 
+                        <input type="text" placeholder="16154" name="postcode" 
                             <?php
                                 if(isset($data["cap"])){
                                     echo "value='".$data["cap"]."'";
@@ -150,8 +150,8 @@
                     </div>
 
                     <div class="data" id="p50">
-                        <label for="ChangPasw"><b>Cambia Password</b></label>
-                        <input type="text" placeholder="Password1" name="ChangPasw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Deve contenere almeno un numero e una lettera maiuscola e minuscola e almeno 8 o più caratteri" minlength="8" >
+                        <label for="changPasw"><b>Cambia Password</b></label>
+                        <input type="text" placeholder="Password1" name="changPasw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Deve contenere almeno un numero e una lettera maiuscola e minuscola e almeno 8 o più caratteri" minlength="8" >
                     </div>
 
                     <button type="submit" name="login" class="logbtn">Salva le modifiche</button>

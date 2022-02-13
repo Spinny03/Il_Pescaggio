@@ -13,13 +13,27 @@
     $bag = mysqli_fetch_assoc($bag); 
     $data = $conn->query('SELECT * FROM username WHERE email ="'.$_SESSION["user"].'";');
     $data = mysqli_fetch_assoc($data); 
+    if(empty($data["photoLink"])){
+        $link = "images/icons/profile.png";
+    }
+    else{
+        $link = "images/userPhoto/".$data["photoLink"];
+    }
+    if(isset($_SESSION["emailFail"]) && $_SESSION["emailFail"]){
+        echo'<style>
+                input[name="email"]{
+                    background-color: rgba(255, 78, 113, 0.7);
+                }
+            </style>';
+        $_SESSION["emailFail"] = False;
+    }
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
         <meta name="viewport" content="width=device-width" />
-        <link rel="stylesheet" href="css/profile.css">
+        <link rel="stylesheet" href="css/profileStyles.css">
         <link rel="stylesheet" href="css/navBarStyles.css">
         <link rel="stylesheet" href="css/formStyles.css">
         
@@ -56,11 +70,24 @@
                 </button>
             </nav>
             <div class="title">
-                <h2>Piatti Disponibili:</h2>
+                <h2>Impostazioni Account</h2>
             </div>
-            <div class="pSettings">
-                <form action="access/profileDB.php" method="POST" >
 
+            <div class="pSettings">
+
+                
+                <form id="pform" action="access/photoDB.php" method="POST" enctype="multipart/form-data">
+                    <img width="200" height="200" src="<?php echo $link;?>">
+                    <label class="smallBtn" for="apply"><input class="inPhoto" type="file" name="pfile" name="pfile" id="apply" accept="image/*">Modifica</label>
+                    <button type="submit" name="change" value="False" class="smallBtn">Rimuovi</button>
+                </form>
+                <script>
+                    document.getElementById("apply").onchange = function() {
+                    document.getElementById("pform").submit();
+                }
+                </script>
+
+                <form action="access/profileDB.php" method="POST" >
                     <div class="data" id="p25">
                         <label for="name"><b>Nome</b></label>
                         <input type="text" placeholder="Mario" name="name"
@@ -101,13 +128,13 @@
                                 if(isset($data["tel"])){
                                     echo "value='".$data["tel"]."'";
                                 }
-                            ?> pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                            ?> pattern="[0-9]{10}"
                         >
                     </div>  
                     
                     <div class="data" id="p30">
                         <label for="via"><b>Via</b></label>
-                        <input type="text" placeholder="Via Sestri" name="via" 
+                        <input type="text" placeholder="Via Sestri" name="address1" 
                             <?php
                                 if(isset($data["via"])){
                                     echo "value='".$data["via"]."'";
@@ -118,7 +145,7 @@
 
                     <div class="data" id="p10">
                         <label for="civ"><b>Civ</b></label>
-                        <input type="text" placeholder="17/11" name="civ" 
+                        <input type="text" placeholder="17/11" name="address2" 
                             <?php
                                 if(isset($data["civ"])){
                                     echo "value='".$data["civ"]."'";
@@ -129,7 +156,7 @@
 
                     <div class="data" id="p10">
                         <label for="cap"><b>Cap</b></label>
-                        <input type="text" placeholder="16154" name="cap" 
+                        <input type="text" placeholder="16154" name="postcode" 
                             <?php
                                 if(isset($data["cap"])){
                                     echo "value='".$data["cap"]."'";
@@ -140,21 +167,23 @@
 
                     <div class="data" id="p50">
                         <label for="nCard"><b>Carta di credito</b></label>
-                        <input type="text" placeholder="0123 4567 7890" name="nCard" 
+                        <input type="text" placeholder="0123 4567 8910" name="nCard" 
                             <?php
                                 if(isset($data["nCard"])){
                                     echo "value='".$data["nCard"]."'";
                                 }
-                            ?> 
+                            ?> pattern="[0-9 ]{4} [0-9 ]{4} [0-9 ]{4}" title="Inserire nel formato 0123 4567 8910"
                         >
                     </div>
 
                     <div class="data" id="p50">
-                        <label for="ChangPasw"><b>Cambia Password</b></label>
-                        <input type="text" placeholder="Password1" name="ChangPasw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Deve contenere almeno un numero e una lettera maiuscola e minuscola e almeno 8 o più caratteri" minlength="8" >
+                        <label for="changPasw"><b>Cambia Password</b></label>
+                        <input type="text" placeholder="Password1" name="changPasw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Deve contenere almeno un numero e una lettera maiuscola e minuscola e almeno 8 o più caratteri" minlength="8" >
                     </div>
 
-                    <button type="submit" name="login" class="logbtn">Salva le modifiche</button>
+                    <button type="submit" name="change" value="logOUT" class="logbtn">Esci</button>
+                    <button type="submit" name="change" value="False" class="logbtn">Annulla modifiche</button>
+                    <button type="submit" name="change" value="True" class="logbtn">Salva le modifiche</button>
                 </form>
             </div>
         </div>  

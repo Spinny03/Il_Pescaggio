@@ -18,6 +18,15 @@
     width: 1px;
 }
 
+*{
+    box-sizing: border-box;
+}
+
+.profilePhotoBig{
+    border: 1px solid #ddd;
+    border-radius: 16px;
+}
+
 .pSettings{
     margin-left: auto;
     margin-right: auto;
@@ -27,6 +36,39 @@
     background-color: white;
     padding: 10px;
     border-radius: 16px;
+}
+
+#pform{
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+}
+
+.photoBtn{
+    margin-top: 30px;
+    width: 20%;
+    background-color: #4E60FF;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-family: 'nunito';
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    margin-right: 20px;
+    margin-left: 20px;
+    min-width: 145px;
+}
+
+.removeBtn{
+    background-color: #ffffff;
+    border: 1px solid red;
+    color: red;
 }
 
 .conteinerP{
@@ -79,6 +121,8 @@ input{
 .data{
     margin: 0; 
     float:left;
+    padding-right: 10px;
+    padding-left: 10px;
 }
 
 #p25{

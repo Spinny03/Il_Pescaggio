@@ -95,9 +95,9 @@
 
                 
                 <form id="pform" action="access/photoDB.php" method="POST" enctype="multipart/form-data">
-                    <img width="200" height="200" src="<?php echo $link; ?>">
-                    <label class="smallBtn" for="apply"><input class="inPhoto" type="file" name="pfile" name="pfile" id="apply" accept="image/*">Modifica</label>
-                    <button type="submit" name="change" value="False" class="smallBtn">Rimuovi</button>
+                    <img width="200" height="200" src="<?php echo $link; ?>" class="profilePhotoBig">
+                    <label class="photoBtn" for="apply"><input class="inPhoto" type="file" name="pfile" name="pfile" id="apply" accept="image/*">Modifica</label>
+                    <button type="submit" name="change" value="False" class="photoBtn removeBtn">Rimuovi</button>
                 </form>
                 <script>
                     document.getElementById("apply").onchange = function() {

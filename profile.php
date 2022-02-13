@@ -43,13 +43,31 @@
         <title>HOME</title>
     </head>
     <body>
+        <?php 
+            $photo = $conn->query('SELECT photoLink FROM username WHERE email="'.$_SESSION["user"].'";');
+            $photo = mysqli_fetch_assoc($photo); 
+            if(!empty($photo["photoLink"])){
+                echo'<style>
+                        a[id="profileBtn"]{
+                            background: url("images/userPhoto/'.$photo["photoLink"].'");
+                        }
+                    </style>';
+            }
+            else{
+                echo'<style>
+                        a[id="profileBtn"]{
+                            background: url("images/icons/profile.png");
+                        }
+                    </style>';
+            }
+        ?>
         <div class="conteinerP">
             <nav class="navBar">
                 <a href="home.php">
                     <img src="images/smallLogo.png" alt="logo" id="logo">
                 </a>
                 <ul class="navItems" data-visible="false">
-                    <a href="home.php" class="navLink" style="color: #4e60ff">Delivery</a>
+                    <a href="home.php" class="navLink">Delivery</a>
                     <a href="#" class="navLink">Catering</a>
                     <a href="#" class="navLink">Ordini</a>
                 </ul>
@@ -62,7 +80,7 @@
                     ?>
                     <img src="images/icons/blueBag.svg" alt="logo" id="shoppingSVG"> 
                 </a>
-                <a href="profile.php" class="navBtn" id="profileBtn">
+                <a href="profile.php" class="navBtn" id="profileBtn" style="border: 2.5px solid #4e60ff;">
 
                 </a>
                 <button class="navBtn" id="respBtn">
@@ -77,7 +95,7 @@
 
                 
                 <form id="pform" action="access/photoDB.php" method="POST" enctype="multipart/form-data">
-                    <img width="200" height="200" src="<?php echo $link;?>">
+                    <img width="200" height="200" src="<?php echo $link; ?>">
                     <label class="smallBtn" for="apply"><input class="inPhoto" type="file" name="pfile" name="pfile" id="apply" accept="image/*">Modifica</label>
                     <button type="submit" name="change" value="False" class="smallBtn">Rimuovi</button>
                 </form>

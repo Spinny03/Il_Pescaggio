@@ -140,6 +140,7 @@
         display: grid;
         grid-template-columns: 1fr;
         gap: 15px;
+        margin: 10px;
     }
     .left{
         width: 100%;
@@ -150,8 +151,5 @@
     }
     .confBtn{
         margin-bottom: 1rem;
-    }
-    body{
-        margin: 10px;
     }
 }

@@ -58,7 +58,6 @@ body{
 }
 
 #profileBtn{
-    background: url("../images/icons/profile.png");
     background-size: cover;
     margin-right: 10vw;   
 }

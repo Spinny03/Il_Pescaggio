@@ -29,6 +29,24 @@
         <title>HOME</title>
     </head>
     <body>
+        <?php 
+            $photo = $conn->query('SELECT photoLink FROM username WHERE email="'.$_SESSION["user"].'";');
+            $photo = mysqli_fetch_assoc($photo); 
+            if(!empty($photo["photoLink"])){
+                echo'<style>
+                        a[id="profileBtn"]{
+                            background: url("images/userPhoto/'.$photo["photoLink"].'");
+                        }
+                    </style>';
+            }
+            else{
+                echo'<style>
+                        a[id="profileBtn"]{
+                            background: url("images/icons/profile.png");
+                        }
+                    </style>';
+            }
+        ?>
         <div class="container">
 
             <nav class="navBar">

@@ -1,11 +1,17 @@
 <?php 
     session_start();
+    if($_POST["change"] == "logOUT"){
+        $_SESSION["user"] = "";
+        header("Location: ../index.php");
+        exit();
+    }
 
     $conn = new mysqli("localhost", "root", "");
     if ($conn->connect_error){
         exit("Connessione fallita: " . $conn->connect_error);
     }
     $conn->query("USE Il_Pescaggio");
+
 
     if($_POST["change"] == "True" && (!empty($_POST["email"]) || !empty($_POST["name"]) || !empty($_POST["surname"]) || !empty($_POST["tel"]) || !empty($_POST["address1"]) || !empty($_POST["address2"]) || !empty($_POST["postcode"]) || !empty($_POST["nCard"]) || !empty($_POST["changPasw"]))){
         $sql ="UPDATE username SET ";

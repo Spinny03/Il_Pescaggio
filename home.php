@@ -108,7 +108,7 @@
                             echo'
                                 <div  class="card '.$row["dishType"].' '.$inCart.'">
                                     <img src="images/photoDishes/'.$row["photoLink"].'" class="card__image" alt="'.$row["dishName"].'" />';
-                                    if(date("d") - getDate(strtotime($row["creationDate"]))["mday"] < 7 ){
+                                    if(date("d") - getDate(strtotime($row["creationDate"]))["mday"] < 7 && date("m") == getDate(strtotime($row["creationDate"]))["mon"] && date("Y") == getDate(strtotime($row["creationDate"]))["year"]){
                                         echo '<p class="new">&nbspNuovo&nbsp</p> ';
                                     }
                             echo'   <div class="card__overlay '.$inCart.'">

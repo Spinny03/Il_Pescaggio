@@ -39,10 +39,22 @@
             $conn->query($sql); 
         }
     }
+    elseif(isset($_POST["del"])){
+        $sql = ' DELETE cart FROM cart, dish WHERE idUser="'.$_SESSION["user"].'" AND dish.id = cart.idDish AND dishName="'.$_POST["del"].'";';
+        $conn->query($sql); 
+        header("Location: ../cart.php");
+        exit;
+    }
     
     $_SESSION["typefood"] = $result["dishType"];
 
     $conn->close();
+    
+    if(isset($_POST["cameFromCart"])){
+        $_POST["cameFromCart"] == 0;
+        header("Location: ../cart.php");
+        exit;
+    }
     header("Location: ../home.php");
     exit;
 ?>

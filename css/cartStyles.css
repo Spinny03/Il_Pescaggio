@@ -36,6 +36,15 @@
     text-align: center;
     color: #ffffff;
 }
+
+.formBtn{
+    border: 0;
+    font-size: 1.2rem;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
 .itemName{
     display: inline-block;
     margin: 0;

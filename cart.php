@@ -88,8 +88,21 @@
                                         <h3 class="itemName">'.htmlspecialchars($row['dishName']).'</h3>
                                     </div>
                                     <div class="itemLeft">
-                                    '.htmlspecialchars($row['dishCost']).'€
+                                    <span style="margin-right: 10px">'.htmlspecialchars($row['dishCost']).'€</span>
+                                    <form action="access/cartDB.php" method="POST">
+                                        <input type="hidden" name="cameFromCart" value="1">
+                                        <button type="submit" class="itemNumber formBtn" name="del" value="'.$row["dishName"].'" style="background-color: red;">
+                                            x
+                                        </button>
+                                        <button type="submit" class="itemNumber formBtn" name="less" value="'.$row["dishName"].'" style="background-color: #ffd300;">
+                                            -
+                                        </button>
+                                        <button type="submit" class="itemNumber formBtn" name="add" value="'.$row["dishName"].'" style="background-color: green;">
+                                            +
+                                        </button>
+                                    </form>
                                     </div>
+                                         
                                 </div>';
                         $totalPrice =  $totalPrice + intval(htmlspecialchars($row['dishCost'])*intval(htmlspecialchars($row['quantity'])));
                     }
@@ -99,7 +112,6 @@
 
                     $conn->close();
                 ?>
-                
 
             </div>
 
@@ -114,7 +126,7 @@
                                         echo "value='".$data["firstName"]."'";
                                     }
                                 ?> 
-                            >
+                            required>
                         </div>
 
                         <div class="data" id="p50">
@@ -125,7 +137,7 @@
                                         echo "value='".$data["surname"]."'";
                                     }
                                 ?> 
-                            >
+                            required>
                         </div>
 
                         <div class="data" id="p100">
@@ -136,7 +148,7 @@
                                         echo "value='".$data["via"]."'";
                                     }
                                 ?> 
-                            >
+                            required>
                         </div>
 
                         <div class="data" id="p50">
@@ -147,7 +159,7 @@
                                         echo "value='".$data["civ"]."'";
                                     }
                                 ?> 
-                            >
+                            required>
                         </div>
 
                         <div class="data" id="p50">
@@ -158,7 +170,7 @@
                                         echo "value='".$data["cap"]."'";
                                     }
                                 ?> 
-                            >
+                            required>
                         </div>
 
                         <div class="data" id="p100">
@@ -169,17 +181,17 @@
                                         echo "value='".$data["nCard"]."'";
                                     }
                                 ?> 
-                            >
+                            required>
                         </div>
 
                         <div class="data" id="p70">
                             <label for="nCard"><b>Data di scadenza</b></label>
-                            <input type="text" placeholder="12/26" name="expireCard">
+                            <input type="text" placeholder="12/26" name="expireCard" required>
                         </div>
 
                         <div class="data" id="p30">
                             <label for="nCard"><b>CVV</b></label>
-                            <input type="text" placeholder="123" name="expireCard">
+                            <input type="text" placeholder="123" name="expireCard" required>
                         </div>  
 
                         <div class="priceRecap data" id="p100">
@@ -199,41 +211,14 @@
                             </div>
                         </div>
 
-                        <button type="submit" name="login" class="delBtn">Annulla</button> 
-                        <button type="submit" name="login" class="confBtn">Conferma oridne</button>          
+                        <button type="submit" name="cancelOrder" class="delBtn" form="exitForm">Annulla</button> 
+                        <button type="submit" name="confirmOdrer" class="confBtn">Conferma oridne</button>          
 
                     </form>
 
-
+                    <form action="home.php" id="exitForm"></form>
 
             </div>
         </div>
     </body>
 </html>
-
-
-<!---
-<?php 
-    $sql = 'SELECT dish.dishName, quantity FROM `cart`, `dish` WHERE idUser="'.$_SESSION["user"].'" AND dish.id = cart.idDish;';
-    $result = $conn->query($sql); 
-
-    //echo "<table>"; // start a table tag in the HTML
-
-    while($row = $result->fetch_assoc()){   
-    //echo "<tr><td>" . htmlspecialchars($row['dishName']) . "</td><td>" . htmlspecialchars($row['quantity']) . "</td></tr>"; 
-    echo '  <div class="itemCard">
-                <div class="itemRight">
-                    <span class="itemNumber">'.htmlspecialchars($row['quantity']).'</span>
-                    <h3 class="itemName">'.htmlspecialchars($row['dishName']).'</h3>
-                </div>
-                <div class="itemLeft">
-                    54€
-                </div>
-            </div>';
-    }
-
-    //echo "</table>"; 
-
-    $conn->close();
-?>
- --->

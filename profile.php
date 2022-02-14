@@ -40,7 +40,7 @@
         <script src="js/navbarRes.js" defer></script>
         
         <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-        <title>HOME</title>
+        <title>PROFILO</title>
     </head>
     <body>
         <?php 

@@ -29,8 +29,8 @@
         <link rel="stylesheet" href="css/cartStyles.css">
         
         <script src="js/navbarRes.js" defer></script>
-
-        <title>Document</title>
+        <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+        <title>CARRELLO</title>
     </head>
     <body>
         <?php 

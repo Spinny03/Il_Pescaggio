@@ -46,6 +46,7 @@ body{
     background-color: white;
     border: 1px solid #EDEEF2;
     cursor: pointer;
+    font-weight: bold;
 }
 
 .choice:hover {

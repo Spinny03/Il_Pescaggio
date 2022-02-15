@@ -88,7 +88,7 @@
                                         <h3 class="itemName">'.htmlspecialchars($row['dishName']).'</h3>
                                     </div>
                                     <div class="itemLeft">
-                                    <span style="margin-right: 10px">'.htmlspecialchars($row['dishCost']).'€</span>
+                                    <span style="margin-right: 10px; font-weight: bold;">'.htmlspecialchars($row['dishCost']).'€</span>
                                     <form action="access/cartDB.php" method="POST">
                                         <input type="hidden" name="cameFromCart" value="1">
                                         <button type="submit" class="itemNumber formBtn" name="del" value="'.$row["dishName"].'" style="background-color: red;">

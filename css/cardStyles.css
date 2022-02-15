@@ -26,7 +26,7 @@
     border-radius: 16px;
     overflow: hidden;
     text-decoration: none;
-    border: 1px solid #EDEEF2;
+    padding: 0;
   }
 
   .card.cart {
@@ -38,9 +38,12 @@
     background-color: #f3f4ff;
   }
 
-  .card__image {      
+  .card__image {  
     width: 100%;
     height: auto;
+    margin:0;
+    border:0;
+    padding:8px;
   }
   
   .card__overlay {

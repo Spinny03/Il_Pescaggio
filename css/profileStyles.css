@@ -23,7 +23,7 @@
 }
 
 .profilePhotoBig{
-    border: 1px solid #ddd;
+    border: 2px solid #4E60FF;
     border-radius: 16px;
 }
 
@@ -101,6 +101,20 @@ input{
     cursor: pointer;
 }
 
+.genBtn{
+    margin-top: 30px;
+    width: 100%;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-family: 'nunito';
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
 .logbtn{
     margin-top: 30px;
     width: 100%;
@@ -139,6 +153,25 @@ input{
 
 #p10{
     width: 10%;
+}
+
+@media screen and (max-width: 1300px) {
+    #p25{
+        width: 50%;
+    }
+    #p30{
+        width: 50%;
+    }
+    #p10{
+        width: 25%;
+    }
+}
+
+
+@media screen and (max-width: 750px) {
+    #pform{
+        flex-direction: column;
+    }
 }
 
 @media screen and (max-width: 660px) {

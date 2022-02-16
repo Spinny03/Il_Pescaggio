@@ -27,7 +27,7 @@
         <link rel="stylesheet" href="css/navBarStyles.css">
         <link rel="stylesheet" href="css/formStyles.css">
         <link rel="stylesheet" href="css/cartStyles.css">
-        
+        <link rel="stylesheet" href="css/scrollBarStyles.css">
         <script src="js/navbarRes.js" defer></script>
         <link rel="icon" type="image/x-icon" href="images/favicon.ico">
         <title>CARRELLO</title>

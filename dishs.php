@@ -4,7 +4,7 @@
         header("Location: index.php");
         exit();
     }
-    $conn = new mysqli("localhost", "root", "");  
+    $conn = new mysqli("localhost", "root", "");
     if ($conn->connect_error){
         exit("Connessione fallita: " . $conn->connect_error);
     }
@@ -13,34 +13,24 @@
     $bag = mysqli_fetch_assoc($bag); 
     $data = $conn->query('SELECT * FROM username WHERE email ="'.$_SESSION["user"].'";');
     $data = mysqli_fetch_assoc($data); 
-    if(empty($data["photoLink"])){
-        $link = "images/icons/profile.png";
-    }
-    else{
-        $link = "images/userPhoto/".$data["photoLink"];
-    }
-    if(isset($_SESSION["emailFail"]) && $_SESSION["emailFail"]){
-        echo'<style>
-                input[name="email"]{
-                    background-color: rgba(255, 78, 113, 0.7);
-                }
-            </style>';
-        $_SESSION["emailFail"] = False;
-    }
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <meta name="viewport" content="width=device-width" />
-        <link rel="stylesheet" href="css/profileStyles.css">
+
         <link rel="stylesheet" href="css/navBarStyles.css">
         <link rel="stylesheet" href="css/formStyles.css">
+        <link rel="stylesheet" href="css/dishsStyles.css">
         <link rel="stylesheet" href="css/scrollBarStyles.css">
         <script src="js/navbarRes.js" defer></script>
-        
         <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-        <title>PROFILO</title>
+        <title>CARRELLO</title>
     </head>
     <body>
         <?php 
@@ -61,37 +51,68 @@
                     </style>';
             }
         ?>
-        <div class="conteinerP">
-            <nav class="navBar">
-                <a href="home.php">
-                    <img src="images/smallLogo.png" alt="logo" id="logo">
-                </a>
-                <ul class="navItems" data-visible="false">
-                    <a href="home.php" class="navLink">Delivery</a>
-                    <a href="#" class="navLink">Catering</a>
-                    <a href="#" class="navLink">Ordini</a>
-                </ul>
-                
-                <a href="cart.php" class="navBtn" id="shoppingCard">
-                    <?php 
-                        if(!empty($bag["SUM(quantity)"])){
-                            echo '<span id="itemsNumber">'.$bag["SUM(quantity)"].'</span>';
-                        }
-                    ?>
-                    <img src="images/icons/blueBag.svg" alt="logo" id="shoppingSVG"> 
-                </a>
-                <a href="profile.php" class="navBtn" id="profileBtn" style="border: 2.5px solid #4e60ff;">
+        <nav class="navBar">
+            <a href="home.php">
+                <img src="images/smallLogo.png" alt="logo" id="logo">
+            </a>
+            <ul class="navItems" data-visible="false">
+                <a href="home.php" class="navLink">Delivery</a>
+                <a href="#" class="navLink">Catering</a>
+                <a href="#" class="navLink">Ordini</a>
+            </ul>
+            
+            <a href="cart.php" class="navBtn" id="shoppingCard" style="background-color: #4e60ff;">
+                <img src="images/icons/whiteBag.svg" alt="logo" id="shoppingSVG"> 
+            </a>
+            <a href="profile.php" class="navBtn" id="profileBtn">
 
-                </a>
-                <button class="navBtn" id="respBtn">
-                    <img src="images/icons/respBtn.svg" alt="menu" id="respImg">
-                </button>
-            </nav>
-            <div class="title">
-                <h2>Impostazioni Account</h2>
+            </a>
+            <button class="navBtn" id="respBtn">
+                <img src="images/icons/respBtn.svg" alt="menu" id="respImg">
+            </button>
+        </nav>
+        <div class="container">
+            <div class="left">
+                <h2>Articoli carrello</h2>
+                <?php 
+                    $sql = 'SELECT dish.dishName, quantity, dishCost FROM `cart`, `dish` WHERE idUser="'.$_SESSION["user"].'" AND dish.id = cart.idDish;';
+                    $result = $conn->query($sql); 
+
+                    //echo "<table>"; // start a table tag in the HTML
+                    $totalPrice = 0;
+                    while($row = $result->fetch_assoc()){   
+                    //echo "<tr><td>" . htmlspecialchars($row['dishName']) . "</td><td>" . htmlspecialchars($row['quantity']) . "</td></tr>"; 
+                        echo '  <div class="itemCard">
+                                    <div class="itemRight">
+                                        <span class="itemNumber">tipo</span>
+                                        <h3 class="itemName">'.htmlspecialchars($row['dishName']).'</h3>
+                                    </div>
+                                    <div class="itemLeft">
+                                        <span style="margin-right: 10px; font-weight: bold;">'.htmlspecialchars($row['dishCost']).'€</span>
+                                        <form action="access/dishsDB.php" method="POST">
+                                            <button type="submit" class="itemNumber formBtn" name="del" value="'.$row["dishName"].'" style="background-color: red;">
+                                                x
+                                            </button>
+                                            <button type="submit" class="itemNumber formBtn" name="add" value="'.$row["dishName"].'" style="background-color: green;">
+                                                +
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>';
+                        $totalPrice =  $totalPrice + intval(htmlspecialchars($row['dishCost'])*intval(htmlspecialchars($row['quantity'])));
+                    }
+                    
+
+                    //echo "</table>"; 
+
+                    $conn->close();
+                ?>
+
             </div>
 
-            <div class="pSettings">
+            <div class="right">
+                    <h2>Conferma dati</h2>
+                    <div class="pSettings">
 
                 
                 <form id="pform" action="access/photoDB.php" method="POST" enctype="multipart/form-data">
@@ -204,7 +225,10 @@
                     <button type="submit" name="change" value="logOUT" class="removeBtn genBtn">Esci</button>
                 </form>
             </div>
-        </div>  
+
+                    <form action="home.php" id="exitForm"></form>
+
+            </div>
+        </div>
     </body>
-    <?php $conn->close(); ?>
 </html>

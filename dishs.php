@@ -11,8 +11,19 @@
     $conn->query("USE Il_Pescaggio");
     $bag = $conn->query('SELECT SUM(quantity) FROM cart WHERE idUser="'.$_SESSION["user"].'";');
     $bag = mysqli_fetch_assoc($bag); 
-    $data = $conn->query('SELECT * FROM username WHERE email ="'.$_SESSION["user"].'";');
-    $data = mysqli_fetch_assoc($data); 
+    if(isset($_POST["edit"])){
+        $data = $conn->query('SELECT * FROM dish WHERE id="'.$_POST["edit"].'";');
+    }
+    else{
+        $data = $conn->query('SELECT * FROM dish ORDER BY creationDate ASC;');
+    }
+    $data = mysqli_fetch_assoc($data);
+    if(empty($data["photoLink"])){
+        $link = "images/icons/dish.png";
+    }
+    else{
+        $link = "images/photoDishes/".$data["photoLink"];
+    } 
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +41,7 @@
         <link rel="stylesheet" href="css/scrollBarStyles.css">
         <script src="js/navbarRes.js" defer></script>
         <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-        <title>CARRELLO</title>
+        <title>GESTIONE MENU</title>
     </head>
     <body>
         <?php 
@@ -73,161 +84,116 @@
         </nav>
         <div class="container">
             <div class="left">
-                <h2>Articoli carrello</h2>
+                <h2>Piatti nel menu</h2>
                 <?php 
-                    $sql = 'SELECT dish.dishName, quantity, dishCost FROM `cart`, `dish` WHERE idUser="'.$_SESSION["user"].'" AND dish.id = cart.idDish;';
+                    $sql = 'SELECT * FROM dish;';
                     $result = $conn->query($sql); 
 
-                    //echo "<table>"; // start a table tag in the HTML
                     $totalPrice = 0;
                     while($row = $result->fetch_assoc()){   
-                    //echo "<tr><td>" . htmlspecialchars($row['dishName']) . "</td><td>" . htmlspecialchars($row['quantity']) . "</td></tr>"; 
                         echo '  <div class="itemCard">
                                     <div class="itemRight">
-                                        <span class="itemNumber">tipo</span>
+                                        <span class="itemNumber" style="background-color: #f3f4ff;"><img width="100%" height="100%" src="images/foodType/'.htmlspecialchars($row['dishType']).'.png" alt="pizza"></span>
                                         <h3 class="itemName">'.htmlspecialchars($row['dishName']).'</h3>
                                     </div>
                                     <div class="itemLeft">
-                                        <span style="margin-right: 10px; font-weight: bold;">'.htmlspecialchars($row['dishCost']).'€</span>
                                         <form action="access/dishsDB.php" method="POST">
-                                            <button type="submit" class="itemNumber formBtn" name="del" value="'.$row["dishName"].'" style="background-color: red;">
-                                                x
+                                            <button type="submit" class="itemNumber formBtn" name="del" value="'.$row["dishName"].'" style="background-color: white; margin-left:10px;">
+                                                🗑️
                                             </button>
-                                            <button type="submit" class="itemNumber formBtn" name="add" value="'.$row["dishName"].'" style="background-color: green;">
-                                                +
+                                        </form>
+                                        <form action="" method="POST">
+                                            <button type="submit" class="itemNumber formBtn" name="edit" value="'.$row["id"].'" style="background-color: white; margin-left:10px;margin-right:10px;">
+                                                📝
                                             </button>
                                         </form>
                                     </div>
                                 </div>';
-                        $totalPrice =  $totalPrice + intval(htmlspecialchars($row['dishCost'])*intval(htmlspecialchars($row['quantity'])));
                     }
-                    
-
-                    //echo "</table>"; 
-
                     $conn->close();
                 ?>
 
             </div>
 
             <div class="right">
-                    <h2>Conferma dati</h2>
-                    <div class="pSettings">
+                <h2>Conferma dati piatto</h2>
+                <div class="pSettings">
+                    <form id="pform" action="access/photoDB.php" method="POST" enctype="multipart/form-data">
+                        <img width="200" height="200" src="<?php echo $link; ?>" class="profilePhotoBig">
+                        <label class="photoBtn" for="apply"><input class="inPhoto" type="file" name="pfile" name="pfile" id="apply" accept="image/*">Modifica</label>
+                        <button type="submit" name="change" value="False" class="photoBtn removeBtn">Rimuovi</button>
+                    </form>
+                    <script>
+                        document.getElementById("apply").onchange = function() {
+                        document.getElementById("pform").submit();
+                    }
+                    </script>
 
-                
-                <form id="pform" action="access/photoDB.php" method="POST" enctype="multipart/form-data">
-                    <img width="200" height="200" src="<?php echo $link; ?>" class="profilePhotoBig">
-                    <label class="photoBtn" for="apply"><input class="inPhoto" type="file" name="pfile" name="pfile" id="apply" accept="image/*">Modifica</label>
-                    <button type="submit" name="change" value="False" class="photoBtn removeBtn">Rimuovi</button>
-                </form>
-                <script>
-                    document.getElementById("apply").onchange = function() {
-                    document.getElementById("pform").submit();
-                }
-                </script>
+                    <form action="access/profileDB.php" method="POST" >
+                        <div class="data" id="p50">
+                            <label for="name"><b>Nome</b></label>
+                            <input type="text" placeholder="Pizza" name="name"
+                                <?php
+                                    if(isset($data["dishName"])){
+                                        echo "value='".$data["dishName"]."'";
+                                    }
+                                ?> 
+                            >
+                        </div>
 
-                <form action="access/profileDB.php" method="POST" >
-                    <div class="data" id="p25">
-                        <label for="name"><b>Nome</b></label>
-                        <input type="text" placeholder="Mario" name="name"
-                            <?php
-                                if(isset($data["firstName"])){
-                                    echo "value='".$data["firstName"]."'";
-                                }
-                            ?> 
-                        >
-                    </div>
+                        <div class="data" id="p50">
+                            <label for="surname"><b>Prezzo</b></label>
+                            <input type="text" placeholder="Rossi" name="surname"
+                                <?php
+                                    if(isset($data["dishCost"])){
+                                        echo "value='".$data["dishCost"]."'";
+                                    }
+                                ?> 
+                            >
+                        </div>
 
-                    <div class="data" id="p25">
-                        <label for="surname"><b>Cognome</b></label>
-                        <input type="text" placeholder="Rossi" name="surname"
-                            <?php
-                                if(isset($data["surname"])){
-                                    echo "value='".$data["surname"]."'";
-                                }
-                            ?> 
-                        >
-                    </div>
+                        <div class="data" id="p100">
+                            <label for="description"><b>Descrizione</b></label>
+                            <input type="text" placeholder="Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua." name="email" 
+                                <?php 
+                                    if(isset($data["description"])){
+                                        echo "value='".$data["description"]."'";
+                                    }
+                                ?>
+                            >
+                        </div>
+                        <div class="chooseDish">  
+                            <button class="choice" id="pizza" onclick="filterSelection('pizza')">
+                                <img width="20%" height="40%" src="images/foodType/pizza.png" alt="pizza">
+                                <p>Pizza</p>
+                            </button>
 
-                    <div class="data" id="p50">
-                        <label for="email"><b>Email</b></label>
-                        <input type="text" placeholder="nome@esempio.com" name="email" 
-                            <?php 
-                                if(isset($data["email"])){
-                                    echo "value='".$data["email"]."'";
-                                }
-                            ?>  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                        >
-                    </div>
-
-                    <div class="data" id="p50">
-                        <label for="tel"><b>Numero di telefono</b></label>
-                        <input type="text" placeholder="123-456-7890" name="tel" 
-                            <?php
-                                if(isset($data["tel"])){
-                                    echo "value='".$data["tel"]."'";
-                                }
-                            ?> pattern="[0-9]{10}"
-                        >
-                    </div>  
-                    
-                    <div class="data" id="p30">
-                        <label for="via"><b>Via</b></label>
-                        <input type="text" placeholder="Via Sestri" name="address1" 
-                            <?php
-                                if(isset($data["via"])){
-                                    echo "value='".$data["via"]."'";
-                                }
-                            ?> 
-                        >
-                    </div>
-
-                    <div class="data" id="p10">
-                        <label for="civ"><b>Civ</b></label>
-                        <input type="text" placeholder="17/11" name="address2" 
-                            <?php
-                                if(isset($data["civ"])){
-                                    echo "value='".$data["civ"]."'";
-                                }
-                            ?> 
-                        >
-                    </div>
-
-                    <div class="data" id="p10">
-                        <label for="cap"><b>Cap</b></label>
-                        <input type="text" placeholder="16154" name="postcode" 
-                            <?php
-                                if(isset($data["cap"])){
-                                    echo "value='".$data["cap"]."'";
-                                }
-                            ?> 
-                        >
-                    </div>
-
-                    <div class="data" id="p50">
-                        <label for="nCard"><b>Carta di credito</b></label>
-                        <input type="text" placeholder="0123 4567 8910" name="nCard" 
-                            <?php
-                                if(isset($data["nCard"])){
-                                    echo "value='".$data["nCard"]."'";
-                                }
-                            ?> pattern="[0-9 ]{4} [0-9 ]{4} [0-9 ]{4}" title="Inserire nel formato 0123 4567 8910"
-                        >
-                    </div>
-
-                    <div class="data" id="p50">
-                        <label for="changPasw"><b>Cambia Password</b></label>
-                        <input type="text" placeholder="Password1" name="changPasw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Deve contenere almeno un numero e una lettera maiuscola e minuscola e almeno 8 o più caratteri" minlength="8" >
-                    </div>
-
-                    <button type="submit" name="change" value="False" class="logbtn">Annulla modifiche</button>
-                    <button type="submit" name="change" value="True" class="logbtn">Salva le modifiche</button>
-                    <button type="submit" name="change" value="logOUT" class="removeBtn genBtn">Esci</button>
-                </form>
-            </div>
-
-                    <form action="home.php" id="exitForm"></form>
-
+                            <button class="choice" id="burger" onclick="filterSelection('burger')"> 
+                                <img width="20%" height="40%" src="images/foodType/burger.png" alt="burger">
+                                <p>Burger</p>
+                            </button>
+                            <button class="choice" id="meat" onclick="filterSelection('meat')"> 
+                                <img width="20%" height="40%" src="images/foodType/meat.png" alt="carne">
+                                <p>Carne</p>
+                            </button>
+                            <button class="choice" id="fish" onclick="filterSelection('fish')"> 
+                                <img width="20%" height="40%" src="images/foodType/fish.png" alt="pesce">
+                                <p>Pesce</p>
+                            </button>
+                            <button class="choice" id="vegan"  onclick="filterSelection('vegan')"> 
+                                <img width="20%" height="40%" src="images/foodType/vegan.png" alt="vegano">
+                                <p>Vegano</p>
+                            </button>
+                            <button class="choice" id="desserts" onclick="filterSelection('desserts')"> 
+                                <img width="20%" height="40%"  src="images/foodType/desserts.png" alt="dolci">
+                                <p>Dolci</p>
+                            </button>
+                        </div>
+                        <button type="submit" name="change" value="False" class="logbtn">Annulla modifiche</button>
+                        <button type="submit" name="change" value="True" class="logbtn">Salva le modifiche</button>
+                    </form>
+                </div>
+                <form action="home.php" id="exitForm"></form>
             </div>
         </div>
     </body>

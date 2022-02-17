@@ -75,17 +75,183 @@
         </nav>
         <div class="container">
             <div class="left">
-                <h2>cicicci</h2>
-            <div class="wrap-collabsible">
-                <input id="collapsible2" class="toggle" type="checkbox" checked="">
-                <label for="collapsible2" class="lbl-toggle">Even More Info</label>
-                <div class="collapsible-content">
-                    <div class="content-inner">
-                        <p> Bacon ipsum dolor amet pork belly capicola ground round brisket. Shank pork belly cupim fatback. Flank porchetta chicken spare ribs. Ham prosciutto pork belly turkey beef picanha strip steak swine alcatra.</p>
-                        <p> Bacon ipsum dolor amet pork belly capicola ground round brisket. Shank pork belly cupim fatback. Flank porchetta chicken spare ribs. Ham prosciutto pork belly turkey beef picanha strip steak swine alcatra.</p>
+                <h2>piatti disponibili</h2>
+                <div class="wrap-collabsible">
+                    <input id="collapsible2" class="toggle" type="checkbox">
+                    <label for="collapsible2" class="lbl-toggle">
+                        <div class="titleDiv">
+                            <img width="40px" height="40px" src="images/foodType/pizza.png" alt="pizza">
+                            <span>Pizza</span>
+                        </div>
+                    </label>
+                    <div class="collapsible-content">
+                        <div class="content-inner">
+                            <div class="dishDiv">
+                                <?php
+                                    $dishs = $conn->query('SELECT dishName, dishCost FROM dish WHERE dishType="pizza";');
+                                    while($row = $dishs->fetch_assoc()){
+                                        echo '  <div class="itemCard">
+                                                    <div class="itemRight">
+                                                        <h3 class="itemName">'.htmlspecialchars($row['dishName']).'</h3>
+                                                    </div>
+                                                    <div class="itemLeft">
+                                                        <span style="margin-right: 10px; font-weight: bold;">'.htmlspecialchars($row['dishCost']).'€</span>
+                                                        <form id="addishForm" action="home.php" method="POST">
+                                                            <input type ="checkbox" name="cBox[]" value="'.$row["dishName"].'" onchange="document.getElementById("addishForm").submit()">
+                                                        </form>
+                                                    </div>
+                                                </div>';
+                                    }
+                                ?>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+
+                <div class="wrap-collabsible">
+                    <input id="collapsible3" class="toggle" type="checkbox">
+                    <label for="collapsible3" class="lbl-toggle">
+                        <div class="titleDiv">
+                            <img width="40px" height="40px" src="images/foodType/burger.png" alt="pizza">
+                            <span>burger</span>
+                        </div>
+                    </label>
+                    <div class="collapsible-content">
+                        <div class="content-inner">
+                            <div class="dishDiv">
+                                <?php
+                                    $dishs = $conn->query('SELECT dishName, dishCost FROM dish WHERE dishType="burger";');
+                                    while($row = $dishs->fetch_assoc()){
+                                        echo '  <div class="itemCard">
+                                                    <div class="itemRight">
+                                                        <h3 class="itemName">'.htmlspecialchars($row['dishName']).'</h3>
+                                                    </div>
+                                                    <div class="itemLeft">
+                                                        <span style="margin-right: 10px; font-weight: bold;">'.htmlspecialchars($row['dishCost']).'€</span>
+                                                    </div>
+                                                </div>';
+                                    }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wrap-collabsible">
+                    <input id="collapsible4" class="toggle" type="checkbox">
+                    <label for="collapsible4" class="lbl-toggle">
+                        <div class="titleDiv">
+                            <img width="40px" height="40px" src="images/foodType/meat.png" alt="pizza">
+                            <span>carne</span>
+                        </div>
+                    </label>
+                    <div class="collapsible-content">
+                        <div class="content-inner">
+                            <div class="dishDiv">
+                                <?php
+                                    $dishs = $conn->query('SELECT dishName, dishCost FROM dish WHERE dishType="meat";');
+                                    while($row = $dishs->fetch_assoc()){
+                                        echo '  <div class="itemCard">
+                                                    <div class="itemRight">
+                                                        <h3 class="itemName">'.htmlspecialchars($row['dishName']).'</h3>
+                                                    </div>
+                                                    <div class="itemLeft">
+                                                        <span style="margin-right: 10px; font-weight: bold;">'.htmlspecialchars($row['dishCost']).'€</span>
+                                                    </div>
+                                                </div>';
+                                    }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wrap-collabsible">
+                    <input id="collapsible5" class="toggle" type="checkbox">
+                    <label for="collapsible5" class="lbl-toggle">
+                        <div class="titleDiv">
+                            <img width="40px" height="40px" src="images/foodType/fish.png" alt="pizza">
+                            <span>pesce</span>
+                        </div>
+                    </label>
+                    <div class="collapsible-content">
+                        <div class="content-inner">
+                            <div class="dishDiv">
+                                <?php
+                                    $dishs = $conn->query('SELECT dishName, dishCost FROM dish WHERE dishType="fish";');
+                                    while($row = $dishs->fetch_assoc()){
+                                        echo '  <div class="itemCard">
+                                                    <div class="itemRight">
+                                                        <h3 class="itemName">'.htmlspecialchars($row['dishName']).'</h3>
+                                                    </div>
+                                                    <div class="itemLeft">
+                                                        <span style="margin-right: 10px; font-weight: bold;">'.htmlspecialchars($row['dishCost']).'€</span>
+                                                    </div>
+                                                </div>';
+                                    }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wrap-collabsible">
+                    <input id="collapsible6" class="toggle" type="checkbox">
+                    <label for="collapsible6" class="lbl-toggle">
+                        <div class="titleDiv">
+                            <img width="40px" height="40px" src="images/foodType/vegan.png" alt="pizza">
+                            <span>vegano</span>
+                        </div>
+                    </label>
+                    <div class="collapsible-content">
+                        <div class="content-inner">
+                            <div class="dishDiv">
+                                <?php
+                                    $dishs = $conn->query('SELECT dishName, dishCost FROM dish WHERE dishType="vegan";');
+                                    while($row = $dishs->fetch_assoc()){
+                                        echo '  <div class="itemCard">
+                                                    <div class="itemRight">
+                                                        <h3 class="itemName">'.htmlspecialchars($row['dishName']).'</h3>
+                                                    </div>
+                                                    <div class="itemLeft">
+                                                        <span style="margin-right: 10px; font-weight: bold;">'.htmlspecialchars($row['dishCost']).'€</span>
+                                                    </div>
+                                                </div>';
+                                    }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wrap-collabsible">
+                    <input id="collapsible7" class="toggle" type="checkbox">
+                    <label for="collapsible7" class="lbl-toggle">
+                        <div class="titleDiv">
+                            <img width="40px" height="40px" src="images/foodType/desserts.png" alt="pizza">
+                            <span>dolci</span>
+                        </div>
+                    </label>
+                    <div class="collapsible-content">
+                        <div class="content-inner">
+                            <div class="dishDiv">
+                                <?php
+                                    $dishs = $conn->query('SELECT dishName, dishCost FROM dish WHERE dishType="desserts";');
+                                    while($row = $dishs->fetch_assoc()){
+                                        echo '  <div class="itemCard">
+                                                    <div class="itemRight">
+                                                        <h3 class="itemName">'.htmlspecialchars($row['dishName']).'</h3>
+                                                    </div>
+                                                    <div class="itemLeft">
+                                                        <span style="margin-right: 10px; font-weight: bold;">'.htmlspecialchars($row['dishCost']).'€</span>
+                                                    </div>
+                                                </div>';
+                                    }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
 
@@ -172,11 +338,6 @@
                             <div class="innerPrice foodPrice">
                                 <h3>Cibo:</h3>
                                 <h4><?php echo $totalPrice; ?>€</h4>
-                            </div>
-                                
-                            <div class="innerPrice deliveryPrice">
-                                <h3>Consegna:</h3>
-                                <h4>10€</h4>
                             </div>
 
                             <div class="innerPrice totalPrice">

@@ -5,30 +5,34 @@ input[type="checkbox"] {
     margin: 1.2rem 0;
   }
   .lbl-toggle {
-    display: block;
+    display: flex;
+    justify-content: space-between;
     font-weight: bold;
-    font-family: monospace;
+    font-family: 'nunito';
     font-size: 1.2rem;
     text-transform: uppercase;
     text-align: center;
+    align-items: center;
     padding: 1rem;
-    color: #ddd;
-    background: #0069ff;
+    color: black;
+    background: white;
     cursor: pointer;
     border-radius: 7px;
     transition: all 0.25s ease-out;
+    border: 2px solid #ddd;
   }
   .lbl-toggle:hover {
-    color: #fff;
+    color: #4E60FF;
   }
   .lbl-toggle::after {
     content: " ";
     display: inline-block;
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-    border-left: 5px solid currentColor;
+    background-image: url('../images/icons/reshot-icon-arrow-chevron-right-WDGHUKQ634.svg');
+    color: aliceblue;
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
     vertical-align: middle;
-    margin-left: 0.7rem;
     transform: translateY(-2px);
     transition: transform 0.2s ease-out;
   }
@@ -56,4 +60,14 @@ input[type="checkbox"] {
   }
   .collapsible-content p {
     margin-bottom: 0;
+  }
+
+  .titleDiv{
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+  }
+
+  .itemLeft input[type="checkbox"]{
+    display: inline-block;
   }

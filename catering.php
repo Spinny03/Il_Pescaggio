@@ -97,7 +97,7 @@
                                                     <div class="itemLeft">
                                                         <span style="margin-right: 10px; font-weight: bold;">'.htmlspecialchars($row['dishCost']).'€</span>
                                                         <form id="addishForm" action="home.php" method="POST">
-                                                            <input type ="checkbox" name="cBox[]" value="'.$row["dishName"].'" onchange="document.getElementById("addishForm").submit()">
+                                                            <input type ="checkbox" name="cBox[]" value="'.$row["dishName"].'" onChange="this.form.submit()">
                                                         </form>
                                                     </div>
                                                 </div>';
@@ -128,6 +128,9 @@
                                                     </div>
                                                     <div class="itemLeft">
                                                         <span style="margin-right: 10px; font-weight: bold;">'.htmlspecialchars($row['dishCost']).'€</span>
+                                                        <form id="addishForm" action="home.php" method="POST">
+                                                            <input type ="checkbox" name="cBox[]" value="'.$row["dishName"].'" onChange="this.form.submit()">
+                                                        </form>
                                                     </div>
                                                 </div>';
                                     }
@@ -157,6 +160,9 @@
                                                     </div>
                                                     <div class="itemLeft">
                                                         <span style="margin-right: 10px; font-weight: bold;">'.htmlspecialchars($row['dishCost']).'€</span>
+                                                        <form id="addishForm" action="home.php" method="POST">
+                                                            <input type ="checkbox" name="cBox[]" value="'.$row["dishName"].'" onChange="this.form.submit()">
+                                                        </form>
                                                     </div>
                                                 </div>';
                                     }
@@ -186,6 +192,9 @@
                                                     </div>
                                                     <div class="itemLeft">
                                                         <span style="margin-right: 10px; font-weight: bold;">'.htmlspecialchars($row['dishCost']).'€</span>
+                                                        <form id="addishForm" action="home.php" method="POST">
+                                                            <input type ="checkbox" name="cBox[]" value="'.$row["dishName"].'" onChange="this.form.submit()">
+                                                        </form>
                                                     </div>
                                                 </div>';
                                     }
@@ -215,6 +224,9 @@
                                                     </div>
                                                     <div class="itemLeft">
                                                         <span style="margin-right: 10px; font-weight: bold;">'.htmlspecialchars($row['dishCost']).'€</span>
+                                                        <form id="addishForm" action="home.php" method="POST">
+                                                            <input type ="checkbox" name="cBox[]" value="'.$row["dishName"].'" onChange="this.form.submit()">
+                                                        </form>
                                                     </div>
                                                 </div>';
                                     }
@@ -244,6 +256,9 @@
                                                     </div>
                                                     <div class="itemLeft">
                                                         <span style="margin-right: 10px; font-weight: bold;">'.htmlspecialchars($row['dishCost']).'€</span>
+                                                        <form id="addishForm" action="home.php" method="POST">
+                                                            <input type ="checkbox" name="cBox[]" value="'.$row["dishName"].'" onChange="this.form.submit()">
+                                                        </form>
                                                     </div>
                                                 </div>';
                                     }
@@ -355,5 +370,6 @@
 
             </div>
         </div>
+        <?php $conn->close(); ?>
     </body>
 </html>

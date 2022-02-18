@@ -125,9 +125,15 @@
                                 $quantity = $cart["quantity"];
                                 $inCart = "cart";
                             }
+                            if(!empty($row["photoLink"]) && file_exists('images/photoDishes/'.$row["photoLink"])){
+                                $img = 'images/photoDishes/'.$row["photoLink"];
+                            }
+                            else{
+                                $img = "images/icons/dish.png";
+                            }
                             echo'
-                                <div  class="card '.$row["dishType"].' '.$inCart.'">
-                                    <img src="images/photoDishes/'.$row["photoLink"].'" class="card__image" alt="'.$row["dishName"].'" />';
+                                <div  class="card '.$row["dishType"]." ".$inCart.'" id="'.$row["id"].'">
+                                    <img src="'.$img.'" class="card__image" alt="'.$row["dishName"].'" />';
                                     if(date("d") - getDate(strtotime($row["creationDate"]))["mday"] < 7 && date("m") == getDate(strtotime($row["creationDate"]))["mon"] && date("Y") == getDate(strtotime($row["creationDate"]))["year"]){
                                         echo '<p class="new">&nbspNuovo&nbsp</p> ';
                                     }
@@ -142,11 +148,11 @@
                                             <h3>'.$row["dishCost"].'€'.'</h3>
                                             <div>
                                                 <form action="access/cartDB.php" method="POST" >
-                                                    <button type="submit" class="smallBtn" name="less" value="'.$row["dishName"].'">
+                                                    <button type="submit" class="smallBtn" name="less" value="'.$row["id"].'">
                                                         -
                                                     </button>
                                                     <input type="number" class="dishNumber" readonly value="'.$quantity.'">
-                                                    <button type="submit" class="smallBtn" name="add" value="'.$row["dishName"].'">
+                                                    <button type="submit" class="smallBtn" name="add" value="'.$row["id"].'">
                                                         +
                                                     </button>
                                                 </form>

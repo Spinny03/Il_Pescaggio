@@ -26,15 +26,16 @@
     
     }
     elseif(isset($_POST["del"])){
+        $sql = 'SELECT id FROM dish WHERE idUser="'.$_SESSION["user"].'" AND dish.id = cart.idDish AND dishName="'.$_POST["add"].'";';  
+        $result = $conn->query($sql); 
+        $result = mysqli_fetch_assoc($result);
         $sql = ' DELETE cart FROM cart, dish WHERE idUser="'.$_SESSION["user"].'" AND dish.id = cart.idDish AND dishName="'.$_POST["del"].'";';
         $conn->query($sql); 
-        header("Location: ../cart.php");
-        exit;
     }
     
     $_SESSION["typefood"] = $result["dishType"];
 
     $conn->close();
-    header("Location: ../dishs.php");
+    header("Location: ../dishs.php#pform");
     exit;
 ?>

@@ -98,7 +98,7 @@
                                     </div>
                                     <div class="itemLeft">
                                         <form action="access/dishsDB.php" method="POST">
-                                            <button type="submit" class="itemNumber formBtn" name="del" value="'.$row["dishName"].'" style="background-color: white; margin-left:10px;">
+                                            <button type="submit" class="itemNumber formBtn" name="del" value="'.$row["id"].'" style="background-color: white; margin-left:10px;">
                                                 🗑️
                                             </button>
                                         </form>

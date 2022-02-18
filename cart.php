@@ -75,7 +75,7 @@
             <div class="left">
                 <h2>Articoli carrello</h2>
                 <?php 
-                    $sql = 'SELECT dish.dishName, quantity, dishCost FROM `cart`, `dish` WHERE idUser="'.$_SESSION["user"].'" AND dish.id = cart.idDish;';
+                    $sql = 'SELECT dish.dishName, quantity, dishCost, dish.id FROM `cart`, `dish` WHERE idUser="'.$_SESSION["user"].'" AND dish.id = cart.idDish;';
                     $result = $conn->query($sql); 
 
                     //echo "<table>"; // start a table tag in the HTML
@@ -91,13 +91,13 @@
                                     <span style="margin-right: 10px; font-weight: bold;">'.htmlspecialchars($row['dishCost']).'€</span>
                                     <form action="access/cartDB.php" method="POST">
                                         <input type="hidden" name="cameFromCart" value="1">
-                                        <button type="submit" class="itemNumber formBtn" name="del" value="'.$row["dishName"].'" style="background-color: red;">
+                                        <button type="submit" class="itemNumber formBtn" name="del" value="'.$row["id"].'" style="background-color: red;">
                                             x
                                         </button>
-                                        <button type="submit" class="itemNumber formBtn" name="less" value="'.$row["dishName"].'" style="background-color: #ffd300;">
+                                        <button type="submit" class="itemNumber formBtn" name="less" value="'.$row["id"].'" style="background-color: #ffd300;">
                                             -
                                         </button>
-                                        <button type="submit" class="itemNumber formBtn" name="add" value="'.$row["dishName"].'" style="background-color: green;">
+                                        <button type="submit" class="itemNumber formBtn" name="add" value="'.$row["id"].'" style="background-color: green;">
                                             +
                                         </button>
                                     </form>

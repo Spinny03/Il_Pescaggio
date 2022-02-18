@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300&display=swap');
-
+ 
 .chooseDish{
     margin-left: auto;
     margin-right: auto;
@@ -26,6 +26,13 @@
     cursor: pointer;
     font-weight: bold;
 }
+
+.choice.active {
+    color: #4e60ff;
+    background-color: #f3f4ff;
+    border: 2px solid #4e60ff;
+}
+
 @media screen and (max-width: 1300px) {
     .chooseDish{
         display: grid;
@@ -77,7 +84,7 @@
 }
 
 .itemCard{
-    width: 100%;
+    width: calc(100% - 15px);
     background-color: #ffffff;
     margin-top: 16px;
     display: flex;
@@ -402,6 +409,9 @@ input{
 }
 
 @media screen and (max-width: 660px) {
+    .itemCard{
+        width: 100%;
+    }
     .pSettings{
         width: 90%;
         height: calc(100vh + 80px);

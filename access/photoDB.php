@@ -28,12 +28,12 @@
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     
     if(isset($_POST["submit"])) {
-      $check = getimagesize($_FILES["pfile"]["tmp_name"]);
-      if($check !== false) {
-        $uploadOk = 1;
-      } else {
-        $uploadOk = 0;
-      }
+        $check = getimagesize($_FILES["pfile"]["tmp_name"]);
+        if($check !== false) {
+            $uploadOk = 1;
+        } else {
+            $uploadOk = 0;
+        }
     }
     
     if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
@@ -41,16 +41,16 @@
     }
     
     if ($uploadOk != 0) {
-      $old ="SELECT photoLink FROM username WHERE email='".$_SESSION["user"]."'";
-      $oldphoto = $conn->query($old);
-      $oldphoto = mysqli_fetch_assoc($oldphoto); 
-      if(!empty($oldphoto["photoLink"])){
-          unlink("../images/userPhoto/".$oldphoto["photoLink"]);
-      }
-      if (move_uploaded_file($_FILES["pfile"]["tmp_name"], $target_file)) {
-          $sql = "UPDATE username SET photoLink='".$_SESSION["user"] .".". $imageFileType. "' WHERE email='".$_SESSION["user"]."'";
-          $conn->query($sql);
-      } 
+        $old ="SELECT photoLink FROM username WHERE email='".$_SESSION["user"]."'";
+        $oldphoto = $conn->query($old);
+        $oldphoto = mysqli_fetch_assoc($oldphoto); 
+        if(!empty($oldphoto["photoLink"])){
+            unlink("../images/userPhoto/".$oldphoto["photoLink"]);
+        }
+        if (move_uploaded_file($_FILES["pfile"]["tmp_name"], $target_file)) {
+            $sql = "UPDATE username SET photoLink='".$_SESSION["user"] .".". $imageFileType. "' WHERE email='".$_SESSION["user"]."'";
+            $conn->query($sql);
+        } 
     }
 
     $oldname = "../images/userPhoto/".htmlspecialchars(basename( $_FILES["pfile"]["name"]));

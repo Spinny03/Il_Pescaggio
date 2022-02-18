@@ -96,7 +96,8 @@
                                                     </div>
                                                     <div class="itemLeft">
                                                         <span style="margin-right: 10px; font-weight: bold;">'.htmlspecialchars($row['dishCost']).'€</span>
-                                                        <form id="addishForm" action="home.php" method="POST">
+                                                        <form id="addishForm" action="access/cartDB.php" method="POST">
+                                                            <input type="hidden" name="cameFromCatering" value="1">
                                                             <input type ="checkbox" name="cBox[]" value="'.$row["dishName"].'" onChange="this.form.submit()">
                                                         </form>
                                                     </div>

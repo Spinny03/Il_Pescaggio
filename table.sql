@@ -8,7 +8,10 @@ USE Il_Pescaggio;
 CREATE TABLE rider(
     id int PRIMARY KEY AUTO_INCREMENT,
     nome varchar(255) NOT NULL,
-    cognome varchar(255) NOT NULL
+    cognome varchar(255) NOT NULL,
+    available TINYINT(1),
+    salary int,
+    ordersDelivered int
 );
 
 CREATE TABLE username(
@@ -37,13 +40,15 @@ CREATE TABLE dish(
     photoLink varchar(255) NOT NULL
 );
 
-CREATE TABLE foodOrder(
+CREATE TABLE FOrder(
     id int PRIMARY KEY AUTO_INCREMENT,
     delivery TINYINT(1) NOT NULL,
     dateAndTimePay DATETIME,
     dateAndTimeDelivered DATETIME,
-    idUser varchar(255) NOT NULL REFERENCES username(email) ,
-    idRider int REFERENCES rider(id)
+    idUser varchar(255) NOT NULL REFERENCES username(email),
+    idRider int REFERENCES rider(id),
+    reservations int,
+    note varchar(255)
 );
 
 CREATE TABLE orderedFood(
@@ -57,6 +62,7 @@ CREATE TABLE cart(
     idUser varchar(255) NOT NULL REFERENCES username(email) ,
     idDish int NOT NULL REFERENCES dish(id) ,
     quantity int NOT NULL,
+    delivery TINYINT(1),
     primary key(idUser,idDish)
 );
 

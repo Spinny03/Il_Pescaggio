@@ -199,9 +199,9 @@
                         <input type="text" placeholder="Password1" name="changPasw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Deve contenere almeno un numero e una lettera maiuscola e minuscola e almeno 8 o più caratteri" minlength="8" >
                     </div>
 
-                    <button type="submit" name="change" value="logOUT" class="removeBtn genBtn">Esci</button>
                     <button type="submit" name="change" value="False" class="logbtn">Annulla modifiche</button>
                     <button type="submit" name="change" value="True" class="logbtn">Salva le modifiche</button>
+                    <button type="submit" name="change" value="logOUT" class="removeBtn genBtn">Esci</button>
                 </form>
             </div>
         </div>  

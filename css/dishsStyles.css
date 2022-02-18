@@ -1,0 +1,409 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300&display=swap');
+
+.chooseDish{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    background-color: white;
+    display: flex;
+    justify-content: space-evenly;
+    overflow: auto;
+}
+
+.choice{
+    margin-left: 10px;
+    margin-right: 10px;
+    font-family: 'nunito';
+    width: 160px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+    background-color: white;
+    border: 1px solid #EDEEF2;
+    cursor: pointer;
+    font-weight: bold;
+}
+@media screen and (max-width: 1300px) {
+    .chooseDish{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        justify-items: center;
+        gap: 16px;
+        width: 60%;
+    }
+    .choice{
+        height: 80px;
+        width: 90px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 16px;
+        border: 1px solid #EDEEF2;
+    }
+
+}
+
+@media screen and (max-width: 900px) {
+    .chooseDish{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 660px) {
+    .chooseDish{
+        width: 100%;
+    }
+    .choice{
+        width: 80px;
+    }
+}
+.container{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 15px;
+    height: calc(100vh - 80px);
+}
+.left{
+    margin-left: 15px;
+    overflow-y:scroll;
+}
+.right{
+    position: sticky;
+    top: 80px;
+    margin-right: 15px;
+}
+
+.itemCard{
+    width: 100%;
+    background-color: #ffffff;
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #C7C8D2;
+    border-radius: 8px;
+}
+
+.itemNumber{
+    display: inline-block;
+    background-color: #4E60FF;
+    width: 22px;
+    height: 22px;
+    border-radius: 16px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.formBtn{
+    border: 0;
+    font-size: 1.2rem;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.itemName{
+    display: inline-block;
+    margin: 0;
+}
+
+.itemLeft{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.priceRecap{
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.innerPrice{
+    display: flex;
+    justify-content: space-between;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+.totalPrice{
+    border-top: 1px solid black;
+}
+
+.data{
+    margin: 0; 
+    float:left;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.confBtn{
+    margin-top: 30px;
+    width: 69%;
+    background-color: #4E60FF;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-family: 'nunito';
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+.delBtn{
+    margin-top: 30px;
+    width: 30%;
+    background-color: #FFFFFF;
+    border: none;
+    color: red;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-family: 'nunito';
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    background-color: white;
+    border: 1px solid red;
+}
+
+#p25{
+    width: 25%;
+}
+#p50{
+    width: 50%;
+}
+#p70{
+    width: 70%;
+}
+#p100{
+    width: 100%;
+}
+#p30{
+    width: 30%;
+}
+#p10{
+    width: 10%;
+}
+
+@media screen and (max-width: 1300px) {
+    .confBtn{
+        width: 100%;
+    }
+    .delBtn  {
+        width: 100%;
+    }
+}
+@media screen and (max-width: 1000px) {
+    .container{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+        margin: 10px;
+    }
+    .left{
+        width: 100%;
+        margin: 0;
+        overflow-y:visible;
+    }
+    .right{
+        width: 100%;
+    }
+    .confBtn{
+        margin-bottom: 1rem;
+    }
+}
+.inPhoto {
+	border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px; 
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+.profilePhotoBig{
+    margin-top: 0.5%;
+    margin-bottom: 1%;
+    border-radius: 16px;
+}
+
+.pSettings{
+    height: calc(100vh - 160px);
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    border: 1px solid #EDEEF2;
+    background-color: white;
+    padding: 10px;
+    border-radius: 16px;
+}
+
+#pform{
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+}
+
+.photoBtn{
+    margin-top: 30px;
+    width: 20%;
+    background-color: #4E60FF;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-family: 'nunito';
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    margin-right: 20px;
+    margin-left: 20px;
+    min-width: 145px;
+}
+
+.removeBtn{
+    background-color: #ffffff;
+    border: 1px solid red;
+    color: red;
+}
+
+.conteinerP{
+    display: grid;
+    grid-template-rows: 80px 4vh 90%;
+    width: calc(100vw - (100vw - 100%));
+    gap: 24px;
+}
+
+.title{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+input{
+    padding-right: 10px;
+}
+
+.smallBtn{
+    font-family: 'nunito';
+    border: 0;
+    display: inline-block;
+    background-color: #4e60ff;
+    width: 5rem;
+    height: 1.5rem;
+    text-align: center;
+    border-radius: 1rem;
+    color: white;
+    cursor: pointer;
+}
+
+.genBtn{
+    margin-top: 30px;
+    width: 100%;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-family: 'nunito';
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+.logbtn{
+    margin-top: 30px;
+    width: 100%;
+    background-color: #4E60FF;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-family: 'nunito';
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+.data{
+    margin: 0; 
+    float:left;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+#p25{
+    width: 25%;
+}
+
+#p50{
+    width: 50%;
+}
+
+#p30{
+    width: 30%;
+}
+
+#p10{
+    width: 10%;
+}
+
+@media screen and (max-width: 1300px) {
+    #p25{
+        width: 50%;
+    }
+    #p30{
+        width: 100%;
+    }
+    #p10{
+        width: 50%;
+    }
+    #p50{
+        width: 100%;
+    }
+}
+
+
+@media screen and (max-width: 750px) {
+    .removeBtn{
+        margin-bottom: 5%;
+    }
+    .profilePhotoBig{
+        margin-top: 3%;
+        margin-bottom: 0%;
+    }
+    #pform{
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 660px) {
+    .pSettings{
+        width: 90%;
+        height: calc(100vh + 80px);
+    }
+}

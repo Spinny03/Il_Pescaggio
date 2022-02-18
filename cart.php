@@ -106,11 +106,6 @@
                                 </div>';
                         $totalPrice =  $totalPrice + intval(htmlspecialchars($row['dishCost'])*intval(htmlspecialchars($row['quantity'])));
                     }
-                    
-
-                    //echo "</table>"; 
-
-                    $conn->close();
                 ?>
 
             </div>
@@ -221,4 +216,5 @@
             </div>
         </div>
     </body>
+    <?php $conn->close(); ?>
 </html>

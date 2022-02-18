@@ -52,10 +52,9 @@
     
     if(isset($_POST["cameFromCart"])){
         $_POST["cameFromCart"] == 0;
-        header("Location: ../cart.php#");
+        header("Location: ../cart.php");
         exit;
     }
-   // header('Location: ../home.php#'.$name);
-    header('Location: ../home.php');
+    header('Location: ../home.php#'.$name);
     exit;
 ?>

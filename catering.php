@@ -88,7 +88,7 @@
                         <div class="content-inner">
                             <div class="dishDiv">
                                 <?php
-                                    $dishs = $conn->query('SELECT dishName, dishCost FROM dish WHERE dishType="pizza";');
+                                    $dishs = $conn->query('SELECT * FROM dish WHERE dishType="pizza";');
                                     while($row = $dishs->fetch_assoc()){
                                         echo '  <div class="itemCard">
                                                     <div class="itemRight">
@@ -98,7 +98,7 @@
                                                         <span style="margin-right: 10px; font-weight: bold;">'.htmlspecialchars($row['dishCost']).'€</span>
                                                         <form id="addishForm" action="access/cartDB.php" method="POST">
                                                             <input type="hidden" name="cameFromCatering" value="1">
-                                                            <input type ="checkbox" name="cBox[]" value="'.$row["dishName"].'" onChange="this.form.submit()">
+                                                            <input type ="checkbox" name="cBox[]" value="'.$row["id"].'" onChange="this.form.submit()">
                                                         </form>
                                                     </div>
                                                 </div>';
@@ -121,7 +121,7 @@
                         <div class="content-inner">
                             <div class="dishDiv">
                                 <?php
-                                    $dishs = $conn->query('SELECT dishName, dishCost FROM dish WHERE dishType="burger";');
+                                    $dishs = $conn->query('SELECT * FROM dish WHERE dishType="burger";');
                                     while($row = $dishs->fetch_assoc()){
                                         echo '  <div class="itemCard">
                                                     <div class="itemRight">
@@ -130,7 +130,7 @@
                                                     <div class="itemLeft">
                                                         <span style="margin-right: 10px; font-weight: bold;">'.htmlspecialchars($row['dishCost']).'€</span>
                                                         <form id="addishForm" action="home.php" method="POST">
-                                                            <input type ="checkbox" name="cBox[]" value="'.$row["dishName"].'" onChange="this.form.submit()">
+                                                            <input type ="checkbox" name="cBox[]" value="'.$row["id"].'" onChange="this.form.submit()">
                                                         </form>
                                                     </div>
                                                 </div>';
@@ -153,7 +153,7 @@
                         <div class="content-inner">
                             <div class="dishDiv">
                                 <?php
-                                    $dishs = $conn->query('SELECT dishName, dishCost FROM dish WHERE dishType="meat";');
+                                    $dishs = $conn->query('SELECT * FROM dish WHERE dishType="meat";');
                                     while($row = $dishs->fetch_assoc()){
                                         echo '  <div class="itemCard">
                                                     <div class="itemRight">
@@ -162,7 +162,7 @@
                                                     <div class="itemLeft">
                                                         <span style="margin-right: 10px; font-weight: bold;">'.htmlspecialchars($row['dishCost']).'€</span>
                                                         <form id="addishForm" action="home.php" method="POST">
-                                                            <input type ="checkbox" name="cBox[]" value="'.$row["dishName"].'" onChange="this.form.submit()">
+                                                            <input type ="checkbox" name="cBox[]" value="'.$row["id"].'" onChange="this.form.submit()">
                                                         </form>
                                                     </div>
                                                 </div>';
@@ -185,7 +185,7 @@
                         <div class="content-inner">
                             <div class="dishDiv">
                                 <?php
-                                    $dishs = $conn->query('SELECT dishName, dishCost FROM dish WHERE dishType="fish";');
+                                    $dishs = $conn->query('SELECT * FROM dish WHERE dishType="fish";');
                                     while($row = $dishs->fetch_assoc()){
                                         echo '  <div class="itemCard">
                                                     <div class="itemRight">
@@ -194,7 +194,7 @@
                                                     <div class="itemLeft">
                                                         <span style="margin-right: 10px; font-weight: bold;">'.htmlspecialchars($row['dishCost']).'€</span>
                                                         <form id="addishForm" action="home.php" method="POST">
-                                                            <input type ="checkbox" name="cBox[]" value="'.$row["dishName"].'" onChange="this.form.submit()">
+                                                            <input type ="checkbox" name="cBox[]" value="'.$row["id"].'" onChange="this.form.submit()">
                                                         </form>
                                                     </div>
                                                 </div>';
@@ -217,7 +217,7 @@
                         <div class="content-inner">
                             <div class="dishDiv">
                                 <?php
-                                    $dishs = $conn->query('SELECT dishName, dishCost FROM dish WHERE dishType="vegan";');
+                                    $dishs = $conn->query('SELECT * FROM dish WHERE dishType="vegan";');
                                     while($row = $dishs->fetch_assoc()){
                                         echo '  <div class="itemCard">
                                                     <div class="itemRight">
@@ -226,7 +226,7 @@
                                                     <div class="itemLeft">
                                                         <span style="margin-right: 10px; font-weight: bold;">'.htmlspecialchars($row['dishCost']).'€</span>
                                                         <form id="addishForm" action="home.php" method="POST">
-                                                            <input type ="checkbox" name="cBox[]" value="'.$row["dishName"].'" onChange="this.form.submit()">
+                                                            <input type ="checkbox" name="cBox[]" value="'.$row["id"].'" onChange="this.form.submit()">
                                                         </form>
                                                     </div>
                                                 </div>';
@@ -249,7 +249,7 @@
                         <div class="content-inner">
                             <div class="dishDiv">
                                 <?php
-                                    $dishs = $conn->query('SELECT dishName, dishCost FROM dish WHERE dishType="desserts";');
+                                    $dishs = $conn->query('SELECT * FROM dish WHERE dishType="desserts";');
                                     while($row = $dishs->fetch_assoc()){
                                         echo '  <div class="itemCard">
                                                     <div class="itemRight">
@@ -258,7 +258,7 @@
                                                     <div class="itemLeft">
                                                         <span style="margin-right: 10px; font-weight: bold;">'.htmlspecialchars($row['dishCost']).'€</span>
                                                         <form id="addishForm" action="home.php" method="POST">
-                                                            <input type ="checkbox" name="cBox[]" value="'.$row["dishName"].'" onChange="this.form.submit()">
+                                                            <input type ="checkbox" name="cBox[]" value="'.$row["id"].'" onChange="this.form.submit()">
                                                         </form>
                                                     </div>
                                                 </div>';
@@ -273,7 +273,7 @@
 
             <div class="right">
                     <h2>Conferma dati</h2>
-                    <form action="access/profileDB.php" method="POST">
+                    <form action="home.php" method="POST">
                         <div class="data" id="p50">
                             <label for="name"><b>Nome</b></label>
                             <input type="text" placeholder="Mario" name="name"
@@ -296,59 +296,28 @@
                             required>
                         </div>
 
-                        <div class="data" id="p100">
-                            <label for="via"><b>Via</b></label>
-                            <input type="text" placeholder="Via Sestri" name="via" 
-                                <?php
-                                    if(isset($data["via"])){
-                                        echo "value='".$data["via"]."'";
-                                    }
-                                ?> 
+                        <div class="data" id="p50">
+                            <label for="via"><b>Data</b></label>
+                            <input type="date" placeholder="19/05/2003" name="via" 
                             required>
                         </div>
 
                         <div class="data" id="p50">
-                            <label for="civ"><b>Civ</b></label>
-                            <input type="text" placeholder="17/11" name="civ" 
-                                <?php
-                                    if(isset($data["civ"])){
-                                        echo "value='".$data["civ"]."'";
-                                    }
-                                ?> 
-                            required>
-                        </div>
-
-                        <div class="data" id="p50">
-                            <label for="cap"><b>Cap</b></label>
-                            <input type="text" placeholder="16153" name="cap" 
-                                <?php
-                                    if(isset($data["cap"])){
-                                        echo "value='".$data["cap"]."'";
-                                    }
-                                ?> 
+                            <label for="civ"><b>Ora</b></label>
+                            <input type="time" placeholder="" name="civ" 
                             required>
                         </div>
 
                         <div class="data" id="p100">
-                            <label for="nCard"><b>Carta di credito</b></label>
-                            <input type="text" placeholder="0123 4567 7890" name="nCard" 
-                                <?php
-                                    if(isset($data["nCard"])){
-                                        echo "value='".$data["nCard"]."'";
-                                    }
-                                ?> 
+                            <label for="cap"><b>Prenotazioni</b></label>
+                            <input type="text" placeholder="69" name="cap"  
                             required>
                         </div>
 
-                        <div class="data" id="p70">
-                            <label for="nCard"><b>Data di scadenza</b></label>
-                            <input type="text" placeholder="12/26" name="expireCard" required>
-                        </div>
-
-                        <div class="data" id="p30">
-                            <label for="nCard"><b>CVV</b></label>
-                            <input type="text" placeholder="123" name="expireCard" required>
-                        </div>  
+                        <div class="data" id="p100">
+                            <label for="nCard"><b>Richieste particolari</b></label>
+                            <textarea name="Text1" rows="6"></textarea>
+                        </div> 
 
                         <div class="priceRecap data" id="p100">
                             <div class="innerPrice foodPrice">

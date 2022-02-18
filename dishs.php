@@ -97,12 +97,12 @@
                                         <h3 class="itemName">'.htmlspecialchars($row['dishName']).'</h3>
                                     </div>
                                     <div class="itemLeft">
-                                        <form action="access/dishsDB.php" method="POST">
+                                        <form action="#" method="POST">
                                             <button type="submit" class="itemNumber formBtn" name="del" value="'.$row["id"].'" style="background-color: white; margin-left:10px;">
                                                 🗑️
                                             </button>
                                         </form>
-                                        <form action="" method="POST">
+                                        <form action="dishs.php#pform" method="POST">
                                             <button type="submit" class="itemNumber formBtn" name="edit" value="'.$row["id"].'" style="background-color: white; margin-left:10px;margin-right:10px;">
                                                 📝
                                             </button>
@@ -110,7 +110,6 @@
                                     </div>
                                 </div>';
                     }
-                    $conn->close();
                 ?>
 
             </div>
@@ -118,7 +117,7 @@
             <div class="right">
                 <h2>Conferma dati piatto</h2>
                 <div class="pSettings">
-                    <form id="pform" action="access/photoDB.php" method="POST" enctype="multipart/form-data">
+                    <form id="pform" action="access/dishsDB.php" method="POST" enctype="multipart/form-data">
                         <img width="200" height="200" src="<?php echo $link; ?>" class="profilePhotoBig">
                         <label class="photoBtn" for="apply"><input class="inPhoto" type="file" name="pfile" name="pfile" id="apply" accept="image/*">Modifica</label>
                         <button type="submit" name="change" value="False" class="photoBtn removeBtn">Rimuovi</button>
@@ -129,7 +128,8 @@
                     }
                     </script>
 
-                    <form action="access/profileDB.php" method="POST" >
+                    <form action="access/dishsDB.php" method="POST" >
+                        <input type="hidden" name="idDish" value="<?php echo $data['id'];?>">
                         <div class="data" id="p50">
                             <label for="name"><b>Nome</b></label>
                             <input type="text" placeholder="Pizza" name="name"
@@ -142,8 +142,8 @@
                         </div>
 
                         <div class="data" id="p50">
-                            <label for="surname"><b>Prezzo</b></label>
-                            <input type="text" placeholder="Rossi" name="surname"
+                            <label for="price"><b>Prezzo</b></label>
+                            <input type="text" placeholder="Rossi" name="price"
                                 <?php
                                     if(isset($data["dishCost"])){
                                         echo "value='".$data["dishCost"]."'";
@@ -154,7 +154,7 @@
 
                         <div class="data" id="p100">
                             <label for="description"><b>Descrizione</b></label>
-                            <input type="text" placeholder="Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua." name="email" 
+                            <input type="text" placeholder="Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do eiusmod tempor incidunt ut labore et dolore magna aliqua." name="description" 
                                 <?php 
                                     if(isset($data["description"])){
                                         echo "value='".$data["description"]."'";
@@ -162,6 +162,7 @@
                                 ?>
                             >
                         </div>
+
                         <div class="chooseDish">  
                             <button class="choice" id="pizza" onclick="filterSelection('pizza')">
                                 <img width="20%" height="40%" src="images/foodType/pizza.png" alt="pizza">
@@ -197,4 +198,5 @@
             </div>
         </div>
     </body>
+    <?php $conn->close(); ?>
 </html>

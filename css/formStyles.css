@@ -6,7 +6,7 @@ b{
     font-size: 0.8rem;
     line-height: 16px;
 }
-input[type=text], input[type=password]{
+input[type=text], input[type=password], input[type=date], input[type=time]{
     border: 1px solid #C7C8D2;
     box-sizing: border-box;
     border-radius: 8px;
@@ -14,6 +14,16 @@ input[type=text], input[type=password]{
     width: 100%;
     margin-bottom: 20px;
 }
+
+textarea{
+    border: 1px solid #C7C8D2;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 16px 12px;
+    width: 100%;
+    margin-bottom: 20px;  
+}
+
 ::placeholder{
     font-family: 'nunito';
 }

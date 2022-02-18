@@ -1,41 +1,36 @@
 <?php 
-    session_start(); 
+    session_start();
     $conn = new mysqli("localhost", "root", "");
     if ($conn->connect_error){
         exit("Connessione fallita: " . $conn->connect_error);
     }
     $conn->query("USE Il_Pescaggio");
 
+    if((!empty($_POST["name"]) || !empty($_POST["price"]) || !empty($_POST["description"]))){
+        $sql ="UPDATE dish SET ";
 
-    if(isset($_POST["edit"])){
-        $name = $_POST["add"];
-        $sql = 'SELECT dish.dishName, dishType FROM cart, dish WHERE idUser="'.$_SESSION["user"].'" AND dish.id = cart.idDish AND dishName="'.$_POST["add"].'";';  
-        $result = $conn->query($sql); 
-        $result = mysqli_fetch_assoc($result);
-        if(!empty($result["dishName"])){
-            $sql1 = ' UPDATE cart, dish SET quantity = quantity + 1 WHERE idUser="'.$_SESSION["user"].'" AND dish.id = cart.idDish AND dishName="'.$_POST["add"].'";';
-            $conn->query($sql1); 
+        if(!empty($_POST["name"])){
+            $sql .= 'dishName="'.$_POST["name"].'",';   
         }
-        else{
-            $sql = 'SELECT id, dishType FROM dish WHERE dishName="'.$_POST["add"].'";';
-            $result = $conn->query($sql); 
-            $result = mysqli_fetch_assoc($result);
-            $sql2 = ' INSERT INTO cart (`idUser`, `idDish`, `quantity`) VALUES ("'.$_SESSION["user"].'","'.$result["id"].'",1);';
-            $conn->query($sql2); 
-        }
-    
-    }
-    elseif(isset($_POST["del"])){
-        $sql = 'SELECT id FROM dish WHERE idUser="'.$_SESSION["user"].'" AND dish.id = cart.idDish AND dishName="'.$_POST["add"].'";';  
-        $result = $conn->query($sql); 
-        $result = mysqli_fetch_assoc($result);
-        $sql = ' DELETE cart FROM cart, dish WHERE idUser="'.$_SESSION["user"].'" AND dish.id = cart.idDish AND dishName="'.$_POST["del"].'";';
-        $conn->query($sql); 
-    }
-    
-    $_SESSION["typefood"] = $result["dishType"];
 
+        if(!empty($_POST["price"])){
+            $sql .= 'dishCost="'.$_POST["price"].'",';
+        }
+
+        if(!empty($_POST["description"])){
+            $sql .= 'description="'.$_POST["description"].'",';
+        }
+
+        /*if(!empty($_POST["type"])){
+            $sql .= 'foodtype="'.$_POST["type"].'",';
+        }*/
+
+        $sql = substr($sql, 0, -1);
+        $sql .= ' WHERE id="'.$_POST["idDish"].'"';
+        echo $sql;
+        $conn->query($sql);
+    }
+    header("Location: ../dishs.php");
     $conn->close();
-    header("Location: ../dishs.php#pform");
-    exit;
+    exit();
 ?>

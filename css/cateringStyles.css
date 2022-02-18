@@ -1,0 +1,73 @@
+input[type="checkbox"] {
+    display: none;
+  }
+  .wrap-collabsible {
+    margin: 1.2rem 0;
+  }
+  .lbl-toggle {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-family: 'nunito';
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    text-align: center;
+    align-items: center;
+    padding: 1rem;
+    color: black;
+    background: white;
+    cursor: pointer;
+    border-radius: 7px;
+    transition: all 0.25s ease-out;
+    border: 2px solid #ddd;
+  }
+  .lbl-toggle:hover {
+    color: #4E60FF;
+  }
+  .lbl-toggle::after {
+    content: " ";
+    display: inline-block;
+    background-image: url('../images/icons/reshot-icon-arrow-chevron-right-WDGHUKQ634.svg');
+    color: aliceblue;
+    background-repeat: no-repeat;
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+    transform: translateY(-2px);
+    transition: transform 0.2s ease-out;
+  }
+  .toggle:checked + .lbl-toggle::after {
+    transform: rotate(90deg) translateX(-3px);
+  }
+  .collapsible-content {
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.25s ease-in-out;
+  }
+  .toggle:checked + .lbl-toggle + .collapsible-content {
+    max-height: 100vh;
+  }
+  .toggle:checked + .lbl-toggle {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .collapsible-content .content-inner {
+    background: rgba(0, 105, 255, 0.2);
+    border-bottom: 1px solid rgba(0, 105, 255, 0.45);
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    padding: 0.5rem 1rem;
+  }
+  .collapsible-content p {
+    margin-bottom: 0;
+  }
+
+  .titleDiv{
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+  }
+
+  .itemLeft input[type="checkbox"]{
+    display: inline-block;
+  }

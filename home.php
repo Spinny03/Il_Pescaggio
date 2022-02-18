@@ -56,8 +56,10 @@
                 </a>
                 <ul class="navItems" data-visible="false">
                     <a href="home.php" class="navLink" style="color: #4e60ff">Delivery</a>
+
                     <a href="#" class="navLink">Catering</a>
                     <a href="dishs.php" class="navLink">Piatti</a>
+                    <a href="catering.php" class="navLink">Catering</a>
                     <a href="#" class="navLink">Ordini</a>
                 </ul>
                 

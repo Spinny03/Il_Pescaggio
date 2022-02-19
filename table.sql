@@ -63,7 +63,7 @@ CREATE TABLE cart(
     idDish int NOT NULL REFERENCES dish(id) ,
     quantity int NOT NULL,
     catering TINYINT(1),
-    primary key(idUser,idDish)
+    primary key(idUser,idDish,catering)
 );
 
 INSERT INTO `dish`( `dishCost`, `description`, `gluten`, `lactose`, `dishName`, `dishType`, `photoLink`) VALUES (10,"DESCRIZIONE DEL PIATTO",1,1,"Bigne"            ,"desserts","1.jpg");

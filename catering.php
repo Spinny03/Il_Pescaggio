@@ -89,17 +89,28 @@
                             <div class="dishDiv">
                                 <?php
                                     $dishs = $conn->query('SELECT * FROM dish WHERE dishType="pizza";');
+                                    
                                     while($row = $dishs->fetch_assoc()){
-                                        echo '  <div class="itemCard">
+
+                                        $cart = $conn->query('SELECT quantity FROM cart, dish WHERE idUser="'.$_SESSION["user"].'" AND  dishName="'.$row["dishName"].'" AND dish.id = cart.idDish AND cart.catering = 1;');
+                                        $cart = mysqli_fetch_assoc($cart);
+                                        $inCart = "";
+                                        if(!empty($cart["quantity"])){
+                                            $inCart = "cart";
+                                        }
+
+                                        echo '  <div class="itemCard "'.$inCart.'>
                                                     <div class="itemRight">
                                                         <h3 class="itemName">'.htmlspecialchars($row['dishName']).'</h3>
                                                     </div>
                                                     <div class="itemLeft">
                                                         <span style="margin-right: 10px; font-weight: bold;">'.htmlspecialchars($row['dishCost']).'€</span>
-                                                        <form id="addishForm" action="access/cartDB.php" method="POST">
-                                                            <input type="hidden" name="cameFromCatering" value="1">
-                                                            <input type ="checkbox" name="cBox[]" value="'.$row["id"].'" onChange="this.form.submit()">
-                                                        </form>
+                                                        <form id="addishForm" action="access/cateringDB.php" method="POST">
+                                                            <input type="hidden" name="catering" value="'.$inCart.'">
+                                                            <input type="hidden" name="dish" value="'.$row["id"].'">
+                                                            <input type ="checkbox" onChange="this.form.submit()"';
+                                                            if($inCart == "cart"){ echo 'checked';}
+                                        echo '          ></form>
                                                     </div>
                                                 </div>';
                                     }
@@ -113,7 +124,7 @@
                     <input id="collapsible3" class="toggle" type="checkbox">
                     <label for="collapsible3" class="lbl-toggle">
                         <div class="titleDiv">
-                            <img width="40px" height="40px" src="images/foodType/burger.png" alt="pizza">
+                            <img width="40px" height="40px" src="images/foodType/burger.png" alt="burger">
                             <span>burger</span>
                         </div>
                     </label>
@@ -122,16 +133,28 @@
                             <div class="dishDiv">
                                 <?php
                                     $dishs = $conn->query('SELECT * FROM dish WHERE dishType="burger";');
+                                    
                                     while($row = $dishs->fetch_assoc()){
-                                        echo '  <div class="itemCard">
+
+                                        $cart = $conn->query('SELECT quantity FROM cart, dish WHERE idUser="'.$_SESSION["user"].'" AND  dishName="'.$row["dishName"].'" AND dish.id = cart.idDish AND cart.catering = 1;');
+                                        $cart = mysqli_fetch_assoc($cart);
+                                        $inCart = "";
+                                        if(!empty($cart["quantity"])){
+                                            $inCart = "cart";
+                                        }
+
+                                        echo '  <div class="itemCard "'.$inCart.'>
                                                     <div class="itemRight">
                                                         <h3 class="itemName">'.htmlspecialchars($row['dishName']).'</h3>
                                                     </div>
                                                     <div class="itemLeft">
                                                         <span style="margin-right: 10px; font-weight: bold;">'.htmlspecialchars($row['dishCost']).'€</span>
-                                                        <form id="addishForm" action="home.php" method="POST">
-                                                            <input type ="checkbox" name="cBox[]" value="'.$row["id"].'" onChange="this.form.submit()">
-                                                        </form>
+                                                        <form id="addishForm" action="access/cateringDB.php" method="POST">
+                                                            <input type="hidden" name="catering" value="'.$inCart.'">
+                                                            <input type="hidden" name="dish" value="'.$row["id"].'">
+                                                            <input type ="checkbox" onChange="this.form.submit()"';
+                                                            if($inCart == "cart"){ echo 'checked';}
+                                        echo '          ></form>
                                                     </div>
                                                 </div>';
                                     }
@@ -145,7 +168,7 @@
                     <input id="collapsible4" class="toggle" type="checkbox">
                     <label for="collapsible4" class="lbl-toggle">
                         <div class="titleDiv">
-                            <img width="40px" height="40px" src="images/foodType/meat.png" alt="pizza">
+                            <img width="40px" height="40px" src="images/foodType/meat.png" alt="meat">
                             <span>carne</span>
                         </div>
                     </label>
@@ -154,16 +177,28 @@
                             <div class="dishDiv">
                                 <?php
                                     $dishs = $conn->query('SELECT * FROM dish WHERE dishType="meat";');
+                                    
                                     while($row = $dishs->fetch_assoc()){
-                                        echo '  <div class="itemCard">
+
+                                        $cart = $conn->query('SELECT quantity FROM cart, dish WHERE idUser="'.$_SESSION["user"].'" AND  dishName="'.$row["dishName"].'" AND dish.id = cart.idDish AND cart.catering = 1;');
+                                        $cart = mysqli_fetch_assoc($cart);
+                                        $inCart = "";
+                                        if(!empty($cart["quantity"])){
+                                            $inCart = "cart";
+                                        }
+
+                                        echo '  <div class="itemCard "'.$inCart.'>
                                                     <div class="itemRight">
                                                         <h3 class="itemName">'.htmlspecialchars($row['dishName']).'</h3>
                                                     </div>
                                                     <div class="itemLeft">
                                                         <span style="margin-right: 10px; font-weight: bold;">'.htmlspecialchars($row['dishCost']).'€</span>
-                                                        <form id="addishForm" action="home.php" method="POST">
-                                                            <input type ="checkbox" name="cBox[]" value="'.$row["id"].'" onChange="this.form.submit()">
-                                                        </form>
+                                                        <form id="addishForm" action="access/cateringDB.php" method="POST">
+                                                            <input type="hidden" name="catering" value="'.$inCart.'">
+                                                            <input type="hidden" name="dish" value="'.$row["id"].'">
+                                                            <input type ="checkbox" onChange="this.form.submit()"';
+                                                            if($inCart == "cart"){ echo 'checked';}
+                                        echo '          ></form>
                                                     </div>
                                                 </div>';
                                     }
@@ -177,7 +212,7 @@
                     <input id="collapsible5" class="toggle" type="checkbox">
                     <label for="collapsible5" class="lbl-toggle">
                         <div class="titleDiv">
-                            <img width="40px" height="40px" src="images/foodType/fish.png" alt="pizza">
+                            <img width="40px" height="40px" src="images/foodType/fish.png" alt="fish">
                             <span>pesce</span>
                         </div>
                     </label>
@@ -186,16 +221,28 @@
                             <div class="dishDiv">
                                 <?php
                                     $dishs = $conn->query('SELECT * FROM dish WHERE dishType="fish";');
+                                    
                                     while($row = $dishs->fetch_assoc()){
-                                        echo '  <div class="itemCard">
+
+                                        $cart = $conn->query('SELECT quantity FROM cart, dish WHERE idUser="'.$_SESSION["user"].'" AND  dishName="'.$row["dishName"].'" AND dish.id = cart.idDish AND cart.catering = 1;');
+                                        $cart = mysqli_fetch_assoc($cart);
+                                        $inCart = "";
+                                        if(!empty($cart["quantity"])){
+                                            $inCart = "cart";
+                                        }
+
+                                        echo '  <div class="itemCard "'.$inCart.'>
                                                     <div class="itemRight">
                                                         <h3 class="itemName">'.htmlspecialchars($row['dishName']).'</h3>
                                                     </div>
                                                     <div class="itemLeft">
                                                         <span style="margin-right: 10px; font-weight: bold;">'.htmlspecialchars($row['dishCost']).'€</span>
-                                                        <form id="addishForm" action="home.php" method="POST">
-                                                            <input type ="checkbox" name="cBox[]" value="'.$row["id"].'" onChange="this.form.submit()">
-                                                        </form>
+                                                        <form id="addishForm" action="access/cateringDB.php" method="POST">
+                                                            <input type="hidden" name="catering" value="'.$inCart.'">
+                                                            <input type="hidden" name="dish" value="'.$row["id"].'">
+                                                            <input type ="checkbox" onChange="this.form.submit()"';
+                                                            if($inCart == "cart"){ echo 'checked';}
+                                        echo '          ></form>
                                                     </div>
                                                 </div>';
                                     }
@@ -209,7 +256,7 @@
                     <input id="collapsible6" class="toggle" type="checkbox">
                     <label for="collapsible6" class="lbl-toggle">
                         <div class="titleDiv">
-                            <img width="40px" height="40px" src="images/foodType/vegan.png" alt="pizza">
+                            <img width="40px" height="40px" src="images/foodType/vegan.png" alt="vegan">
                             <span>vegano</span>
                         </div>
                     </label>
@@ -218,16 +265,28 @@
                             <div class="dishDiv">
                                 <?php
                                     $dishs = $conn->query('SELECT * FROM dish WHERE dishType="vegan";');
+                                    
                                     while($row = $dishs->fetch_assoc()){
-                                        echo '  <div class="itemCard">
+
+                                        $cart = $conn->query('SELECT quantity FROM cart, dish WHERE idUser="'.$_SESSION["user"].'" AND  dishName="'.$row["dishName"].'" AND dish.id = cart.idDish AND cart.catering = 1;');
+                                        $cart = mysqli_fetch_assoc($cart);
+                                        $inCart = "";
+                                        if(!empty($cart["quantity"])){
+                                            $inCart = "cart";
+                                        }
+
+                                        echo '  <div class="itemCard "'.$inCart.'>
                                                     <div class="itemRight">
                                                         <h3 class="itemName">'.htmlspecialchars($row['dishName']).'</h3>
                                                     </div>
                                                     <div class="itemLeft">
                                                         <span style="margin-right: 10px; font-weight: bold;">'.htmlspecialchars($row['dishCost']).'€</span>
-                                                        <form id="addishForm" action="home.php" method="POST">
-                                                            <input type ="checkbox" name="cBox[]" value="'.$row["id"].'" onChange="this.form.submit()">
-                                                        </form>
+                                                        <form id="addishForm" action="access/cateringDB.php" method="POST">
+                                                            <input type="hidden" name="catering" value="'.$inCart.'">
+                                                            <input type="hidden" name="dish" value="'.$row["id"].'">
+                                                            <input type ="checkbox" onChange="this.form.submit()"';
+                                                            if($inCart == "cart"){ echo 'checked';}
+                                        echo '          ></form>
                                                     </div>
                                                 </div>';
                                     }
@@ -241,7 +300,7 @@
                     <input id="collapsible7" class="toggle" type="checkbox">
                     <label for="collapsible7" class="lbl-toggle">
                         <div class="titleDiv">
-                            <img width="40px" height="40px" src="images/foodType/desserts.png" alt="pizza">
+                            <img width="40px" height="40px" src="images/foodType/desserts.png" alt="desserts">
                             <span>dolci</span>
                         </div>
                     </label>
@@ -250,16 +309,28 @@
                             <div class="dishDiv">
                                 <?php
                                     $dishs = $conn->query('SELECT * FROM dish WHERE dishType="desserts";');
+                                    
                                     while($row = $dishs->fetch_assoc()){
-                                        echo '  <div class="itemCard">
+
+                                        $cart = $conn->query('SELECT quantity FROM cart, dish WHERE idUser="'.$_SESSION["user"].'" AND  dishName="'.$row["dishName"].'" AND dish.id = cart.idDish AND cart.catering = 1;');
+                                        $cart = mysqli_fetch_assoc($cart);
+                                        $inCart = "";
+                                        if(!empty($cart["quantity"])){
+                                            $inCart = "cart";
+                                        }
+
+                                        echo '  <div class="itemCard "'.$inCart.'>
                                                     <div class="itemRight">
                                                         <h3 class="itemName">'.htmlspecialchars($row['dishName']).'</h3>
                                                     </div>
                                                     <div class="itemLeft">
                                                         <span style="margin-right: 10px; font-weight: bold;">'.htmlspecialchars($row['dishCost']).'€</span>
-                                                        <form id="addishForm" action="home.php" method="POST">
-                                                            <input type ="checkbox" name="cBox[]" value="'.$row["id"].'" onChange="this.form.submit()">
-                                                        </form>
+                                                        <form id="addishForm" action="access/cateringDB.php" method="POST">
+                                                            <input type="hidden" name="catering" value="'.$inCart.'">
+                                                            <input type="hidden" name="dish" value="'.$row["id"].'">
+                                                            <input type ="checkbox" onChange="this.form.submit()"';
+                                                            if($inCart == "cart"){ echo 'checked';}
+                                        echo '          ></form>
                                                     </div>
                                                 </div>';
                                     }

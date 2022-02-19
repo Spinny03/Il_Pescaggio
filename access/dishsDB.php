@@ -12,6 +12,8 @@
         unlink("../images/PhotoDishes/".$result["photoLink"]);
         $sql = 'DELETE dish FROM dish WHERE id="'.$_POST["del"].'";';
         $conn->query($sql); 
+        $sql = 'DELETE FROM cart WHERE idDish="'.$_POST["del"].'";';
+        $conn->query($sql); 
     }
     elseif(isset($_POST["change"]) && $_POST["change"]  == "True"){
         if(!empty($_POST["name"]) || !empty($_POST["price"]) || !empty($_POST["description"] || !empty($_POST["type"]))){

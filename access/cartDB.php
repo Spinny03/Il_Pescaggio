@@ -20,14 +20,14 @@
             $sql = 'SELECT id, dishType FROM dish WHERE dish.id="'.$_POST["add"].'";';
             $result = $conn->query($sql); 
             $result = mysqli_fetch_assoc($result);
-            $sql2 = ' INSERT INTO cart (`idUser`, `idDish`, `quantity`) VALUES ("'.$_SESSION["user"].'","'.$result["id"].'",1);';
+            $sql2 = ' INSERT INTO cart (idUser, idDish, quantity) VALUES ("'.$_SESSION["user"].'","'.$result["id"].'",1);';
             $conn->query($sql2); 
         }
     
     }
     elseif(isset($_POST["less"])){
         $name = $_POST["less"];
-        $sql = 'SELECT dish.id, quantity, dishType FROM `cart`, `dish` WHERE idUser="'.$_SESSION["user"].'" AND dish.id = cart.idDish AND dish.id="'.$_POST["less"].'" AND cart.catering = 0;';  
+        $sql = 'SELECT dish.id, quantity, dishType FROM cart, dish WHERE idUser="'.$_SESSION["user"].'" AND dish.id = cart.idDish AND dish.id="'.$_POST["less"].'" AND cart.catering = 0;';  
         $result = $conn->query($sql); 
         $result = mysqli_fetch_assoc($result);
         if($result["id"]==$_POST["less"] && $result["quantity"] > 1){

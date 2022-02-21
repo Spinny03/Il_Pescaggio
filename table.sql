@@ -43,7 +43,7 @@ CREATE TABLE dish(
 CREATE TABLE FOrder(
     id int PRIMARY KEY AUTO_INCREMENT,
     delivery TINYINT(1) NOT NULL,
-    dateAndTimePay DATETIME,
+    dateAndTimePay timestamp,
     dateAndTimeDelivered DATETIME,
     idUser varchar(255) NOT NULL REFERENCES username(email),
     idRider int REFERENCES rider(id),

@@ -180,7 +180,7 @@
                                         echo "value='".$dataName."'";
                                     }
                                 ?> 
-                            >
+                            required>
                         </div>
 
                         <div class="data" id="p50">
@@ -191,7 +191,7 @@
                                         echo "value='".$dataCost."'";
                                     }
                                 ?> 
-                            >
+                            required>
                         </div>
 
                         <div class="data" id="p100">
@@ -202,7 +202,7 @@
                                         echo "value='".$dataDescr."'";
                                     }
                                 ?>
-                            >
+                            required>
                         </div>
 
                         <div class="chooseDish">  

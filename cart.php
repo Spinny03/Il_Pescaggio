@@ -112,7 +112,7 @@
 
             <div class="right">
                     <h2>Conferma dati</h2>
-                    <form action="access/profileDB.php" method="POST">
+                    <form action="access/sendOrderDB.php" method="POST">
                         <div class="data" id="p50">
                             <label for="name"><b>Nome</b></label>
                             <input type="text" placeholder="Mario" name="name"

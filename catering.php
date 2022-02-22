@@ -9,7 +9,7 @@
         exit("Connessione fallita: " . $conn->connect_error);
     }
     $conn->query("USE Il_Pescaggio");
-    $bag = $conn->query('SELECT SUM(quantity) FROM cart WHERE idUser="'.$_SESSION["user"].'";');
+    $bag = $conn->query('SELECT SUM(quantity) FROM cart WHERE idUser="'.$_SESSION["user"].'" AND cart.catering = 0;');
     $bag = mysqli_fetch_assoc($bag); 
     $data = $conn->query('SELECT * FROM username WHERE email ="'.$_SESSION["user"].'";');
     $data = mysqli_fetch_assoc($data); 
@@ -34,7 +34,7 @@
 
         <script src="js/navbarRes.js" defer></script>
         <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-        <title>CARRELLO</title>
+        <title>CATERING</title>
     </head>
     <body>
         <?php 
@@ -83,7 +83,7 @@
         </nav>
         <div class="container">
             <div class="left">
-                <h2>piatti disponibili</h2>
+                <h2>Piatti disponibili</h2>
                 <div class="wrap-collabsible">
                     <input id="collapsible2" class="toggle" type="checkbox">
                     <label for="collapsible2" class="lbl-toggle">
@@ -411,7 +411,7 @@
                         </div>
 
                         <button type="submit" name="cancelOrder" class="delBtn" form="exitForm">Annulla</button> 
-                        <button type="submit" name="confirmOdrer" class="confBtn">Conferma oridne</button>          
+                        <button type="submit" name="confirmOdrer" class="confBtn">Conferma ordine</button>          
 
                     </form>
 

@@ -208,7 +208,7 @@
                         </div>
 
                         <button type="submit" name="cancelOrder" class="delBtn" form="exitForm">Annulla</button> 
-                        <button type="submit" name="confirmOdrer" class="confBtn">Conferma oridne</button>          
+                        <button type="submit" name="confirmOdrer" class="confBtn">Conferma ordine</button>          
 
                     </form>
 

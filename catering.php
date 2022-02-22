@@ -13,6 +13,8 @@
     $bag = mysqli_fetch_assoc($bag); 
     $data = $conn->query('SELECT * FROM username WHERE email ="'.$_SESSION["user"].'";');
     $data = mysqli_fetch_assoc($data); 
+
+    $totalPrice = 0;
 ?>
 
 <!DOCTYPE html>
@@ -59,12 +61,12 @@
             </a>
             <ul class="navItems" data-visible="false">
                 <a href="home.php" class="navLink">Delivery</a>
-                <a href="#" class="navLink">Catering</a>
+                <a href="#" class="navLink" style="color: #4e60ff">Catering</a>
                 <a href="#" class="navLink">Ordini</a>
             </ul>
             
-            <a href="cart.php" class="navBtn" id="shoppingCard" style="background-color: #4e60ff;">
-                <img src="images/icons/whiteBag.svg" alt="logo" id="shoppingSVG"> 
+            <a href="cart.php" class="navBtn" id="shoppingCard">
+                <img src="images/icons/blueBag.svg" alt="logo" id="shoppingSVG"> 
             </a>
             <a href="profile.php" class="navBtn" id="profileBtn">
 
@@ -109,7 +111,7 @@
                                                             <input type="hidden" name="catering" value="'.$inCart.'">
                                                             <input type="hidden" name="dish" value="'.$row["id"].'">
                                                             <input type ="checkbox" onChange="this.form.submit()"';
-                                                            if($inCart == "cart"){ echo 'checked';}
+                                                            if($inCart == "cart"){ echo 'checked'; $totalPrice =  $totalPrice + intval($row['dishCost']);}
                                         echo '          ></form>
                                                     </div>
                                                 </div>';
@@ -153,7 +155,7 @@
                                                             <input type="hidden" name="catering" value="'.$inCart.'">
                                                             <input type="hidden" name="dish" value="'.$row["id"].'">
                                                             <input type ="checkbox" onChange="this.form.submit()"';
-                                                            if($inCart == "cart"){ echo 'checked';}
+                                                            if($inCart == "cart"){ echo 'checked'; $totalPrice =  $totalPrice + intval($row['dishCost']);}
                                         echo '          ></form>
                                                     </div>
                                                 </div>';
@@ -197,7 +199,7 @@
                                                             <input type="hidden" name="catering" value="'.$inCart.'">
                                                             <input type="hidden" name="dish" value="'.$row["id"].'">
                                                             <input type ="checkbox" onChange="this.form.submit()"';
-                                                            if($inCart == "cart"){ echo 'checked';}
+                                                            if($inCart == "cart"){ echo 'checked'; $totalPrice =  $totalPrice + intval($row['dishCost']);}
                                         echo '          ></form>
                                                     </div>
                                                 </div>';
@@ -241,7 +243,7 @@
                                                             <input type="hidden" name="catering" value="'.$inCart.'">
                                                             <input type="hidden" name="dish" value="'.$row["id"].'">
                                                             <input type ="checkbox" onChange="this.form.submit()"';
-                                                            if($inCart == "cart"){ echo 'checked';}
+                                                            if($inCart == "cart"){ echo 'checked'; $totalPrice =  $totalPrice + intval($row['dishCost']);}
                                         echo '          ></form>
                                                     </div>
                                                 </div>';
@@ -285,7 +287,7 @@
                                                             <input type="hidden" name="catering" value="'.$inCart.'">
                                                             <input type="hidden" name="dish" value="'.$row["id"].'">
                                                             <input type ="checkbox" onChange="this.form.submit()"';
-                                                            if($inCart == "cart"){ echo 'checked';}
+                                                            if($inCart == "cart"){ echo 'checked'; $totalPrice =  $totalPrice + intval($row['dishCost']);}
                                         echo '          ></form>
                                                     </div>
                                                 </div>';
@@ -329,7 +331,7 @@
                                                             <input type="hidden" name="catering" value="'.$inCart.'">
                                                             <input type="hidden" name="dish" value="'.$row["id"].'">
                                                             <input type ="checkbox" onChange="this.form.submit()"';
-                                                            if($inCart == "cart"){ echo 'checked';}
+                                                            if($inCart == "cart"){ echo 'checked'; $totalPrice =  $totalPrice + intval($row['dishCost']);}
                                         echo '          ></form>
                                                     </div>
                                                 </div>';
@@ -398,7 +400,7 @@
 
                             <div class="innerPrice totalPrice">
                                 <h3>Totale:</h3>
-                                <h4><?php echo $totalPrice+10; ?>€</h4>
+                                <h4><?php echo $totalPrice; ?>€</h4>
                             </div>
                         </div>
 

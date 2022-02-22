@@ -208,27 +208,27 @@
                         <div class="chooseDish">  
                             <input type="hidden" name="type" id="typePhp" value="">
                             <button type="button" class="choice" id="pizza" onclick="SelectType('pizza')">
-                                <img width="20%" height="40%" src="images/foodType/pizza.png" alt="pizza">
+                                <img width="25px" height="25px" src="images/foodType/pizza.png" alt="pizza">
                                 <p>Pizza</p>
                             </button>
                             <button type="button" class="choice" id="burger" onclick="SelectType('burger')"> 
-                                <img width="20%" height="40%" src="images/foodType/burger.png" alt="burger">
+                                <img width="25px" height="25px" src="images/foodType/burger.png" alt="burger">
                                 <p>Burger</p>
                             </button>
                             <button type="button" class="choice" id="meat" onclick="SelectType('meat')"> 
-                                <img width="20%" height="40%" src="images/foodType/meat.png" alt="carne">
+                                <img width="25px" height="25px" src="images/foodType/meat.png" alt="carne">
                                 <p>Carne</p>
                             </button>
                             <button type="button" class="choice" id="fish" onclick="SelectType('fish')"> 
-                                <img width="20%" height="40%" src="images/foodType/fish.png" alt="pesce">
+                                <img width="25px" height="25px" src="images/foodType/fish.png" alt="pesce">
                                 <p>Pesce</p>
                             </button>
                             <button type="button" class="choice" id="vegan"  onclick="SelectType('vegan')"> 
-                                <img width="20%" height="40%" src="images/foodType/vegan.png" alt="vegano">
+                                <img width="25px" height="25px" src="images/foodType/vegan.png" alt="vegano">
                                 <p>Vegano</p>
                             </button>
                             <button type="button" class="choice" id="desserts" onclick="SelectType('desserts')"> 
-                                <img width="20%" height="40%"  src="images/foodType/desserts.png" alt="dolci">
+                                <img width="25px" height="25px"  src="images/foodType/desserts.png" alt="dolci">
                                 <p>Dolci</p>
                             </button>
                         </div>

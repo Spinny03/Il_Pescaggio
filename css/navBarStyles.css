@@ -22,7 +22,7 @@ body{
 .navItems{
     display: flex;
     justify-content: space-around;
-    min-width: max(186px,18vw);
+    min-width: max(186px,25vw);
     align-items: center;
     margin-right: 1vw;
     padding: 0;

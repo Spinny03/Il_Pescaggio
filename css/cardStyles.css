@@ -53,7 +53,7 @@
     left: 0;
     right: 0;
     z-index: 1;          
-    background-color: white;
+    background-color: #f8f9ff;
     display: flex;
     min-height: 9rem;
   }

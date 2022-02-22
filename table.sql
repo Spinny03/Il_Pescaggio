@@ -87,5 +87,5 @@ INSERT INTO `dish`( `dishCost`, `description`, `gluten`, `lactose`, `dishName`, 
 INSERT INTO `dish`( `dishCost`, `description`, `gluten`, `lactose`, `dishName`, `dishType`, `photoLink`) VALUES (10,"DESCRIZIONE DEL PIATTO",1,1,"Spaghetti allo scoglio","fish","19.jpg");
 INSERT INTO `dish`( `dishCost`, `description`, `gluten`, `lactose`, `dishName`, `dishType`, `photoLink`) VALUES (10,"DESCRIZIONE DEL PIATTO",1,1,"Spaghetti al pomodoro","vegan","20.jpg");
 
-INSERT INTO `rider`( `riderName`, `riderSurame`, `available`) VALUES ("Mario","Rossi",1);
-INSERT INTO `rider`( `riderName`, `riderSurame`, `available`) VALUES ("Luigi","Blu",1);
+INSERT INTO `rider`( `riderName`, `riderSurname`, `available`) VALUES ("Mario","Rossi",1);
+INSERT INTO `rider`( `riderName`, `riderSurname`, `available`) VALUES ("Luigi","Blu",1);

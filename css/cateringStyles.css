@@ -20,6 +20,7 @@ input[type="checkbox"] {
     border-radius: 7px;
     transition: all 0.25s ease-out;
     border: 2px solid #ddd;
+    width: 100%;
   }
   .lbl-toggle:hover {
     color: #4E60FF;

@@ -58,7 +58,7 @@
                     <a href="home.php" class="navLink" style="color: #4e60ff">Delivery</a>
                     <a href="admin.php" class="navLink">Admin</a>
                     <a href="catering.php" class="navLink">Catering</a>
-                    <a href="#" class="navLink">Ordini</a>
+                    <a href="orders.php" class="navLink">Ordini</a>
                 </ul>
                 
                 <a href="cart.php" class="navBtn" id="shoppingCard">

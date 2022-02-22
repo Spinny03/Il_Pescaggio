@@ -12,8 +12,6 @@
     if($inCart == "cart"){
         $sql = ' DELETE FROM cart WHERE idUser="'.$_SESSION["user"].'" AND cart.idDish="'.$dishID.'" AND catering = 1;';
         $conn->query($sql); 
-        echo "ciaoo";
-        echo $dishID;
     }
     else{
         $sql = ' INSERT INTO cart (`idUser`, `idDish`, `quantity`, `catering`) VALUES ("'.$_SESSION["user"].'","'.$dishID.'",1,1);';

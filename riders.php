@@ -41,7 +41,7 @@
         <link rel="stylesheet" href="css/scrollBarStyles.css">
         <script src="js/navbarRes.js" defer></script>
         <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-        <title>GESTIONE MENU</title>
+        <title>GESTIONE RIDERS</title>
     </head>
     <body>
         <?php 
@@ -68,18 +68,19 @@
             </a>
             <ul class="navItems" data-visible="false">
                 <a href="home.php" class="navLink">Delivery</a>
-                <a href="#" class="navLink">Catering</a>
-                <a href="#" class="navLink">Ordini</a>
+                <a href="admin.php" class="navLink" style="color: #4e60ff">Admin</a>
+                <a href="catering.php" class="navLink">Catering</a>
+                <a href="orders.php" class="navLink">Ordini</a>
             </ul>
             
             <a href="cart.php" class="navBtn" id="shoppingCard">
-                    <?php 
-                        if(!empty($bag["SUM(quantity)"])){
-                            echo '<span id="itemsNumber">'.$bag["SUM(quantity)"].'</span>';
-                        }
-                    ?>
-                    <img src="images/icons/blueBag.svg" alt="logo" id="shoppingSVG"> 
-                </a>
+                <?php 
+                    if(!empty($bag["SUM(quantity)"])){
+                        echo '<span id="itemsNumber">'.$bag["SUM(quantity)"].'</span>';
+                    }
+                ?>
+                <img src="images/icons/blueBag.svg" alt="logo" id="shoppingSVG"> 
+            </a>
             <a href="profile.php" class="navBtn" id="profileBtn">
 
             </a>
@@ -89,7 +90,7 @@
         </nav>
         <div class="container">
             <div class="left">
-                <h2>Piatti nel menu</h2>
+                <h2>Riders</h2>
                 <div class="itemCard" style="background-color: green;">
                     <form action="riders.php#pform" method="POST">
                         <button type="submit" class="itemNumber formBtn" name="edit" value="new" style="background-color: green; width:100%;">
@@ -154,14 +155,9 @@
                                 ?> 
                             required>
                         </div>
-
-
-                        <button type="submit" name="change" value="False" class="logbtn">Annulla modifiche</button>
                         <button style="background-color: green;" type="submit" name="change" value="add" class="logbtn">Conferma nuovo rider</button>
-
                     </form>
                 </div>
-                <form action="home.php" id="exitForm"></form>
             </div>
         </div>
     </body>

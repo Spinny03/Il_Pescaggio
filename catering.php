@@ -61,11 +61,17 @@
             </a>
             <ul class="navItems" data-visible="false">
                 <a href="home.php" class="navLink">Delivery</a>
-                <a href="#" class="navLink" style="color: #4e60ff">Catering</a>
-                <a href="#" class="navLink">Ordini</a>
+                <a href="admin.php" class="navLink">Admin</a>
+                <a href="catering.php" class="navLink" style="color: #4e60ff">Catering</a>
+                <a href="orders.php" class="navLink">Ordini</a>
             </ul>
             
             <a href="cart.php" class="navBtn" id="shoppingCard">
+                <?php 
+                    if(!empty($bag["SUM(quantity)"])){
+                        echo '<span id="itemsNumber">'.$bag["SUM(quantity)"].'</span>';
+                    }
+                ?>
                 <img src="images/icons/blueBag.svg" alt="logo" id="shoppingSVG"> 
             </a>
             <a href="profile.php" class="navBtn" id="profileBtn">

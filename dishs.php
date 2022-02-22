@@ -95,8 +95,9 @@
             </a>
             <ul class="navItems" data-visible="false">
                 <a href="home.php" class="navLink">Delivery</a>
-                <a href="#" class="navLink">Catering</a>
-                <a href="#" class="navLink">Ordini</a>
+                <a href="admin.php" class="navLink" style="color: #4e60ff">Admin</a>
+                <a href="catering.php" class="navLink">Catering</a>
+                <a href="orders.php" class="navLink">Ordini</a>
             </ul>
             
             <a href="cart.php" class="navBtn" id="shoppingCard">

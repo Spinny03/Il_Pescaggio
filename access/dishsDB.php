@@ -59,8 +59,6 @@
             $sql = substr($sql, 0, -1);
             $conn->query("INSERT INTO dish SET ".$sql.";");
 
-
-            $addNewP = False;
             
             $sql = 'SELECT id FROM dish WHERE '.$sql.';';
             $sql = str_replace(","," AND ",$sql);

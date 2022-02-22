@@ -5,7 +5,7 @@
         exit("Connessione fallita: " . $conn->connect_error);
     }
     $conn->query("USE Il_Pescaggio");
-
+//non permettere ordine con carello vuoto
     $conn->query('INSERT INTO forder SET delivery=1 , idUser="'.$_SESSION["user"].'"');
     $order = $conn->query('SELECT id FROM forder WHERE delivery=1 ORDER BY dateAndTimePay DESC, idUser="'.$_SESSION["user"].'"  ');
     $order = mysqli_fetch_assoc($order);

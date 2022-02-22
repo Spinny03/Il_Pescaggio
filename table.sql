@@ -7,8 +7,8 @@ USE Il_Pescaggio;
 
 CREATE TABLE rider(
     id int PRIMARY KEY AUTO_INCREMENT,
-    nome varchar(255) NOT NULL,
-    cognome varchar(255) NOT NULL,
+    riderName varchar(255) NOT NULL,
+    riderSurame varchar(255) NOT NULL,
     available TINYINT(1),
     salary int,
     ordersDelivered int
@@ -86,3 +86,6 @@ INSERT INTO `dish`( `dishCost`, `description`, `gluten`, `lactose`, `dishName`, 
 INSERT INTO `dish`( `dishCost`, `description`, `gluten`, `lactose`, `dishName`, `dishType`, `photoLink`) VALUES (10,"DESCRIZIONE DEL PIATTO",1,1,"Tomahawk"         ,"meat","18.jpeg");
 INSERT INTO `dish`( `dishCost`, `description`, `gluten`, `lactose`, `dishName`, `dishType`, `photoLink`) VALUES (10,"DESCRIZIONE DEL PIATTO",1,1,"Spaghetti allo scoglio","fish","19.jpg");
 INSERT INTO `dish`( `dishCost`, `description`, `gluten`, `lactose`, `dishName`, `dishType`, `photoLink`) VALUES (10,"DESCRIZIONE DEL PIATTO",1,1,"Spaghetti al pomodoro","vegan","20.jpg");
+
+INSERT INTO `rider`( `riderName`, `riderSurame`, `available`) VALUES ("Mario","Rossi",1);
+INSERT INTO `rider`( `riderName`, `riderSurame`, `available`) VALUES ("Luigi","Blu",1);

@@ -7,7 +7,7 @@
     $conn->query("USE Il_Pescaggio");
 //non permettere ordine con carello vuoto
     $conn->query('INSERT INTO forder SET delivery=1 , idUser="'.$_SESSION["user"].'"');
-    $order = $conn->query('SELECT id FROM forder WHERE delivery=1 ORDER BY dateAndTimePay DESC, idUser="'.$_SESSION["user"].'"  ');
+    $order = $conn->query('SELECT id FROM forder WHERE delivery=1 ORDER BY dateAndTimePay DESC, idUser="'.$_SESSION["user"].'";');
     $order = mysqli_fetch_assoc($order);
     $newOrderID = $order["id"];
     $dishs = $conn->query('SELECT * FROM cart WHERE idUser="'.$_SESSION["user"].'" AND cart.catering = 0;');

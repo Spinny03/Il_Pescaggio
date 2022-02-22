@@ -75,50 +75,77 @@
         </nav>
             
         <div class="container">
+            <?php 
+                $allOrders = $conn->query('SELECT id FROM forder WHERE idUser="'.$_SESSION["user"].'";');
 
-            <div class="wrap-collabsible">
-                    <input id="collapsible2" class="toggle" type="checkbox">
-                    <label for="collapsible2" class="lbl-toggle">
-                        <div class="titleDiv">
-                            <img width="40px" height="40px" src="images/foodType/pizza.png" alt="pizza">
-                            <span>Pizza</span>
-                        </div>
-                    </label>
-                    <div class="collapsible-content">
-                        <div class="content-inner">
-                            <div class="dishDiv">
-                                <?php
-                                    $dishs = $conn->query('SELECT * FROM orderedfood WHERE idOrder=1;');
-                                    
-                                    while($row = $dishs->fetch_assoc()){
+                $i=2;
 
-                                        $cart = $conn->query('SELECT * FROM dish WHERE dish.id = cart.idDish AND cart.catering = 1;');
-                                        $cart = mysqli_fetch_assoc($cart);
-                                        $inCart = "";
-                                        if(!empty($cart["quantity"])){
-                                            $inCart = "cart";
-                                        }
+                while($rowBig = $allOrders->fetch_assoc()){
 
-                                        echo '  <div class="itemCard "'.$inCart.'>
-                                                    <div class="itemRight">
-                                                        <h3 class="itemName">'.htmlspecialchars($row['dishName']).'</h3>
-                                                    </div>
-                                                    <div class="itemLeft">
-                                                        <span style="margin-right: 10px; font-weight: bold;">'.htmlspecialchars($row['dishCost']).'€</span>
-                                                        <form id="addishForm" action="access/cateringDB.php" method="POST">
-                                                            <input type="hidden" name="catering" value="'.$inCart.'">
-                                                            <input type="hidden" name="dish" value="'.$row["id"].'">
-                                                            <input type ="checkbox" onChange="this.form.submit()"';
-                                                            if($inCart == "cart"){ echo 'checked'; $totalPrice =  $totalPrice + intval($row['dishCost']);}
-                                        echo '          ></form>
-                                                    </div>
-                                                </div>';
-                                    }
-                                ?>
+                $dateTime = $conn->query('SELECT * FROM forder WHERE id='.$rowBig["id"].';');
+                $dateTime = mysqli_fetch_assoc($dateTime);
+
+                echo'<div class="wrap-collabsible">
+                                <input id="collapsible'.$i.'" class="toggle" type="checkbox">
+                                <label for="collapsible'.$i.'" class="lbl-toggle">
+                                    <div class="titleDiv">
+                                        <img width="40px" height="40px" src="images/icons/';if($dateTime['delivery'] == 1){
+                                                echo 'delivery.svg';
+                                            }
+                                            else{
+                                                echo 'catering.svg';
+                                            }echo '" alt="pizza" style="margin-right:10px;">
+                                        <h3 class="itemName">Ordine del giorno: <span style="color:#F84F31">'.htmlspecialchars($dateTime['dateAndTimePay']).'</span> </h3>
+                                    </div>
+                                </label>
+                                <div class="collapsible-content">
+                                    <div class="content-inner">
+                                        <div class="dishDiv">';
+                    
+
+                    echo '  <div class="itemCard orderTime">
+                                    <h3 class="itemName"> Data compimento ordine: <span style="color:#4E60FF">'.htmlspecialchars($dateTime['dateAndTimePay']).'</span> </h3>
+                                    <h3 class="itemName">'; if($dateTime['delivery'] == 1){
+                                                            echo'<span style="color:#F84F31">delivery</span>';
+                                                        }
+                                                        else{
+                                                            echo'<span style="color:#23C552">catering</span>';
+                                                        } 
+                    echo        '</h3>
+                            </div>';
+                    
+                    $dishs = $conn->query('SELECT * FROM orderedfood WHERE idOrder='.$rowBig["id"].';');
+
+                    while($row = $dishs->fetch_assoc()){
+
+                        $cart = $conn->query('SELECT * FROM dish WHERE dish.id = '.$row["idDish"].';');
+                        $cart = mysqli_fetch_assoc($cart);
+                        $inCart = "";
+                        if(!empty($cart["quantity"])){
+                            $inCart = "cart";
+                        }
+
+                        echo '  <div class="itemCard "'.$inCart.'>
+                                    <div class="itemRight">
+                                        <h3 class="itemName">'.htmlspecialchars($cart['dishName']).'</h3>
+                                    </div>
+                                    <div class="itemLeft">
+                                        <span style="margin-right: 10px; font-weight: bold;">'.htmlspecialchars($cart['dishCost']).'€</span>
+                                    </div>
+                                </div>';
+                    }
+                    echo '    
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>  
+                    </div>';
+                    $i++;
+                }
+            ?>
+            
+                            
+
+            
+        </div>  
     </body>
 </html>

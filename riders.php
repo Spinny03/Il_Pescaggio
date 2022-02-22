@@ -12,20 +12,11 @@
     $bag = $conn->query('SELECT SUM(quantity) FROM cart WHERE idUser="'.$_SESSION["user"].'";');
     $bag = mysqli_fetch_assoc($bag);
     
-    if(isset($_POST["edit"]) && $_POST["edit"] != "new"){
-        $photoNewEs = False; 
-        $data = $conn->query('SELECT * FROM rider WHERE id="'.$_POST["edit"].'";');
-        $data = mysqli_fetch_assoc($data);
-        $dataID = $data['id'];
-        $dataName = $data["riderName"];
-        $dataSurname = $data["riderSurame"];
-    }
-    else{
-        $dataID = "new";
-        $dataName = "";
-        $dataSurname = "";
-        $photoNewEs = True;
-    }
+
+    $dataID = "new";
+    $dataName = "";
+    $dataSurname = "";
+    $photoNewEs = True;
     
     if(empty($dataPL)){
         $link = "images/icons/dish.png";
@@ -102,7 +93,7 @@
                 <div class="itemCard" style="background-color: green;">
                     <form action="riders.php#pform" method="POST">
                         <button type="submit" class="itemNumber formBtn" name="edit" value="new" style="background-color: green; width:100%;">
-                            Aggiungi Rider
+                            Aggiungi rider
                         </button>
                     </form>
                 </div>
@@ -115,17 +106,12 @@
                             <div class="itemCard">
                                 <div class="itemRight">
                                     <span class="itemNumber" style="background-color: #f3f4ff;"><img width="100%" height="100%" src="images/icons/profile.png" alt="pizza"></span>
-                                    <h3 class="itemName">'.htmlspecialchars($row['riderName']).' '.htmlspecialchars($row['riderSurame']).'</h3>
+                                    <h3 class="itemName">'.htmlspecialchars($row['riderName']).' '.htmlspecialchars($row['riderSurname']).'</h3>
                                 </div>
                                 <div class="itemLeft">
-                                    <form action="access/riders.php" method="POST">
+                                    <form action="access/ridersDB.php" method="POST">
                                         <button type="submit" class="itemNumber formBtn" name="del" value="'.$row["id"].'" style="background-color: white; margin-left:10px;">
                                             🗑️
-                                        </button>
-                                    </form>
-                                    <form action="riders.php#pform" method="POST">
-                                        <button type="submit" class="itemNumber formBtn" name="edit" value="'.$row["id"].'" style="background-color: white; margin-left:10px;margin-right:10px;">
-                                            📝
                                         </button>
                                     </form>
                                 </div>
@@ -171,14 +157,8 @@
 
 
                         <button type="submit" name="change" value="False" class="logbtn">Annulla modifiche</button>
-                        <?php 
-                        if(isset($_POST["edit"]) && $_POST["edit"] != "new"){
-                            echo '<button type="submit" name="change" value="True" class="logbtn">Salva le modifiche</button>';
-                        }
-                        else{
-                            echo '<button style="background-color: green;" type="submit" name="change" value="add" class="logbtn">Aggiungi piatto</button>';
-                        }
-                        ?>
+                        <button style="background-color: green;" type="submit" name="change" value="add" class="logbtn">Conferma nuovo rider</button>
+
                     </form>
                 </div>
                 <form action="home.php" id="exitForm"></form>

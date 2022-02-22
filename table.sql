@@ -8,7 +8,7 @@ USE Il_Pescaggio;
 CREATE TABLE rider(
     id int PRIMARY KEY AUTO_INCREMENT,
     riderName varchar(255) NOT NULL,
-    riderSurame varchar(255) NOT NULL,
+    riderSurname varchar(255) NOT NULL,
     available TINYINT(1),
     salary int,
     ordersDelivered int

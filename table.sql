@@ -62,6 +62,7 @@ CREATE TABLE cart(
     idUser varchar(255) NOT NULL REFERENCES username(email) ,
     idDish int NOT NULL REFERENCES dish(id) ,
     quantity int NOT NULL,
+    lastChange timestamp NOT NULL,
     catering TINYINT(1),
     primary key(idUser,idDish,catering)
 );

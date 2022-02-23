@@ -50,12 +50,11 @@
         if (move_uploaded_file($_FILES["pfile"]["tmp_name"], $target_file)) {
             $sql = "UPDATE username SET photoLink='".$_SESSION["user"] .".". $imageFileType. "' WHERE email='".$_SESSION["user"]."'";
             $conn->query($sql);
+            $oldname = "../images/userPhoto/".htmlspecialchars(basename( $_FILES["pfile"]["name"]));
+            $newname = "../images/userPhoto/".$_SESSION["user"] .".". $imageFileType;
+            rename($oldname, $newname);
         } 
     }
-
-    $oldname = "../images/userPhoto/".htmlspecialchars(basename( $_FILES["pfile"]["name"]));
-    $newname = "../images/userPhoto/".$_SESSION["user"] .".". $imageFileType;
-    rename($oldname, $newname);
 
     header("Location: ../profile.php");
     $conn->close();

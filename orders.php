@@ -81,7 +81,7 @@
             
         <div class="container">
             <?php 
-                $allOrders = $conn->query('SELECT id FROM forder WHERE idUser="'.$_SESSION["user"].'";');
+                $allOrders = $conn->query('SELECT id FROM forder WHERE idUser="'.$_SESSION["user"].'" ORDER BY dateAndTimePay DESC;');
 
                 $i=2;
 

@@ -9,7 +9,7 @@
         exit("Connessione fallita: " . $conn->connect_error);
     }
     $conn->query("USE Il_Pescaggio");
-    $bag = $conn->query('SELECT SUM(quantity) FROM cart WHERE idUser="'.$_SESSION["user"].'";');
+    $bag = $conn->query('SELECT SUM(quantity) FROM cart WHERE idUser="'.$_SESSION["user"].'" AND cart.catering = 0;');
     $bag = mysqli_fetch_assoc($bag);
     
     if(isset($_POST["edit"]) && $_POST["edit"] != "new"){
@@ -132,7 +132,7 @@
                     while($row = $result->fetch_assoc()){   
                         echo '  
                                     <div class="itemCard">
-                                        <div class="itemRight">
+                                        <div>
                                             <span class="itemNumber" style="background-color: #f3f4ff;"><img width="100%" height="100%" src="images/foodType/'.htmlspecialchars($row['dishType']).'.png" alt="pizza"></span>
                                             <h3 class="itemName">'.htmlspecialchars($row['dishName']).'</h3>
                                         </div>

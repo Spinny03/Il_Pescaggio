@@ -76,13 +76,10 @@
             <div class="left">
                 <h2>Articoli carrello</h2>
                 <?php 
-                    $sql = 'SELECT dish.dishName, quantity, dishCost, dish.id FROM `cart`, `dish` WHERE idUser="'.$_SESSION["user"].'" AND dish.id = cart.idDish AND cart.catering = 0;';
+                    $sql = 'SELECT dish.dishName, quantity, dishCost, dish.id FROM `cart`, `dish`  WHERE idUser="'.$_SESSION["user"].'" AND dish.id = cart.idDish AND cart.catering = 0  ORDER BY lastChange DESC;';
                     $result = $conn->query($sql); 
-
-                    //echo "<table>"; // start a table tag in the HTML
                     $totalPrice = 0;
                     while($row = $result->fetch_assoc()){   
-                    //echo "<tr><td>" . htmlspecialchars($row['dishName']) . "</td><td>" . htmlspecialchars($row['quantity']) . "</td></tr>"; 
                         echo '  <div class="itemCard">
                                     <div class="itemRight">
                                         <span class="itemNumber">'.htmlspecialchars($row['quantity']).'</span>

@@ -115,7 +115,7 @@
             <div class="dish">
                 <div class="cards">
                     <?php
-                        $dishs = $conn->query("SELECT * FROM dish;");
+                        $dishs = $conn->query("SELECT * FROM dish ORDER BY creationDate DESC;");
                         while($row = $dishs->fetch_assoc()){
                             $cart = $conn->query('SELECT quantity FROM cart, dish WHERE idUser="'.$_SESSION["user"].'" AND  dishName="'.$row["dishName"].'" AND dish.id = cart.idDish AND cart.catering = 0;');
                             $cart = mysqli_fetch_assoc($cart);

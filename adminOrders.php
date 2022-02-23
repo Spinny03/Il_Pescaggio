@@ -58,9 +58,9 @@
             </a>
             <ul class="navItems" data-visible="false">
                 <a href="home.php" class="navLink" >Delivery</a>
-                <a href="admin.php" class="navLink">Admin</a>
+                <a href="admin.php" class="navLink" style="color: #4e60ff">Admin</a>
                 <a href="catering.php" class="navLink">Catering</a>
-                <a href="orders.php" class="navLink" style="color: #4e60ff">Ordini</a>
+                <a href="orders.php" class="navLink">Ordini</a>
             </ul>
             
             <a href="cart.php" class="navBtn" id="shoppingCard">
@@ -81,11 +81,11 @@
             
         <div class="container">
             <?php 
-                $allOrders = $conn->query('SELECT id FROM forder WHERE idUser="'.$_SESSION["user"].'" ORDER BY dateAndTimePay DESC;');
+                $allOrders = $conn->query('SELECT id FROM forder WHERE ORDER BY dateAndTimePay DESC;');
                 $i=2;
 
                 while($rowBig = $allOrders->fetch_assoc()){
-                    $dateTime = $conn->query('SELECT * FROM forder WHERE id='.$rowBig["id"].';');
+                    $dateTime = $conn->query('SELECT * FROM forder WHERE;');
                     $dateTime = mysqli_fetch_assoc($dateTime);
 
                     echo'<div class="wrap-collabsible">
@@ -105,13 +105,13 @@
                                 <div class="content-inner">
                                     <div class="dishDiv">';
                     echo '              <div class="itemCard orderTime">
-                                            <h3 class="itemName"> Stato: <span style="color:#4E60FF">'.htmlspecialchars($dateTime['dateAndTimePay']).'</span> </h3>
-                                            <h3 class="itemName"> Consegna:'; 
-                                            if(isset($dateTime['dateAndTimeDelivered'])){
-                                                echo'<span style="color:#23C552">'.htmlspecialchars($dateTime['dateAndTimeDelivered']).'</span>';
+                                            <h3 class="itemName"> Data compimento ordine: <span style="color:#4E60FF">'.htmlspecialchars($dateTime['dateAndTimePay']).'</span> </h3>
+                                            <h3 class="itemName">'; 
+                                            if($dateTime['delivery'] == 1){
+                                                echo'<span style="color:#F84F31">delivery</span>';
                                             }
                                             else{
-                                                echo '<span style="color:#F84F31"> In consegna</span>';
+                                                echo'<span style="color:#23C552">catering</span>';
                                             } 
                     echo                    '</h3>
                                          </div>';

@@ -48,6 +48,12 @@ CREATE TABLE FOrder(
     idUser varchar(255) NOT NULL REFERENCES username(email),
     idRider int REFERENCES rider(id),
     reservations int,
+    firstName varchar(255),
+    surname varchar(255),
+    via varchar(255),
+    civ varchar(255),
+    cap varchar(255),
+    tel varchar(255),
     note varchar(255)
 );
 

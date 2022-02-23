@@ -10,7 +10,14 @@
     $cart = $conn->query($sql);
     $cart = mysqli_fetch_assoc($cart); 
     if(isset($cart["idDish"])){
-        $conn->query('INSERT INTO forder SET delivery=1 , idUser="'.$_SESSION["user"].'"');
+        $conn->query('INSERT INTO forder 
+                        SET delivery=1 ,
+                        idUser="'.$_SESSION["user"].'" ,  
+                        firstName="'.$_POST["name"].'" ,
+                        surname="'.$_POST["surname"].'"  , 
+                        via="'.$_POST["via"].'" , 
+                        civ="'.$_POST["civ"].'" , 
+                        cap="'.$_POST["cap"].'" ;');
         $order = $conn->query('SELECT id FROM forder WHERE delivery=1 ORDER BY dateAndTimePay DESC, idUser="'.$_SESSION["user"].'";');
         $order = mysqli_fetch_assoc($order);
         $newOrderID = $order["id"];

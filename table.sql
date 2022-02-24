@@ -6,7 +6,7 @@ CREATE DATABASE Il_Pescaggio;
 USE Il_Pescaggio;
 
 CREATE TABLE rider(
-    id int PRIMARY KEY AUTO_INCREMENT,
+    email varchar(255) PRIMARY KEY,
     riderName varchar(255) NOT NULL,
     riderSurname varchar(255) NOT NULL,
     available TINYINT(1),

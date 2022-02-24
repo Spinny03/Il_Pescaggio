@@ -129,6 +129,7 @@
 
                         echo '      <div class="itemCard "'.$inCart.'>
                                         <div class="itemRight">
+                                            <span class="itemNumber">'.htmlspecialchars($row['quantity']).'</span>
                                             <h3 class="itemName">'.htmlspecialchars($cart['dishName']).'</h3>
                                         </div>
                                         <div class="itemLeft">

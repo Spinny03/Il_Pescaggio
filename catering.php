@@ -352,7 +352,8 @@
 
             <div class="right">
                     <h2>Conferma dati</h2>
-                    <form action="home.php" method="POST">
+                    <form action="access/sendOrderDB.php" method="POST">
+                        <input type="hidden" name="fromCatering" value=1>
                         <div class="data" id="p50">
                             <label for="name"><b>Nome</b></label>
                             <input type="text" placeholder="Mario" name="name"
@@ -376,26 +377,26 @@
                         </div>
 
                         <div class="data" id="p50">
-                            <label for="via"><b>Data</b></label>
-                            <input type="date" placeholder="19/05/2003" name="via" 
+                            <label for="day"><b>Data</b></label>
+                            <input type="date" placeholder="19/05/2003" name="day" 
                             required>
                         </div>
 
                         <div class="data" id="p50">
-                            <label for="civ"><b>Ora</b></label>
-                            <input type="time" placeholder="" name="civ" 
+                            <label for="hours"><b>Ora</b></label>
+                            <input type="time" placeholder="" name="hours" 
                             required>
                         </div>
 
                         <div class="data" id="p100">
-                            <label for="cap"><b>Prenotazioni</b></label>
-                            <input type="text" placeholder="69" name="cap"  
+                            <label for="reservations"><b>Prenotazioni</b></label>
+                            <input type="text" placeholder="69" name="reservations"  
                             required>
                         </div>
 
                         <div class="data" id="p100">
                             <label for="nCard"><b>Richieste particolari</b></label>
-                            <textarea name="Text1" rows="6"></textarea>
+                            <textarea name="notes" rows="6"></textarea>
                         </div> 
 
                         <div class="priceRecap data" id="p100">

@@ -14,6 +14,9 @@
     if (!isset($_SESSION["typefood"])){
         $_SESSION["typefood"] = "pizza";
     }
+    if(isset($_SESSION["bigNews"]) && $_SESSION["bigNews"] == "news"){
+        $_SESSION["bigNews"] = "";
+    }
 ?>
 
 <!DOCTYPE html>

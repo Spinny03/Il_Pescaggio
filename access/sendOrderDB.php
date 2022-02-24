@@ -56,6 +56,7 @@
             }
         }
         $conn->close();
+        $_SESSION["bigNews"] = "news";
         header('Location: ../home.php');
         exit;
     }

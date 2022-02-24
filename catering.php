@@ -63,7 +63,13 @@
                 <a href="home.php" class="navLink">Delivery</a>
                 <a href="admin.php" class="navLink">Admin</a>
                 <a href="catering.php" class="navLink" style="color: #4e60ff">Catering</a>
-                <a href="orders.php" class="navLink">Ordini</a>
+                <a href="orders.php" class="navLink">Ordini                     
+                        <?php 
+                            if(isset($_SESSION["bigNews"]) && $_SESSION["bigNews"] == "news"){
+                                echo '<span id="bigNews"></span>';
+                            }
+                        ?>
+                    </a>
             </ul>
             
             <a href="cart.php" class="navBtn" id="shoppingCard">

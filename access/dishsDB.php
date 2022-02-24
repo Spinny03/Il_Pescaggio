@@ -10,13 +10,16 @@
         $result = $conn->query($delPhoto); 
         $result = mysqli_fetch_assoc($result);
         unlink("../images/PhotoDishes/".$result["photoLink"]);
-        $sql = 'DELETE dish FROM dish WHERE id="'.$_POST["del"].'";';
+        $sql = 'UPDATE dish SET visible=0 WHERE id="'.$_POST["del"].'";';
         $conn->query($sql); 
         $sql = 'DELETE FROM cart WHERE idDish="'.$_POST["del"].'";';
         $conn->query($sql); 
     }
     elseif(isset($_POST["change"]) && $_POST["change"]  == "True"){
         if(!empty($_POST["name"]) || !empty($_POST["price"]) || !empty($_POST["description"] || !empty($_POST["type"]))){
+            $delPhoto = 'SELECT photoLink FROM dish WHERE id="'.$_POST["idDish"].'";';
+            $result = $conn->query($delPhoto); 
+            $result = mysqli_fetch_assoc($result);
             $sql = "";
             if(!empty($_POST["name"])){
                 $sql .= 'dishName="'.$_POST["name"].'",';   
@@ -35,7 +38,19 @@
             }
 
             $sql = substr($sql, 0, -1);
-            $conn->query('UPDATE dish SET '.$sql.' WHERE id="'.$_POST["idDish"].'";');
+            $conn->query('UPDATE dish SET photoLink="", visible=0 WHERE id="'.$_POST["idDish"].'";');
+            $conn->query('INSERT INTO dish SET '.$sql.' , visible=1, photoLink="'.$result["photoLink"].'";');
+
+            $id = 'SELECT id FROM dish WHERE photoLink="'.$result["photoLink"].'";';
+            $id = $conn->query($id); 
+            $id = mysqli_fetch_assoc($id);
+
+            $oldname = "../images/PhotoDishes/".$result["photoLink"];
+            $imageFileType = strtolower(pathinfo($result["photoLink"], PATHINFO_EXTENSION));
+            $newname = "../images/PhotoDishes/".$id["id"].".". $imageFileType;
+            rename($oldname, $newname);
+            $conn->query('UPDATE dish SET photoLink="'.$id["id"].".". $imageFileType.'" WHERE id="'.$id["id"].'";');
+        
         }
     }
     elseif(isset($_POST["change"]) && $_POST["change"] == "add"){

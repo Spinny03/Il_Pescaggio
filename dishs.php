@@ -138,7 +138,7 @@
                     </form>
                 </div>
                 <?php 
-                    $sql = 'SELECT * FROM dish ORDER BY creationDate DESC;';
+                    $sql = 'SELECT * FROM dish WHERE visible=1 ORDER BY creationDate DESC;';
                     $result = $conn->query($sql); 
                     $totalPrice = 0;
                     while($row = $result->fetch_assoc()){   

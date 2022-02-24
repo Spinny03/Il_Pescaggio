@@ -67,6 +67,7 @@
     padding: 2em;
     /*border-radius: calc(var(--curve) * 1px) 0 0 0; */   
     width: 18.75rem;
+    overflow-x: hidden;
     overflow-y: scroll;
   }
   

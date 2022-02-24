@@ -56,17 +56,18 @@
     background-color: #f8f9ff;
     display: flex;
     min-height: 9rem;
+    height: 40%;
   }
   
   
   .card__header {
     position: relative;
     display: flex;
-    align-items: center;
     gap: 2em;
     padding: 2em;
     /*border-radius: calc(var(--curve) * 1px) 0 0 0; */   
     width: 18.75rem;
+    overflow-y: scroll;
   }
   
 .divPrice{

@@ -139,7 +139,7 @@
                                     }
                             echo'   <div class="card__overlay '.$inCart.'">
                                         <div class="card__header">               
-                                            <div class="card__header-text">
+                                            <div class="card__header-text" style="height:scroll;">
                                                 <h3 class="card__title">'.$row["dishName"].'</h3>
                                                 <p>'.$row["description"].'</p>                  
                                             </div>

@@ -7,6 +7,7 @@ USE Il_Pescaggio;
 
 CREATE TABLE rider(
     email varchar(255) PRIMARY KEY,
+    pasw varchar(255) NOT NULL,
     riderName varchar(255) NOT NULL,
     riderSurname varchar(255) NOT NULL,
     available TINYINT(1),
@@ -94,5 +95,6 @@ INSERT INTO `dish`( `dishCost`, `description`, `gluten`, `lactose`, `dishName`, 
 INSERT INTO `dish`( `dishCost`, `description`, `gluten`, `lactose`, `dishName`, `dishType`, `photoLink`) VALUES (10,"DESCRIZIONE DEL PIATTO",1,1,"Spaghetti allo scoglio","fish","19.jpg");
 INSERT INTO `dish`( `dishCost`, `description`, `gluten`, `lactose`, `dishName`, `dishType`, `photoLink`) VALUES (10,"DESCRIZIONE DEL PIATTO",1,1,"Spaghetti al pomodoro","vegan","20.jpg");
 
-INSERT INTO `rider`( `riderName`, `riderSurname`, `available`) VALUES ("Mario","Rossi",1);
-INSERT INTO `rider`( `riderName`, `riderSurname`, `available`) VALUES ("Luigi","Blu",1);
+INSERT INTO `rider`(`email`, `pasw`, `riderName`, `riderSurname`, `available`) VALUES ("mario.rossi@esempio.it","19513fdc9da4fb72a4a05eb66917548d3c90ff94d5419e1f2363eea89dfee1dd","Mario","Rossi",1);
+INSERT INTO `rider`(`email`, `pasw`, `riderName`, `riderSurname`, `available`) VALUES ("luigi.blu@esempio.it","19513fdc9da4fb72a4a05eb66917548d3c90ff94d5419e1f2363eea89dfee1dd","Luigi","Blu",1);
+INSERT INTO `username` (`email`, `firstName`, `surname`, `registrationDate`, `nCard`, `via`, `civ`, `cap`, `tel`, `photoLink`, `pasw`) VALUES('filippo.spinella.2003@calvino.edu.it', 'Filippo', 'Spinella', '2022-02-24 11:53:43', '0123 4567 7890', 'via Sestri', '17/11', '16154', '1234567891', 'filippo.spinella.2003@calvino.edu.it.jpg', '19513fdc9da4fb72a4a05eb66917548d3c90ff94d5419e1f2363eea89dfee1dd');

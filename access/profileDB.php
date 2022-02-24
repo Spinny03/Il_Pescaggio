@@ -61,8 +61,7 @@
         if(!empty($_POST["changPasw"])){
             $sql .= 'changPasw="'.hash("sha256",$_POST["changPasw"]).'", ';
         }
-        $sql = substr($sql, 0, -1);
-        $sql .= ' WHERE email="'.$_SESSION["user"].'"';
+        $sql .= ' registrationDate=registrationDate WHERE email="'.$_SESSION["user"].'"';
         echo $sql;
         $conn->query($sql);
     }

@@ -12,12 +12,6 @@
     $bag = $conn->query('SELECT SUM(quantity) FROM cart WHERE idUser="'.$_SESSION["user"].'" AND cart.catering = 0;');
     $bag = mysqli_fetch_assoc($bag);
     
-
-    $dataID = "new";
-    $dataName = "";
-    $dataSurname = "";
-    $photoNewEs = True;
-    
     if(empty($dataPL)){
         $link = "images/icons/dish.png";
     }
@@ -91,15 +85,8 @@
         <div class="container">
             <div class="left">
                 <h2>Riders</h2>
-                <div class="itemCard" style="background-color: green;">
-                    <form action="riders.php#pform" method="POST">
-                        <button type="submit" class="itemNumber formBtn" name="edit" value="new" style="background-color: green; width:100%;">
-                            Aggiungi rider
-                        </button>
-                    </form>
-                </div>
                 <?php 
-                    $sql = 'SELECT * FROM rider ORDER BY id DESC;';
+                    $sql = 'SELECT * FROM rider ORDER BY riderName DESC;';
                     $result = $conn->query($sql); 
                     $totalPrice = 0;
                     while($row = $result->fetch_assoc()){   
@@ -111,7 +98,7 @@
                                 </div>
                                 <div class="itemLeft">
                                     <form action="access/ridersDB.php" method="POST">
-                                        <button type="submit" class="itemNumber formBtn" name="del" value="'.$row["id"].'" style="background-color: white; margin-left:10px;">
+                                        <button type="submit" class="itemNumber formBtn" name="del" value="'.$row["email"].'" style="background-color: white; margin-left:10px;">
                                             🗑️
                                         </button>
                                     </form>
@@ -124,38 +111,28 @@
             </div>
 
             <div class="right">
-                <?php 
-                if($photoNewEs){
-                    echo "<h2>Aggiungi nuovo rider</h2>";
-                }
-                else{
-                    echo "<h2>Conferma dati rider</h2>";
-                }?>
+                <h2>Aggiungi nuovo rider</h2>
                 <div class="pSettings">
                     <form action="access/ridersDB.php" method="POST" >
-                        <input type="hidden" name="idRider" value="<?php echo $dataID;?>">
+                        <input type="hidden" name="idRider" value="new">
                         <div class="data" id="p50">
                             <label for="name"><b>Nome</b></label>
-                            <input type="text" placeholder="Mario" name="name"
-                                <?php
-                                    if(isset($dataName)){
-                                        echo "value='".$dataName."'";
-                                    }
-                                ?> 
-                            required>
+                            <input type="text" placeholder="Mario" name="name" required>
                         </div>
 
                         <div class="data" id="p50">
                             <label for="surname"><b>Cognome</b></label>
-                            <input type="text" placeholder="Rossi" name="surname"
-                                <?php
-                                    if(isset($dataSurname)){
-                                        echo "value='".$dataSurname."'";
-                                    }
-                                ?> 
-                            required>
+                            <input type="text" placeholder="Rossi" name="surname" required>
                         </div>
-                        <button style="background-color: green;" type="submit" name="change" value="add" class="logbtn">Conferma nuovo rider</button>
+                        <div class="data" id="p50">
+                            <label for="email"><b>Email</b></label>
+                            <input type="text" placeholder="mario.rossi@esempio.it" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                        </div>
+                        <div class="data" id="p50">
+                            <label for="pasw"><b>Password</b></label>
+                            <input type="text" placeholder="Mario" name="pasw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Deve contenere almeno un numero e una lettera maiuscola e minuscola e almeno 8 o più caratteri" minlength="8" required>
+                        </div>
+                        <button style="background-color: green;" type="submit" name="change" class="logbtn">Conferma nuovo rider</button>
                     </form>
                 </div>
             </div>

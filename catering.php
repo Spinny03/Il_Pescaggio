@@ -24,7 +24,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -108,7 +108,7 @@
                         <div class="content-inner">
                             <div class="dishDiv">
                                 <?php
-                                    $dishs = $conn->query('SELECT * FROM dish WHERE dishType="pizza";');
+                                    $dishs = $conn->query('SELECT * FROM dish WHERE dishType="pizza" AND visible=1;');
                                     
                                     while($row = $dishs->fetch_assoc()){
 
@@ -152,7 +152,7 @@
                         <div class="content-inner">
                             <div class="dishDiv">
                                 <?php
-                                    $dishs = $conn->query('SELECT * FROM dish WHERE dishType="burger";');
+                                    $dishs = $conn->query('SELECT * FROM dish WHERE dishType="burger" AND visible=1;');
                                     
                                     while($row = $dishs->fetch_assoc()){
 
@@ -196,7 +196,7 @@
                         <div class="content-inner">
                             <div class="dishDiv">
                                 <?php
-                                    $dishs = $conn->query('SELECT * FROM dish WHERE dishType="meat";');
+                                    $dishs = $conn->query('SELECT * FROM dish WHERE dishType="meat" AND visible=1;');
                                     
                                     while($row = $dishs->fetch_assoc()){
 
@@ -240,7 +240,7 @@
                         <div class="content-inner">
                             <div class="dishDiv">
                                 <?php
-                                    $dishs = $conn->query('SELECT * FROM dish WHERE dishType="fish";');
+                                    $dishs = $conn->query('SELECT * FROM dish WHERE dishType="fish" AND visible=1;');
                                     
                                     while($row = $dishs->fetch_assoc()){
 
@@ -284,7 +284,7 @@
                         <div class="content-inner">
                             <div class="dishDiv">
                                 <?php
-                                    $dishs = $conn->query('SELECT * FROM dish WHERE dishType="vegan";');
+                                    $dishs = $conn->query('SELECT * FROM dish WHERE dishType="vegan" AND visible=1;');
                                     
                                     while($row = $dishs->fetch_assoc()){
 
@@ -328,7 +328,7 @@
                         <div class="content-inner">
                             <div class="dishDiv">
                                 <?php
-                                    $dishs = $conn->query('SELECT * FROM dish WHERE dishType="desserts";');
+                                    $dishs = $conn->query('SELECT * FROM dish WHERE dishType="desserts" AND visible=1;');
                                     
                                     while($row = $dishs->fetch_assoc()){
 

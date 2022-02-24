@@ -10,7 +10,7 @@
         $result = $conn->query($delPhoto); 
         $result = mysqli_fetch_assoc($result);
         unlink("../images/PhotoDishes/".$result["photoLink"]);
-        $sql = 'UPDATE dish SET visible=0 WHERE id="'.$_POST["del"].'";';
+        $sql = 'UPDATE dish SET visible=0, photoLink="" WHERE id="'.$_POST["del"].'";';
         $conn->query($sql); 
         $sql = 'DELETE FROM cart WHERE idDish="'.$_POST["del"].'";';
         $conn->query($sql); 

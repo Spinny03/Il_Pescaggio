@@ -1,9 +1,16 @@
 <?php 
     session_start(); 
-    if(!isset($_SESSION["user"]) || empty($_SESSION["user"])){
+    if(empty($_SESSION["user"]) && empty($_COOKIE["user"])){
         header("Location: index.php");
         exit();
     }
+    
+    if(empty($_SESSION["user"]) || empty($_SESSION["user"])){
+        if(isset($_COOKIE["user"])){
+            $_SESSION["user"] = $_COOKIE["user"];
+        }
+    }
+    
     $conn = new mysqli("localhost", "root", "");  
     if ($conn->connect_error){
         exit("Connessione fallita: " . $conn->connect_error);

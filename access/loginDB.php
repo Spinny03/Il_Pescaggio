@@ -22,6 +22,11 @@
         $result2 = mysqli_fetch_assoc($result2);
         
         if($result2['pasw'] == $psw ){
+            if(isset($_POST["remember"]) && $_POST["remember"]==1){
+                $cookie_name = "user";
+                $cookie_value = $email;
+                setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); 
+            } 
             header("Location: ../home.php");
         }
         else{

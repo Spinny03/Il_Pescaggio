@@ -1,5 +1,12 @@
 <?php 
     session_start(); 
+    if(!empty($_SESSION["user"]) || !empty($_COOKIE["user"])){
+        if(!empty($_COOKIE["user"]) && empty($_SESSION["user"])){
+            $_SESSION["user"] = $_COOKIE["user"];
+        }
+        header("Location: home.php");
+        exit();
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -48,7 +55,7 @@
 
                         <label for="psw"><b>Password</b></label>
                         <input type="password" placeholder="min. 8 caratteri" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Deve contenere almeno un numero e una lettera maiuscola e minuscola e almeno 8 o più caratteri" required>
-                        <label><input type="checkbox" id="remember" name="remember"><a id="labelCheck">Ricordami su questo dispositivo</a></label>
+                        <label><input type="checkbox" id="remember" value="1" name="remember"><a id="labelCheck">Ricordami su questo dispositivo</a></label>
                         <button type="submit" name="login" class="logbtn">Accedi</button>
                     </form>
                     <div class="pswDiv">

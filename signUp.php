@@ -1,5 +1,12 @@
 <?php 
-    session_start();    
+    session_start();   
+    if(isset($_SESSION["user"]) || isset($_COOKIE["user"])){
+        if(isset($_COOKIE["user"]) && empty($_SESSION["user"])){
+            $_SESSION["user"] = $_COOKIE["user"];
+        }
+        header("Location: home.php");
+        exit();
+    }
 ?>
 <!DOCTYPE html>
 <html>

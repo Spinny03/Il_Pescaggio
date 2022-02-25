@@ -1,7 +1,7 @@
 <?php 
     session_start();   
-    if(isset($_SESSION["user"]) || isset($_COOKIE["user"])){
-        if(isset($_COOKIE["user"]) && empty($_SESSION["user"])){
+    if(!empty($_SESSION["user"]) || !empty($_COOKIE["user"])){
+        if(!empty($_COOKIE["user"]) && empty($_SESSION["user"])){
             $_SESSION["user"] = $_COOKIE["user"];
         }
         header("Location: home.php");
@@ -48,8 +48,8 @@
                         <label for="email"><b>Email</b></label>
                         <input type="text" placeholder="nome@esempio.com" name="email" 
                             <?php
-                                if(isset($_SESSION["user"])){
-                                    echo "value='".$_SESSION["user"]."'";
+                                if(isset($_SESSION["userLogin"])){
+                                    echo "value='".$_SESSION["userLogin"]."'";
                                 }
                             ?> 
                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>

@@ -9,7 +9,7 @@
 
 
     $email = $_POST["email"];
-    $_SESSION["user"] = $email;
+    $_SESSION["userLogin"] = $email;
     $psw = $_POST["psw"];
     $checkPsw = $_POST["Cpsw"];
 
@@ -17,7 +17,7 @@
     $result = mysqli_fetch_assoc($result);
 
     if($result['email'] == $email){
-        $_SESSION["user"] = "";
+        $_SESSION["userLogin"] = "";
         $_SESSION["exist"]=true;
         header("Location: ../signUp.php");
         $conn->close();

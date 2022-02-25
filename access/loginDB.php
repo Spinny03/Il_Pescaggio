@@ -9,7 +9,7 @@
 
 
     $email = $_POST["email"];
-    $_SESSION["user"] = $email;
+    $_SESSION["userLogin"] = $email;
     $psw = hash("sha256",$_POST["psw"]);
 
     //doppia query almeno possiamo dare come feedback l'errore se username o pasw 
@@ -27,6 +27,7 @@
                 $cookie_value = $email;
                 setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); 
             } 
+            $_SESSION["user"] = $email;
             header("Location: ../home.php");
         }
         else{

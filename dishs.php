@@ -130,13 +130,12 @@
         <div class="container">
             <div class="left">
                 <h2>Piatti nel menu</h2>
-                <div class="itemCard" style="background-color: green;">
                     <form action="dishs.php#pform" method="POST">
-                        <button type="submit" class="itemNumber formBtn" name="edit" value="new" style="background-color: green; width:100%;">
-                            Aggiungi Piatto al menu
+                        <button type="submit" class="itemCard addDish" name="edit" value="new">
+                        <h3 class="itemName" style="color: white;">Aggiungi Piatto al menu</h3>
+                            
                         </button>
                     </form>
-                </div>
                 <?php 
                     $sql = 'SELECT * FROM dish WHERE visible=1 ORDER BY creationDate DESC;';
                     $result = $conn->query($sql); 

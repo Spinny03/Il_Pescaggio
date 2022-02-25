@@ -29,6 +29,8 @@
     font-weight: bold;
 }
 
+
+
 .choice.active {
     color: #4e60ff;
     background-color: #f3f4ff;
@@ -61,7 +63,12 @@
     border: 1px solid #C7C8D2;
     border-radius: 8px;
 }
-
+.addDish{
+    background-color: green; 
+    font-family:'nunito';
+    justify-content: center;
+    cursor: pointer;
+}
 .itemNumber{
     display: inline-block;
     background-color: #4E60FF;

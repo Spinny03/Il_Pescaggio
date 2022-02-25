@@ -93,28 +93,28 @@
             <div class="chooseDish">  
 
                 <button class="choice" id="pizza" onclick="filterSelection('pizza')">
-                    <img width="20%" height="40%" src="images/foodType/pizza.png" alt="pizza">
+                    <img width="30px" height="30px" src="images/foodType/pizza.png" alt="pizza">
                     <p>Pizza</p>
                 </button>
                 
                 <button class="choice" id="burger" onclick="filterSelection('burger')"> 
-                    <img width="20%" height="40%" src="images/foodType/burger.png" alt="burger">
+                    <img width="30px" height="30px" src="images/foodType/burger.png" alt="burger">
                     <p>Burger</p>
                 </button>
                 <button class="choice" id="meat" onclick="filterSelection('meat')"> 
-                    <img width="20%" height="40%" src="images/foodType/meat.png" alt="carne">
+                    <img width="30px" height="30px" src="images/foodType/meat.png" alt="carne">
                     <p>Carne</p>
                 </button>
                 <button class="choice" id="fish" onclick="filterSelection('fish')"> 
-                    <img width="20%" height="40%" src="images/foodType/fish.png" alt="pesce">
+                    <img width="30px" height="30px" src="images/foodType/fish.png" alt="pesce">
                     <p>Pesce</p>
                 </button>
                 <button class="choice" id="vegan"  onclick="filterSelection('vegan')"> 
-                    <img width="20%" height="40%" src="images/foodType/vegan.png" alt="vegano">
+                    <img width="30px" height="30px" src="images/foodType/vegan.png" alt="vegano">
                     <p>Vegano</p>
                 </button>
                 <button class="choice" id="desserts" onclick="filterSelection('desserts')"> 
-                    <img width="20%" height="40%"  src="images/foodType/desserts.png" alt="dolci">
+                    <img width="30px" height="30px"  src="images/foodType/desserts.png" alt="dolci">
                     <p>Dolci</p>
                 </button>
             </div>

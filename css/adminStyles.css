@@ -1,0 +1,22 @@
+.adminSetting{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    height: 100%;
+    width: 80%;
+    border: 1px solid #EDEEF2;
+    background-color: white;
+    padding: 10px;
+    border-radius: 16px;
+}
+.containerAdmin{
+    display: grid;
+    grid-template-rows: 50% 50% 50% 50%;
+    width: calc(100vw - (100vw - 100%));
+    gap: 24px;
+}
+@media screen and (max-width: 660px) {
+    .pSettings{
+        width: 90%;
+    }
+}

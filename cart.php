@@ -91,7 +91,9 @@
                     $sql = 'SELECT dish.dishName, quantity, dishCost, dish.id FROM `cart`, `dish`  WHERE idUser="'.$_SESSION["user"].'" AND dish.id = cart.idDish AND cart.catering = 0  ORDER BY lastChange DESC;';
                     $result = $conn->query($sql); 
                     $totalPrice = 0;
-                    while($row = $result->fetch_assoc()){   
+                    $clear = True;
+                    while($row = $result->fetch_assoc()){ 
+                        $clear = False;  
                         echo '  <div class="itemCard">
                                     <div class="itemRight">
                                         <span class="itemNumber">'.htmlspecialchars($row['quantity']).'</span>
@@ -116,6 +118,14 @@
                                 </div>';
                         $totalPrice =  $totalPrice + intval(htmlspecialchars($row['dishCost'])*intval(htmlspecialchars($row['quantity'])));
                     }
+                    if($clear){
+                        echo '  <div class="itemCard" style="color:#ff0000;">
+                                    <div class="itemRight">
+                                        <h3 class="itemName" style="color:#ff0000;">Carrello vuoto</h3>
+                                    </div>                       
+                                </div>';
+                    }
+
                 ?>
 
             </div>

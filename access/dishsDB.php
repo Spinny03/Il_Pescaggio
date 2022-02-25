@@ -72,7 +72,7 @@
                 $sql .= 'dishType="'.$_POST["type"].'",';
             }
             $sql = substr($sql, 0, -1);
-            $conn->query("INSERT INTO dish SET ".$sql.";");
+            $conn->query("INSERT INTO dish SET visible=1, ".$sql.";");
 
             
             $sql = 'SELECT id FROM dish WHERE '.$sql.';';

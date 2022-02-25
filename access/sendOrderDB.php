@@ -1,5 +1,4 @@
 <?php 
- echo "prova";
     session_start(); 
     $conn = new mysqli("localhost", "root", "");
     if ($conn->connect_error){
@@ -17,18 +16,22 @@
     $cart = mysqli_fetch_assoc($cart); 
     if(isset($cart["idDish"])){
         if(isset($_POST["fromCatering"])){
+            $data = $_POST["day"];
+            $time = $_POST["hours"].":00";
+            $date = $data ." ".$time;
             $conn->query('INSERT INTO forder 
-                            SET delivery=0 ,
+                            SET delivery=0,
                             idUser="'.$_SESSION["user"].'" ,  
                             firstName="'.$_POST["name"].'" ,
                             surname="'.$_POST["surname"].'"  , 
                             reservations="'.$_POST["reservations"].'" , 
-                            note="'.$_POST["notes"].'" ;');
+                            note="'.$_POST["notes"].'",
+                            dateAndTimeDelivered="'.$date.'" ;');
             $order = $conn->query('SELECT id FROM forder WHERE delivery=0 ORDER BY dateAndTimePay DESC, idUser="'.$_SESSION["user"].'";');
         }
         else{
             $conn->query('INSERT INTO forder 
-                            SET delivery=1 ,
+                            SET delivery=1,
                             idUser="'.$_SESSION["user"].'" ,  
                             firstName="'.$_POST["name"].'" ,
                             surname="'.$_POST["surname"].'"  , 
@@ -70,4 +73,3 @@
         }
         exit; 
     }
-?>

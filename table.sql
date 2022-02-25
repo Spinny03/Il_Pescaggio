@@ -1,5 +1,5 @@
 /*
-ALTER SESSION SET NLS_DATE_FORMAT = 'DD-MM-YYYY HH24:MI:SS';
+ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD HH24:MI:SS';
 */
 
 CREATE DATABASE Il_Pescaggio;
@@ -100,3 +100,4 @@ INSERT INTO `rider`(`email`, `pasw`, `riderName`, `riderSurname`, `available`) V
 INSERT INTO `rider`(`email`, `pasw`, `riderName`, `riderSurname`, `available`) VALUES ("luigi.blu@esempio.it","19513fdc9da4fb72a4a05eb66917548d3c90ff94d5419e1f2363eea89dfee1dd","Luigi","Blu",1);
 INSERT INTO `username` (`email`, `firstName`, `surname`, `registrationDate`, `nCard`, `via`, `civ`, `cap`, `tel`, `photoLink`, `pasw`) VALUES('filippo.spinella.2003@calvino.edu.it', 'Filippo', 'Spinella', '2022-02-24 11:53:43', '0123 4567 7890', 'via Sestri', '17/11', '16154', '1234567891', 'filippo.spinella.2003@calvino.edu.it.jpg', '19513fdc9da4fb72a4a05eb66917548d3c90ff94d5419e1f2363eea89dfee1dd');
 INSERT INTO `username` (`email`, `firstName`, `surname`, `registrationDate`, `nCard`, `via`, `civ`, `cap`, `tel`, `photoLink`, `pasw`) VALUES('filippo.spinella2003@hotmail.com', 'Filippo', 'Spinella', '2022-02-24 11:53:43', '0123 4567 7890', 'via Sestri', '17/11', '16154', '1234567891', 'filippo.spinella2003@hotmail.com.jpg', '19513fdc9da4fb72a4a05eb66917548d3c90ff94d5419e1f2363eea89dfee1dd');
+INSERT INTO `username` (`email`, `firstName`, `surname`, `registrationDate`, `nCard`, `via`, `civ`, `cap`, `tel`, `photoLink`, `pasw`) VALUES ('barle.ale@gmail.com', 'Alessio', 'Barletta', '2022-02-25 10:08:50', '1234 1234 1234', 'via San Giovanni Battista', '12/89', '16654', '3333333333', 'barle.ale@gmail.com.jpg', '267f761ffdb09daa1d2ff11dc825dc94edd53a086b410972e6a0d6826b020c54');

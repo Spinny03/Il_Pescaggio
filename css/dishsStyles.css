@@ -129,7 +129,7 @@
 }
 
 .pSettings{
-    height: calc(100vh - 160px);
+    height: 90%;
     margin-left: auto;
     margin-right: auto;
     width: 90%;
@@ -199,7 +199,7 @@ input{
     padding-left: 10px;
 }
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1500px) {
     #p25{
         width: 50%;
     }
@@ -224,6 +224,7 @@ input{
         justify-items: center;
         gap: 16px;
         width: 60%;
+        overflow-x: hidden;
     }
     .choice{
         height: 80px;
@@ -233,6 +234,9 @@ input{
         align-items: center;
         border-radius: 16px;
         border: 1px solid #EDEEF2;
+    }
+    .pSettings{
+        height: 95%;
     }
 }
 
@@ -256,7 +260,7 @@ input{
     }
     .pSettings{
         width: 90%;
-        height: calc(100vh + 80px);
+        height: 100%;
     }
     .chooseDish{
         width: 100%;
@@ -289,6 +293,13 @@ input{
 
 @media screen and (max-width: 900px) {
     .chooseDish{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .chooseDish{
+        grid-template-columns: 1fr 1fr;
         width: 100%;
     }
 }

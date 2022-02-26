@@ -3,12 +3,34 @@
 .container{
     display:block;
     height: auto;
-    margin-left: 15px;
-    margin-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
 }
 
 .orderTime{
     justify-content:center;
     align-items: center;
     gap: 20px;
+}
+
+.itemCard{
+    margin-top: 8px;
+   /* margin: 0;
+    border: 0;
+    width: 100%;
+    border-radius: 0px;*/
+}
+
+/*.content-inner{
+    padding: 0 !important;
+}*/
+
+.collapsible-content .content-inner {
+    padding-top: 1px;
+    /*border-left: 2px solid #ddd !important;
+    border-right: 2px solid #ddd !important;
+    border-bottom: 2px solid #ddd !important;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;*/
 }

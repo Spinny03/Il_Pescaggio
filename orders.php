@@ -114,10 +114,10 @@
                                 <div class="content-inner">
                                     <div class="dishDiv">';
                     echo '              <div class="itemCard orderTime">
-                                            <h3 class="itemName"> Stato: <span style="color:#4E60FF">'.htmlspecialchars($dateTime['dateAndTimePay']).'</span> </h3>
+                                            
                                             <h3 class="itemName"> Consegna:'; 
                                             if(isset($dateTime['dateAndTimeDelivered'])){
-                                                echo'<span style="color:#23C552">'.htmlspecialchars($dateTime['dateAndTimeDelivered']).'</span>';
+                                                echo'<span style="color:#23C552"> '.htmlspecialchars($dateTime['dateAndTimeDelivered']).'</span>';
                                             }
                                             else{
                                                 echo '<span style="color:#F84F31"> In consegna</span>';
@@ -126,6 +126,8 @@
                                          </div>';
                         
                     $dishs = $conn->query('SELECT * FROM orderedfood WHERE idOrder='.$rowBig["id"].';');
+
+                    $totalPrice = 0;
 
                     while($row = $dishs->fetch_assoc()){
 
@@ -145,7 +147,32 @@
                                             <span style="margin-right: 10px; font-weight: bold;">'.htmlspecialchars($cart['dishCost']).'€</span>
                                         </div>
                                     </div>';
+                                    $totalPrice += $cart['dishCost'] * $row['quantity'];
                     }
+
+                    if($dateTime["delivery"] == 0){
+                        $totalPrice = $totalPrice * $dateTime["reservations"];
+                        echo '      <div class="itemCard">
+                                        <div class="itemRight">
+                                            <h3 class="itemName"> numero prenotazioni: <span style="font-weight: bold; color: green">'.htmlspecialchars($dateTime['reservations']).'</span></h3>
+                                        </div>
+                                        <div class="itemLeft">
+                                            <h3 class="itemName">totale: <span style="margin-right: 10px; font-weight: bold;color: red">'.$totalPrice.'€</span></h3>
+                                        </div>
+                                    </div>';
+                    }
+                    else{
+                        $totalPrice += 10;
+                        echo '      <div class="itemCard">
+                                        <div class="itemRight">
+                                            <h3 class="itemName"> indirizzo di spedizione: <span style="font-weight: bold; color: green">'.htmlspecialchars($dateTime['via']).' '.htmlspecialchars($dateTime['civ']).'</span></h3>
+                                        </div>
+                                        <div class="itemLeft">
+                                            <h3 class="itemName">totale: <span style="margin-right: 10px; font-weight: bold;color: red">'.$totalPrice.'€</span></h3>
+                                        </div>
+                                    </div>';
+                    }
+
                     echo '    
                                 </div>
                             </div>

@@ -34,7 +34,6 @@ input[type="checkbox"] {
     width: 25px;
     height: 25px;
     vertical-align: middle;
-    transform: translateY(-2px);
     transition: transform 0.2s ease-out;
   }
   .toggle:checked + .lbl-toggle::after {
@@ -53,7 +52,7 @@ input[type="checkbox"] {
     border-bottom-left-radius: 0;
   }
   .collapsible-content .content-inner {
-    background: rgba(0, 105, 255, 0.2);
+    background: #ddd;
     border-bottom: 1px solid rgba(0, 105, 255, 0.45);
     border-bottom-left-radius: 7px;
     border-bottom-right-radius: 7px;

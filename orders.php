@@ -90,24 +90,23 @@
             
         <div class="container">
             <?php 
-                $allOrders = $conn->query('SELECT id FROM forder WHERE idUser="'.$_SESSION["user"].'" ORDER BY dateAndTimePay DESC;');
+                $allOrders = $conn->query('SELECT * FROM forder WHERE idUser="'.$_SESSION["user"].'" ORDER BY dateAndTimePay DESC;');
                 $i=2;
 
                 while($rowBig = $allOrders->fetch_assoc()){
-                    $dateTime = $conn->query('SELECT * FROM forder WHERE id='.$rowBig["id"].';');
-                    $dateTime = mysqli_fetch_assoc($dateTime);
 
                     echo'<div class="wrap-collabsible">
                             <input id="collapsible'.$i.'" class="toggle" type="checkbox">
                             <label for="collapsible'.$i.'" class="lbl-toggle">
                                 <div class="titleDiv">
-                                    <img width="40px" height="40px" src="images/icons/';if($dateTime['delivery'] == 1){
+                                    <img width="40px" height="40px" src="images/icons/';
+                                    if($rowBig['delivery'] == 1){
                                             echo 'delivery.svg';
                                         }
                                         else{
                                             echo 'catering.svg';
-                                        }echo '" alt="pizza" style="margin-right:10px;">
-                                    <h3 class="itemName">Ordine del giorno: <span style="color:#F84F31">'.htmlspecialchars($dateTime['dateAndTimePay']).'</span> </h3>
+                                        }echo '" alt="icon" style="margin-right:10px;">
+                                    <h3 class="itemName">Ordine del giorno: <span style="color:#F84F31">'.htmlspecialchars($rowBig['dateAndTimePay']).'</span> </h3>
                                 </div>
                             </label>
                             <div class="collapsible-content">
@@ -116,8 +115,8 @@
                     echo '              <div class="itemCard orderTime">
                                             
                                             <h3 class="itemName"> Consegna:'; 
-                                            if(isset($dateTime['dateAndTimeDelivered'])){
-                                                echo'<span style="color:#23C552"> '.htmlspecialchars($dateTime['dateAndTimeDelivered']).'</span>';
+                                            if(isset($rowBig['dateAndTimeDelivered'])){
+                                                echo'<span style="color:#23C552"> '.htmlspecialchars($rowBig['dateAndTimeDelivered']).'</span>';
                                             }
                                             else{
                                                 echo '<span style="color:#F84F31"> In consegna</span>';
@@ -150,11 +149,11 @@
                                     $totalPrice += $cart['dishCost'] * $row['quantity'];
                     }
 
-                    if($dateTime["delivery"] == 0){
-                        $totalPrice = $totalPrice * $dateTime["reservations"];
+                    if($rowBig["delivery"] == 0){
+                        $totalPrice = $totalPrice * $rowBig["reservations"];
                         echo '      <div class="itemCard">
                                         <div class="itemRight">
-                                            <h3 class="itemName"> numero prenotazioni: <span style="font-weight: bold; color: green">'.htmlspecialchars($dateTime['reservations']).'</span></h3>
+                                            <h3 class="itemName"> numero prenotazioni: <span style="font-weight: bold; color: green">'.htmlspecialchars($daterowBigTime['reservations']).'</span></h3>
                                         </div>
                                         <div class="itemLeft">
                                             <h3 class="itemName">totale: <span style="margin-right: 10px; font-weight: bold;color: red">'.$totalPrice.'€</span></h3>
@@ -165,7 +164,7 @@
                         $totalPrice += 10;
                         echo '      <div class="itemCard">
                                         <div class="itemRight">
-                                            <h3 class="itemName"> indirizzo di spedizione: <span style="font-weight: bold; color: green">'.htmlspecialchars($dateTime['via']).' '.htmlspecialchars($dateTime['civ']).'</span></h3>
+                                            <h3 class="itemName"> indirizzo di spedizione: <span style="font-weight: bold; color: green">'.htmlspecialchars($rowBig['via']).' '.htmlspecialchars($rowBig['civ']).'</span></h3>
                                         </div>
                                         <div class="itemLeft">
                                             <h3 class="itemName">totale: <span style="margin-right: 10px; font-weight: bold;color: red">'.$totalPrice.'€</span></h3>

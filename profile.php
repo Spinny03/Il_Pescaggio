@@ -97,7 +97,14 @@
 
                 </a>
                 <button class="navBtn" id="respBtn">
-                    <img src="images/icons/respBtn.svg" alt="menu" id="respImg">
+                    <a>
+                        <img src="images/icons/respBtn.svg" alt="menu" id="respImg">
+                        <?php 
+                            if(isset($_SESSION["bigNews"]) && $_SESSION["bigNews"] == "news"){
+                                echo '<span id="bigNewsSm"></span>';
+                            }
+                        ?>
+                    </a>
                 </button>
             </nav>
             <div class="title">

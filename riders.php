@@ -90,9 +90,16 @@
             <a href="profile.php" class="navBtn" id="profileBtn">
 
             </a>
-            <button class="navBtn" id="respBtn">
-                <img src="images/icons/respBtn.svg" alt="menu" id="respImg">
-            </button>
+                <button class="navBtn" id="respBtn">
+                    <a>
+                        <img src="images/icons/respBtn.svg" alt="menu" id="respImg">
+                        <?php 
+                            if(isset($_SESSION["bigNews"]) && $_SESSION["bigNews"] == "news"){
+                                echo '<span id="bigNewsSm"></span>';
+                            }
+                        ?>
+                    </a>
+                </button>
         </nav>
         <div class="container">
             <div class="left">

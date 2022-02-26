@@ -83,9 +83,16 @@
             <a href="profile.php" class="navBtn" id="profileBtn">
 
             </a>
-            <button class="navBtn" id="respBtn">
-                <img src="images/icons/respBtn.svg" alt="menu" id="respImg">
-            </button>
+                <button class="navBtn" id="respBtn">
+                    <a>
+                        <img src="images/icons/respBtn.svg" alt="menu" id="respImg">
+                        <?php 
+                            if(isset($_SESSION["bigNews"]) && $_SESSION["bigNews"] == "news"){
+                                echo '<span id="bigNewsSm"></span>';
+                            }
+                        ?>
+                    </a>
+                </button>
         </nav>
             
         <div class="container">
@@ -112,17 +119,26 @@
                             <div class="collapsible-content">
                                 <div class="content-inner">
                                     <div class="dishDiv">';
-                    echo '              <div class="itemCard orderTime">
-                                            
-                                            <h3 class="itemName"> Consegna:'; 
+                    echo '              <div class="itemCard orderTime">     
+                                            '; 
                                             if(isset($rowBig['dateAndTimeDelivered'])){
-                                                echo'<span style="color:#23C552"> '.htmlspecialchars($rowBig['dateAndTimeDelivered']).'</span>';
+                                                echo'<h3 class="itemName"> Stato: <span style="color:#23C552"> '.htmlspecialchars($rowBig['dateAndTimeDelivered']).'</span></h3>';
                                             }
                                             else{
-                                                echo '<span style="color:#F84F31"> In consegna</span>';
+                                                if($rowBig['orderStatus'] == -1){
+                                                    echo '<h3 class="itemName"> Stato: <span style="color:#F84F31"> Non accettato</span></h3>';
+                                                }
+                                                if($rowBig['orderStatus'] == 1){
+                                                    echo '<h3 class="itemName"> Stato: <span style="color:#F84F31"> In attesa</span></h3>';
+                                                }
+                                                if($rowBig['orderStatus'] == 2){
+                                                    echo '<h3 class="itemName"> Stato: <span style="color:#F84F31"> In preparazione</span></h3>';
+                                                }
+                                                if($rowBig['orderStatus'] == 3){
+                                                    echo '<h3 class="itemName"> Stato: <span style="color:#F84F31"> In consegna</span></h3>';
+                                                }
                                             } 
-                    echo                    '</h3>
-                                         </div>';
+                    echo                '</div>';
                         
                     $dishs = $conn->query('SELECT * FROM orderedfood WHERE idOrder='.$rowBig["id"].';');
 
@@ -153,7 +169,7 @@
                         $totalPrice = $totalPrice * $rowBig["reservations"];
                         echo '      <div class="itemCard">
                                         <div class="itemRight">
-                                            <h3 class="itemName"> numero prenotazioni: <span style="font-weight: bold; color: green">'.htmlspecialchars($daterowBigTime['reservations']).'</span></h3>
+                                            <h3 class="itemName"> Numero prenotazioni: <span style="font-weight: bold; color: green">'.htmlspecialchars($rowBig['reservations']).'</span></h3>
                                         </div>
                                         <div class="itemLeft">
                                             <h3 class="itemName">totale: <span style="margin-right: 10px; font-weight: bold;color: red">'.$totalPrice.'€</span></h3>
@@ -164,7 +180,7 @@
                         $totalPrice += 10;
                         echo '      <div class="itemCard">
                                         <div class="itemRight">
-                                            <h3 class="itemName"> indirizzo di spedizione: <span style="font-weight: bold; color: green">'.htmlspecialchars($rowBig['via']).' '.htmlspecialchars($rowBig['civ']).'</span></h3>
+                                            <h3 class="itemName"> indirizzo di spedizione: <span style="font-weight: bold; color: green">'.htmlspecialchars($rowBig['via']).' '.htmlspecialchars($rowBig['civ']).', '.htmlspecialchars($rowBig['cap']).'</span></h3>
                                         </div>
                                         <div class="itemLeft">
                                             <h3 class="itemName">totale: <span style="margin-right: 10px; font-weight: bold;color: red">'.$totalPrice.'€</span></h3>

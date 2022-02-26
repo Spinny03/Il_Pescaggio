@@ -20,9 +20,6 @@
     if (!isset($_SESSION["typefood"])){
         $_SESSION["typefood"] = "pizza";
     }
-    if(isset($_SESSION["bigNews"]) && $_SESSION["bigNews"] == "news"){
-        $_SESSION["bigNews"] = "";
-    }
 ?>
 
 <!DOCTYPE html>
@@ -83,9 +80,16 @@
             <a href="profile.php" class="navBtn" id="profileBtn">
 
             </a>
-            <button class="navBtn" id="respBtn">
-                <img src="images/icons/respBtn.svg" alt="menu" id="respImg">
-            </button>
+                <button class="navBtn" id="respBtn">
+                    <a>
+                        <img src="images/icons/respBtn.svg" alt="menu" id="respImg">
+                        <?php 
+                            if(isset($_SESSION["bigNews"]) && $_SESSION["bigNews"] == "news"){
+                                echo '<span id="bigNewsSm"></span>';
+                            }
+                        ?>
+                    </a>
+                </button>
         </nav>
             
         <div class="container">
@@ -94,9 +98,6 @@
                 $i=2;
 
                 while($rowBig = $allOrders->fetch_assoc()){
-                    $user = $conn->query('SELECT * FROM username WHERE email="'.$rowBig["idUser"].'";');
-                    $user = mysqli_fetch_assoc($user);
-
                     echo'<div class="wrap-collabsible">
                             <input id="collapsible'.$i.'" class="toggle" type="checkbox">
                             <label for="collapsible'.$i.'" class="lbl-toggle">
@@ -109,30 +110,28 @@
                                         echo 'catering.svg';
                                     }
                                     echo '" alt="icon" style="margin-right:10px;">
-                                    <h3 class="itemName">Ordine di: <span style="color:#F84F31">'.htmlspecialchars($user['firstName'])." ".htmlspecialchars($user['surname']).'</span> alle ore: <span style="color:#F84F31">'.htmlspecialchars($rowBig['dateAndTimePay']).'</span></h3>
+                                    <h3 class="itemName">Ordine di: <span style="color:#F84F31">'.htmlspecialchars($rowBig['firstName'])." ".htmlspecialchars($rowBig['surname']).'</span> alle ore: <span style="color:#F84F31">'.htmlspecialchars($rowBig['dateAndTimePay']).'</span></h3>
                                 </div>
                             </label>
                             <div class="collapsible-content">
                                 <div class="content-inner">
                                     <div class="dishDiv">';
-                    echo '              <div class="itemCard orderTime">
-                                            
-                                            '; 
-                                            if($rowBig['delivery'] == 1){
-                                                echo'<h3 class="itemName"> Data compimento ordine: <span style="color:#4E60FF">'.htmlspecialchars($rowBig['dateAndTimePay']).'</span> </h3>
-                                                <h3 class="itemName"> <span style="color:#F84F31">delivery</span></h3>';
-                                            }
-                                            else{
-                                                echo'<h3 class="itemName"> Data compimento ordine: <span style="color:#4E60FF">'.htmlspecialchars($rowBig['dateAndTimePay']).'</span> </h3>
-                                                    <h3 class="itemName"><span style="color:#23C552">catering</span></h3>';
-                                            } 
-                    echo                    '
-                                         </div>';
+                    echo '              <div class="itemCard orderTime">'; 
+                    if($rowBig['delivery'] == 1){
+                                            echo'
+                                            <h3 class="itemName"> Data compimento ordine: <span style="color:#4E60FF">'.htmlspecialchars($rowBig['dateAndTimePay']).'</span> </h3>
+                                            <h3 class="itemName"> <span style="color:#F84F31">delivery</span></h3>
+                                        </div>';
+                    }
+                    else{
+                                            echo'
+                                            <h3 class="itemName"> Data compimento ordine: <span style="color:#4E60FF">'.htmlspecialchars($rowBig['dateAndTimePay']).'</span> </h3>
+                                            <h3 class="itemName"><span style="color:#23C552">catering</span></h3>
+                                        </div>';
+                    } 
                         
                     $dishs = $conn->query('SELECT * FROM orderedfood WHERE idOrder='.$rowBig["id"].';');
-
                     $totalPrice = 0;
-
                     while($row = $dishs->fetch_assoc()){
 
                         $cart = $conn->query('SELECT * FROM dish WHERE dish.id = '.$row["idDish"].';');
@@ -158,27 +157,70 @@
                         $totalPrice = $totalPrice * $rowBig["reservations"];
                         echo '      <div class="itemCard">
                                         <div class="itemRight">
-                                            <h3 class="itemName"> numero prenotazioni: <span style="font-weight: bold; color: green">'.htmlspecialchars($rowBig['reservations']).'</span></h3>
+                                            <h3 class="itemName"> Numero prenotazioni: <span style="font-weight: bold; color: green">'.htmlspecialchars($rowBig['reservations']).'</span></h3>
                                         </div>
                                         <div class="itemLeft">
-                                            <h3 class="itemName">totale: <span style="margin-right: 10px; font-weight: bold;color: red">'.$totalPrice.'€</span></h3>
+                                            <h3 class="itemName">Totale: <span style="margin-right: 10px; font-weight: bold;color: red">'.$totalPrice.'€</span></h3>
                                         </div>
                                     </div>';
+                        if($rowBig['orderStatus'] == 1){
+                            echo'   <div class="itemCard">
+                                        <div class="itemRight">
+                                            <button type="submit" name="change" value="False" class="logbtn">Rifiuta</button>
+                                        </div>
+                                        <div class="itemLeft">
+                                            <button type="submit" name="change" value="True" class="logbtn">Conferma</button>
+                                        </div>
+                                    </div>';
+                        }
                     }
                     else{
                         $totalPrice += 10;
                         echo '      <div class="itemCard">
                                         <div class="itemRight">
-                                            <h3 class="itemName"> indirizzo di spedizione: <span style="font-weight: bold; color: green">'.htmlspecialchars($rowBig['via']).' '.htmlspecialchars($rowBig['civ']).'</span></h3>
+                                        <h3 class="itemName"> Indirizzo di spedizione: <span style="font-weight: bold; color: green">'.htmlspecialchars($rowBig['via']).' '.htmlspecialchars($rowBig['civ']).', '.htmlspecialchars($rowBig['cap']).'</span></h3>
                                         </div>
                                         <div class="itemLeft">
                                             <h3 class="itemName">totale: <span style="margin-right: 10px; font-weight: bold;color: red">'.$totalPrice.'€</span></h3>
                                         </div>
                                     </div>';
-                    }
+                        if($rowBig['orderStatus'] == 1){
+                            
+                            echo'       <form action="access/adminOrdersDB.php" method="POST">
+                                            <input type="hidden" name="idOrder" value="'.$rowBig['id'].'">
+                                            <div class="itemCard">
+                                                <div class="itemRight">
+                                                    <button type="submit" name="confirm" value="False" class="logbtn">Rifiuta</button>
+                                                </div>
+                                                <div class="itemLeft">
+                                                    <button type="submit" name="confirm" value="True" class="logbtn">Conferma</button>
+                                                </div>   
+                                            </div>
+                                        </form>';
+                        }
+                        if($rowBig['orderStatus'] == 2){
+                            echo'       <form action="access/adminOrdersDB.php" method="POST">
+                                            <input type="hidden" name="idOrder" value="'.$rowBig['id'].'">
+                                            <div class="itemCard">
+                                                <div class="itemRight">
+                                                    <h3 class="itemName">Rider: 
+                                                        <select name="rider" id="rider">';
 
-                    echo '    
-                                </div>
+                            $riders = $conn->query('SELECT * FROM rider WHERE available = 1;');   
+                            while($rider = $riders->fetch_assoc()){   
+                                echo' <option value="'.htmlspecialchars($rider['email']).'">'.htmlspecialchars($rider['riderName']).' '.htmlspecialchars($rider['riderSurname']).'</option> ';
+                            }
+                            echo'                       </select>
+                                                    </h3>
+                                                </div>
+                                                <div class="itemLeft">
+                                                    <button type="submit" name="send" value="True" class="logbtn">Spedisci</button>
+                                                </div>
+                                            </div>
+                                        </form>';
+                        }
+                    }
+                    echo '      </div>
                             </div>
                         </div>
                     </div>';

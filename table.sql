@@ -1,7 +1,9 @@
 /*
 ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD HH24:MI:SS';
 */
-
+/*
+1. in attesa, 2. in preparazione, 3. in consegna , -1 non accettato
+*/
 CREATE DATABASE Il_Pescaggio;
 USE Il_Pescaggio;
 
@@ -44,11 +46,12 @@ CREATE TABLE dish(
 
 CREATE TABLE FOrder(
     id int PRIMARY KEY AUTO_INCREMENT,
+    orderStatus int NOT NULL,
     delivery TINYINT(1) NOT NULL,
     dateAndTimePay timestamp,
     dateAndTimeDelivered DATETIME,
     idUser varchar(255) NOT NULL REFERENCES username(email),
-    idRider int REFERENCES rider(id),
+    idRider varchar(255) REFERENCES rider(id),
     reservations int,
     firstName varchar(255),
     surname varchar(255),

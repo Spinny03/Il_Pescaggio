@@ -60,6 +60,21 @@ body{
     color: white;
     font-size: 0.9rem;
 }
+#bigNewsSm{
+    display: block;
+    position: absolute;
+    top: 9px;
+    right: 8px;
+    background-color: #4e60ff;
+    width: 10px;
+    height: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    color: white;
+    font-size: 0.9rem;
+}
 
 .navBtn{
     display: block;

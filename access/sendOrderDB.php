@@ -20,24 +20,26 @@
             $time = $_POST["hours"].":00";
             $date = $data ." ".$time;
             $conn->query('INSERT INTO forder 
-                            SET delivery=0,
-                            idUser="'.$_SESSION["user"].'" ,  
-                            firstName="'.$_POST["name"].'" ,
-                            surname="'.$_POST["surname"].'"  , 
-                            reservations="'.$_POST["reservations"].'" , 
-                            note="'.$_POST["notes"].'",
+                            SET delivery = 0,
+                            orderStatus = "1",
+                            idUser = "'.$_SESSION["user"].'" ,  
+                            firstName = "'.$_POST["name"].'" ,
+                            surname = "'.$_POST["surname"].'"  , 
+                            reservations = "'.$_POST["reservations"].'" , 
+                            note = "'.$_POST["notes"].'",
                             dateAndTimeDelivered="'.$date.'" ;');
             $order = $conn->query('SELECT id FROM forder WHERE delivery=0 ORDER BY dateAndTimePay DESC, idUser="'.$_SESSION["user"].'";');
         }
         else{
             $conn->query('INSERT INTO forder 
-                            SET delivery=1,
-                            idUser="'.$_SESSION["user"].'" ,  
-                            firstName="'.$_POST["name"].'" ,
-                            surname="'.$_POST["surname"].'"  , 
-                            via="'.$_POST["via"].'" , 
-                            civ="'.$_POST["civ"].'" , 
-                            cap="'.$_POST["cap"].'" ;');
+                            SET delivery = 1,
+                            orderStatus = "1",
+                            idUser = "'.$_SESSION["user"].'" ,  
+                            firstName = "'.$_POST["name"].'" ,
+                            surname = "'.$_POST["surname"].'"  , 
+                            via = "'.$_POST["via"].'" , 
+                            civ = "'.$_POST["civ"].'" , 
+                            cap = "'.$_POST["cap"].'" ;');
             $order = $conn->query('SELECT id FROM forder WHERE delivery=1 ORDER BY dateAndTimePay DESC, idUser="'.$_SESSION["user"].'";');
         }
         $order = mysqli_fetch_assoc($order);

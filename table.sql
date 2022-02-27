@@ -33,6 +33,7 @@ CREATE TABLE username(
     civ varchar(255),
     cap varchar(255),
     tel varchar(255),
+    notice TINYINT(1),
     photoLink varchar(255),
     pasw varchar(255) NOT NULL
 );

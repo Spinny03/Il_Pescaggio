@@ -38,7 +38,7 @@
             }
 
             $sql = substr($sql, 0, -1);
-            $conn->query('UPDATE dish SET photoLink="", visible=0 WHERE id = "'.$_POST["idDish"].'";');
+            $conn->query('UPDATE dish SET photoLink="", visible = 0 WHERE id = "'.$_POST["idDish"].'";');
             $conn->query('INSERT INTO dish SET '.$sql.' , visible = 1, photoLink = "'.$result["photoLink"].'";');
 
             $id = 'SELECT id FROM dish WHERE photoLink = "'.$result["photoLink"].'";';

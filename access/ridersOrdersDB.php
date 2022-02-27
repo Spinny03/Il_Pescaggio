@@ -8,7 +8,7 @@
 
     if(isset($_POST["delivered"])){
         $conn->query('UPDATE rider SET available = 1 WHERE email = "'.$_SESSION["rider"].'";'); 
-        $conn->query('UPDATE FOrder SET orderStatus = 4 WHERE id = "'.$_POST["idOrder"].'";');
+        $conn->query('UPDATE FOrder SET dateAndTimePay = dateAndTimePay, orderStatus = 4 WHERE id = "'.$_POST["idOrder"].'";');
     }
     header("Location: ../ridersOrders.php");
     $conn->close();

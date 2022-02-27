@@ -155,7 +155,12 @@
 
                     if($rowBig["delivery"] == 0){
                         $totalPrice = $totalPrice * $rowBig["reservations"];
-                        echo '      <div class="itemCard">
+                        echo '      
+                                    <div class="itemCard">
+                                            <h3 style="overflow-wrap: anywhere;"class="itemName">Note:
+                                            <span style="margin-right: 10px; font-weight: bold;">'.$rowBig['note'].'</span></h3>
+                                    </div>
+                                    <div class="itemCard">
                                         <div class="itemRight">
                                             <h3 class="itemName"> Numero prenotazioni: <span style="font-weight: bold; color: green">'.htmlspecialchars($rowBig['reservations']).'</span></h3>
                                         </div>
@@ -178,8 +183,17 @@
                         }
                     }
                     else{
-                        $totalPrice += 10;
-                        echo '      <div class="itemCard">
+                        $totalPrice += 2;
+                        echo '      
+                                    <div class="itemCard">
+                                        <div class="itemRight">
+                                            <h3 class="itemName">Consegna</h3>
+                                        </div>
+                                        <div class="itemLeft">
+                                            <span style="margin-right: 10px; font-weight: bold;">2€</span>
+                                        </div>
+                                    </div> 
+                                    <div class="itemCard">
                                         <div class="itemRight">
                                         <h3 class="itemName"> Indirizzo di spedizione: <span style="font-weight: bold; color: green">'.htmlspecialchars($rowBig['via']).' '.htmlspecialchars($rowBig['civ']).', '.htmlspecialchars($rowBig['cap']).'</span></h3>
                                         </div>

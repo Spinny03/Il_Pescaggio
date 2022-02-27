@@ -179,7 +179,12 @@
 
                     if($rowBig["delivery"] == 0){
                         $totalPrice = $totalPrice * $rowBig["reservations"];
-                        echo '      <div class="itemCard">
+                        echo '      
+                                    <div class="itemCard">
+                                            <h3 style="overflow-wrap: anywhere;"class="itemName">Note:
+                                            <span style="margin-right: 10px; font-weight: bold;">'.$rowBig['note'].'</span></h3>
+                                    </div> 
+                                    <div class="itemCard">
                                         <div class="itemRight">
                                             <h3 class="itemName"> Numero prenotazioni: <span style="font-weight: bold; color: green">'.htmlspecialchars($rowBig['reservations']).'</span></h3>
                                         </div>

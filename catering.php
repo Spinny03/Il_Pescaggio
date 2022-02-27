@@ -401,7 +401,7 @@
 
                         <div class="data" id="p50">
                             <label for="day"><b>Data</b></label>
-                            <input type="date" placeholder="19/05/2003" name="day" 
+                            <input type="date" name="day" min="<?php echo date("Y-m-d"); ?>">
                             required>
                         </div>
 

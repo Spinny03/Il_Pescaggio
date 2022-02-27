@@ -4,7 +4,7 @@
         header("Location: index.php");
         exit();
     }
-    if(empty($_SESSION["user"]) || empty($_SESSION["user"])){
+    if(empty($_SESSION["user"])){
         if(isset($_COOKIE["user"])){
             $_SESSION["user"] = $_COOKIE["user"];
         }
@@ -64,7 +64,11 @@
             </a>
             <ul class="navItems" data-visible="false">
                 <a href="home.php" class="navLink" >Delivery</a>
-                <a href="admin.php" class="navLink">Admin</a>
+                <?php 
+                    if($_SESSION["user"]=="admin@ilpescaggio.it"){
+                        echo '<a href="admin.php" class="navLink">Admin</a>';
+                    }
+                ?>
                 <a href="catering.php" class="navLink">Catering</a>
                 <a href="orders.php" class="navLink" style="color: #4e60ff">Ordini</a>
             </ul>

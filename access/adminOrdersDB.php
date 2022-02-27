@@ -7,7 +7,7 @@
     $conn->query("USE Il_Pescaggio");
 
     if(isset($_POST["confirm"])){
-        if($_POST["confirm"]){
+        if($_POST["confirm"] == "True"){
             $conn->query('UPDATE FOrder SET orderStatus = 2 WHERE id = "'.$_POST["idOrder"].'";');
         }
         else{

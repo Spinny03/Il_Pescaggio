@@ -1,10 +1,8 @@
 /*
 ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD HH24:MI:SS';
-*/
-/*
+*//*
 1. in attesa, 2. in preparazione, 3. in consegna , -1 non accettato
-*/
-/*
+*//*
 admin:
     email: admin@ilpescaggio.it
     password: =FfUgKru[>%,4vGv

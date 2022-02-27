@@ -401,11 +401,11 @@
 
                         <div class="data" id="p50">
                             <label for="day"><b>Data</b></label>
-                            <input type="date" name="day" min="<?php echo date("Y-m-d"); ?>">
+                            <input type="date" name="day" min="<?php echo date("Y-m-d"); ?>"
                             required>
                         </div>
 
-                        <div class="data" id="p50">
+                        <div class="data" id="p50"></div>
                             <label for="hours"><b>Ora</b></label>
                             <input type="time" placeholder="" name="hours" 
                             required>

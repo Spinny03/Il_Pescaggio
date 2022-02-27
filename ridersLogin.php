@@ -1,10 +1,7 @@
 <?php 
     session_start(); 
-    if(!empty($_SESSION["user"]) || !empty($_COOKIE["user"])){
-        if(!empty($_COOKIE["user"]) && empty($_SESSION["user"])){
-            $_SESSION["user"] = $_COOKIE["user"];
-        }
-        header("Location: home.php");
+    if(!empty($_SESSION["rider"])){
+        header("Location: ridersOrders.php");
         exit();
     }
 ?>
@@ -26,7 +23,7 @@
                             background-color: rgba(255, 78, 113, 0.7);
                         }
                     </style>';
-                $_SESSION["emailFail"]=False;
+                $_SESSION["emailFail"] = False;
             }
             if(isset($_SESSION["paswFail"]) && $_SESSION["paswFail"]){
                 echo'<style>
@@ -34,38 +31,34 @@
                             background-color: rgba(255, 78, 113, 0.7);
                         }
                     </style>';
-                $_SESSION["paswFail"]=False;
+                $_SESSION["paswFail"] = False;
             }
         ?>
         <div class="container">
             <div class="left">
                 <img src="images/logo.png" alt="logo" id="logo">
                 <div class="log">
-                    <h1>Accedi</h1>
-                    <span>Accedi con i dati che hai inserito durante la registrazione.</span>
-                    <form action="access/loginDB.php" method="POST">
+                    <h1>Area riders</h1>
+                    <span>Accedi con i dati che ti sono stati assegnati.</span>
+                    <form action="access/loginRidersDB.php" method="POST">
                         <label for="email"><b>Email</b></label>
                         <input type="text" placeholder="nome@esempio.com" name="email" 
                             <?php
-                                if(isset($_SESSION["userLogin"])){
-                                    echo "value='".$_SESSION["userLogin"]."'";
+                                if(isset($_SESSION["riderLogin"])){
+                                    echo "value='".$_SESSION["riderLogin"]."'";
                                 }
                             ?> 
                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
 
                         <label for="psw"><b>Password</b></label>
                         <input type="password" placeholder="min. 8 caratteri" name="psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Deve contenere almeno un numero e una lettera maiuscola e minuscola e almeno 8 o più caratteri" required>
-                        <label><input type="checkbox" id="remember" value="1" name="remember"><a id="labelCheck">Ricordami su questo dispositivo</a></label>
                         <button type="submit" name="login" class="logbtn">Accedi</button>
                     </form>
                     <div class="pswDiv">
                         <a href="#" class="Link">Password dimenticata?<br><br></a>
-                        <a href="ridersLogin.php" class="Link">Area rider</a>
+                        <a href="index.php" class="Link">Area comune</a>
                     </div>
                 </div>  
-                <div class="bottom">
-                        <span>Non hai un account? <a href="signUp.php" class="Link">Registrati</a></span>
-                </div>
             </div>
             <div class="right">
 

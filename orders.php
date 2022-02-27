@@ -4,7 +4,7 @@
         header("Location: index.php");
         exit();
     }
-    if(empty($_SESSION["user"]) || empty($_SESSION["user"])){
+    if(empty($_SESSION["user"])){
         if(isset($_COOKIE["user"])){
             $_SESSION["user"] = $_COOKIE["user"];
         }
@@ -17,9 +17,6 @@
     $conn->query("USE Il_Pescaggio");
     $bag = $conn->query('SELECT SUM(quantity) FROM cart WHERE idUser="'.$_SESSION["user"].'" AND cart.catering = 0;');
     $bag = mysqli_fetch_assoc($bag); 
-    if (!isset($_SESSION["typefood"])){
-        $_SESSION["typefood"] = "pizza";
-    }
     if(isset($_SESSION["bigNews"]) && $_SESSION["bigNews"] == "news"){
         $_SESSION["bigNews"] = "";
     }
@@ -67,7 +64,11 @@
             </a>
             <ul class="navItems" data-visible="false">
                 <a href="home.php" class="navLink" >Delivery</a>
-                <a href="admin.php" class="navLink">Admin</a>
+                <?php 
+                    if($_SESSION["user"]=="admin@ilpescaggio.it"){
+                        echo '<a href="admin.php" class="navLink">Admin</a>';
+                    }
+                ?>
                 <a href="catering.php" class="navLink">Catering</a>
                 <a href="orders.php" class="navLink" style="color: #4e60ff">Ordini</a>
             </ul>
@@ -144,6 +145,9 @@
                                                 }
                                                 if($rowBig['orderStatus'] == 3){
                                                     echo '<h3 class="itemName"> Stato: <span style="color:#F84F31"> In consegna</span></h3>';
+                                                }
+                                                if($rowBig['orderStatus'] == 4){
+                                                    echo '<h3 class="itemName"> Stato: <span style="color:#F84F31"> Consegnato</span></h3>';
                                                 }
                                             } 
                     echo                '</div>';

@@ -9,37 +9,32 @@
 
 
     $email = $_POST["email"];
-    $_SESSION["userLogin"] = $email;
+    $_SESSION["riderLogin"] = $email;
     $psw = hash("sha256",$_POST["psw"]);
 
     //doppia query almeno possiamo dare come feedback l'errore se username o pasw 
-    $result1 = $conn->query("SELECT email FROM username WHERE email = '". $email."';");
+    $result1 = $conn->query("SELECT email FROM rider WHERE email = '". $email."';");
     $result1 = mysqli_fetch_assoc($result1);
 
     if($result1['email'] == $email){
 
-        $result2 = $conn->query("SELECT pasw FROM username WHERE pasw = '". $psw."';");
+        $result2 = $conn->query("SELECT pasw FROM rider WHERE pasw = '". $psw."';");
         $result2 = mysqli_fetch_assoc($result2);
         
         if($result2['pasw'] == $psw ){
-            if(isset($_POST["remember"]) && $_POST["remember"] == 1){
-                $cookie_name = "user";
-                $cookie_value = $email;
-                setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); 
-            } 
-            $_SESSION["user"] = $email;
-            header("Location: ../home.php");
+            $_SESSION["rider"] = $email;
+            header("Location: ../ridersOrders.php");
         }
         else{
             $_SESSION["paswFail"] = True;
-            header("Location: ../index.php");
+            header("Location: ../ridersLogin.php");
         } 
 
     }
     else{
         $_SESSION["emailFail"] = True;
         $_SESSION["paswFail"] = True;
-        header("Location: ../index.php");
+        header("Location: ../ridersLogin.php");
     }
 
     $conn->close();

@@ -8,12 +8,12 @@
     $conn->query("USE Il_Pescaggio");
 
     if($_POST["change"] == "False"){
-        $old ="SELECT photoLink FROM username WHERE email='".$_SESSION["user"]."'";
+        $old ="SELECT photoLink FROM username WHERE email = '".$_SESSION["user"]."'";
         $oldphoto = $conn->query($old);
         $oldphoto = mysqli_fetch_assoc($oldphoto); 
         if(!empty($oldphoto["photoLink"])){
             unlink("../images/userPhoto/".$oldphoto["photoLink"]);
-            $del = "UPDATE username SET photoLink='' WHERE email='".$_SESSION["user"]."'";
+            $del = "UPDATE username SET photoLink = '' WHERE email = '".$_SESSION["user"]."'";
             $conn->query($del);
         }
         header("Location: ../profile.php");
@@ -41,14 +41,14 @@
     }
     
     if ($uploadOk != 0) {
-        $old ="SELECT photoLink FROM username WHERE email='".$_SESSION["user"]."'";
+        $old = "SELECT photoLink FROM username WHERE email = '".$_SESSION["user"]."'";
         $oldphoto = $conn->query($old);
         $oldphoto = mysqli_fetch_assoc($oldphoto); 
         if(!empty($oldphoto["photoLink"])){
             unlink("../images/userPhoto/".$oldphoto["photoLink"]);
         }
         if (move_uploaded_file($_FILES["pfile"]["tmp_name"], $target_file)) {
-            $sql = "UPDATE username SET photoLink='".$_SESSION["user"] .".". $imageFileType. "' WHERE email='".$_SESSION["user"]."'";
+            $sql = "UPDATE username SET photoLink = '".$_SESSION["user"] .".". $imageFileType. "' WHERE email = '".$_SESSION["user"]."'";
             $conn->query($sql);
             $oldname = "../images/userPhoto/".htmlspecialchars(basename( $_FILES["pfile"]["name"]));
             $newname = "../images/userPhoto/".$_SESSION["user"] .".". $imageFileType;

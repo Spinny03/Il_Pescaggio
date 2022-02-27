@@ -1,11 +1,11 @@
 <?php 
     session_start(); 
-    if(empty($_SESSION["user"]) && empty($_COOKIE["user"])){
-        header("Location: index.php");
+    if((empty($_SESSION["user"]) && empty($_COOKIE["user"])) || ($_SESSION["user"]!="admin@ilpescaggio.it" && $_COOKIE["user"]!="admin@ilpescaggio.it")){
+        header("Location: home.php");
         exit();
     }
-    if(empty($_SESSION["user"]) || empty($_SESSION["user"])){
-        if(isset($_COOKIE["user"])){
+    if(empty($_SESSION["user"])){
+        if(isset($_COOKIE["user"]) && $_COOKIE["user"]=="admin@ilpescaggio.it"){
             $_SESSION["user"] = $_COOKIE["user"];
         }
     }

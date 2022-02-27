@@ -1,11 +1,11 @@
 <?php
     session_start();
-    if((empty($_SESSION["user"]) && empty($_COOKIE["user"])) || ($_SESSION["user"]!="admin@ilpescaggio.it" && $_COOKIE["user"]!="admin@ilpescaggio.it")){
+    if((empty($_SESSION["user"]) && empty($_COOKIE["user"])) || ($_SESSION["user"] != "admin@ilpescaggio.it" && $_COOKIE["user"] != "admin@ilpescaggio.it")){
         header("Location: home.php");
         exit();
     }
     if(empty($_SESSION["user"])){
-        if(isset($_COOKIE["user"]) && $_COOKIE["user"]=="admin@ilpescaggio.it"){
+        if(isset($_COOKIE["user"]) && $_COOKIE["user"] == "admin@ilpescaggio.it"){
             $_SESSION["user"] = $_COOKIE["user"];
         }
     }
@@ -15,7 +15,7 @@
         exit("Connessione fallita: " . $conn->connect_error);
     }
     $conn->query("USE Il_Pescaggio");
-    $bag = $conn->query('SELECT SUM(quantity) FROM cart WHERE idUser="' . $_SESSION["user"] . '" AND cart.catering = 0;');
+    $bag = $conn->query('SELECT SUM(quantity) FROM cart WHERE idUser = "' . $_SESSION["user"] . '" AND cart.catering = 0;');
     $bag = mysqli_fetch_assoc($bag);
 ?>
 

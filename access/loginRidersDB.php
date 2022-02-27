@@ -13,12 +13,12 @@
     $psw = hash("sha256",$_POST["psw"]);
 
     //doppia query almeno possiamo dare come feedback l'errore se username o pasw 
-    $result1 = $conn->query("SELECT email FROM rider WHERE email='". $email."';");
+    $result1 = $conn->query("SELECT email FROM rider WHERE email = '". $email."';");
     $result1 = mysqli_fetch_assoc($result1);
 
     if($result1['email'] == $email){
 
-        $result2 = $conn->query("SELECT pasw FROM rider WHERE pasw='". $psw."';");
+        $result2 = $conn->query("SELECT pasw FROM rider WHERE pasw = '". $psw."';");
         $result2 = mysqli_fetch_assoc($result2);
         
         if($result2['pasw'] == $psw ){

@@ -228,12 +228,12 @@
                                 
                             <div class="innerPrice deliveryPrice">
                                 <h3>Consegna:</h3>
-                                <h4>10€</h4>
+                                <h4>2€</h4>
                             </div>
 
                             <div class="innerPrice totalPrice">
                                 <h3>Totale:</h3>
-                                <h4><?php echo $totalPrice+10; ?>€</h4>
+                                <h4><?php echo $totalPrice+2; ?>€</h4>
                             </div>
                         </div>
 

@@ -189,8 +189,16 @@
                                     </div>';
                     }
                     else{
-                        $totalPrice += 10;
+                        $totalPrice += 2;
                         echo '      <div class="itemCard">
+                                        <div class="itemRight">
+                                            <h3 class="itemName">Consegna</h3>
+                                        </div>
+                                        <div class="itemLeft">
+                                            <span style="margin-right: 10px; font-weight: bold;">2€</span>
+                                        </div>
+                                    </div>      
+                                    <div class="itemCard">
                                         <div class="itemRight">
                                             <h3 class="itemName"> indirizzo di spedizione: <span style="font-weight: bold; color: green">'.htmlspecialchars($rowBig['via']).' '.htmlspecialchars($rowBig['civ']).', '.htmlspecialchars($rowBig['cap']).'</span></h3>
                                         </div>

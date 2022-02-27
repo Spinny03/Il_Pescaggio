@@ -7,7 +7,7 @@
     $conn->query("USE Il_Pescaggio");
 
     if(isset($_POST["delivered"])){
-        $conn->query('UPDATE rider SET available = 1 WHERE email = "'.$_SESSION["user"].'";'); 
+        $conn->query('UPDATE rider SET available = 1 WHERE email = "'.$_SESSION["rider"].'";'); 
         $conn->query('UPDATE FOrder SET orderStatus = 4 WHERE id = "'.$_POST["idOrder"].'";');
     }
     header("Location: ../ridersOrders.php");

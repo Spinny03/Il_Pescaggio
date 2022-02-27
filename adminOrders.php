@@ -164,14 +164,17 @@
                                         </div>
                                     </div>';
                         if($rowBig['orderStatus'] == 1){
-                            echo'   <div class="itemCard">
-                                        <div class="itemRight">
-                                            <button type="submit" name="change" value="False" class="logbtn">Rifiuta</button>
-                                        </div>
-                                        <div class="itemLeft">
-                                            <button type="submit" name="change" value="True" class="logbtn">Conferma</button>
-                                        </div>
-                                    </div>';
+                            echo'       <form action="access/adminOrdersDB.php" method="POST">
+                                            <input type="hidden" name="idOrder" value="'.$rowBig['id'].'">
+                                            <div class="itemCard">
+                                                <div class="itemRight">
+                                                    <button type="submit" name="confirm" value="False" class="logbtn delBtn">Rifiuta</button>
+                                                </div>
+                                                <div class="itemLeft">
+                                                    <button type="submit" name="confirm" value="True" class="logbtn">Conferma</button>
+                                                </div>   
+                                            </div>
+                                        </form>';
                         }
                     }
                     else{
@@ -190,7 +193,7 @@
                                             <input type="hidden" name="idOrder" value="'.$rowBig['id'].'">
                                             <div class="itemCard">
                                                 <div class="itemRight">
-                                                    <button type="submit" name="confirm" value="False" class="logbtn">Rifiuta</button>
+                                                    <button type="submit" name="confirm" value="False" class="logbtn delBtn">Rifiuta</button>
                                                 </div>
                                                 <div class="itemLeft">
                                                     <button type="submit" name="confirm" value="True" class="logbtn">Conferma</button>

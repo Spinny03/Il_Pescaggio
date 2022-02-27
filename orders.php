@@ -121,8 +121,11 @@
                                     <div class="dishDiv">';
                     echo '              <div class="itemCard orderTime">     
                                             '; 
-                                            if(isset($rowBig['dateAndTimeDelivered'])){
-                                                echo'<h3 class="itemName"> Stato: <span style="color:#23C552"> '.htmlspecialchars($rowBig['dateAndTimeDelivered']).'</span></h3>';
+                                            if($rowBig['delivery'] == 0){
+                                                echo'<h3 class="itemName"> Prenotato per il giorno: <span style="color:green"> '.htmlspecialchars($rowBig['dateAndTimeDelivered']).'</span></h3>';
+                                            }
+                                            if(isset($rowBig['dateAndTimeDelivered']) && $rowBig['delivery'] == 1){
+                                                echo'<h3 class="itemName"> Consegnato il: <span style="color:green"> '.htmlspecialchars($rowBig['dateAndTimeDelivered']).'</span></h3>';
                                             }
                                             else{
                                                 if($rowBig['orderStatus'] == -1){
@@ -132,7 +135,12 @@
                                                     echo '<h3 class="itemName"> Stato: <span style="color:#F84F31"> In attesa</span></h3>';
                                                 }
                                                 if($rowBig['orderStatus'] == 2){
-                                                    echo '<h3 class="itemName"> Stato: <span style="color:#F84F31"> In preparazione</span></h3>';
+                                                    if($rowBig['delivery'] == 0){
+                                                        echo '<h3 class="itemName"> Stato: <span style="color:#F84F31"> Accettato</span></h3>';
+                                                    }
+                                                    else{
+                                                        echo '<h3 class="itemName"> Stato: <span style="color:#F84F31"> In preparazione</span></h3>';
+                                                    }
                                                 }
                                                 if($rowBig['orderStatus'] == 3){
                                                     echo '<h3 class="itemName"> Stato: <span style="color:#F84F31"> In consegna</span></h3>';

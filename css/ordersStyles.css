@@ -14,6 +14,13 @@
     gap: 20px;
 }
 
+.itemRight{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
 .itemCard{
     margin-top: 8px;
    /* margin: 0;
@@ -26,6 +33,29 @@
     padding: 0 !important;
 }*/
 
+.logbtn{
+    width: 100%;
+    background-color: #4E60FF;
+    border: none;
+    color: white;
+    padding: 10px 22px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-family: 'nunito';
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+.delBtn{
+    margin: 0;
+    background-color: white;
+    color: red;
+    border: 1px solid red;
+}
+
 .collapsible-content .content-inner {
     padding-top: 1px;
     /*border-left: 2px solid #ddd !important;
@@ -33,4 +63,20 @@
     border-bottom: 2px solid #ddd !important;
     border-bottom-left-radius: 7px;
     border-bottom-right-radius: 7px;*/
+}
+
+
+select{
+    background-color: #ffffff;
+    border: 1px solid #4E60FF;
+    color: #4E60FF;
+    padding: 5px 11px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-family: 'nunito';
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0.3px;
 }

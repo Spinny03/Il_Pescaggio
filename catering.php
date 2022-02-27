@@ -287,15 +287,15 @@
                     <input id="collapsible6" class="toggle" type="checkbox">
                     <label for="collapsible6" class="lbl-toggle">
                         <div class="titleDiv">
-                            <img width="40px" height="40px" src="images/foodType/vegan.png" alt="vegan">
-                            <span>vegano</span>
+                            <img width="40px" height="40px" src="images/foodType/drink.png" alt="drink">
+                            <span>Bevande</span>
                         </div>
                     </label>
                     <div class="collapsible-content">
                         <div class="content-inner">
                             <div class="dishDiv">
                                 <?php
-                                    $dishs = $conn->query('SELECT * FROM dish WHERE dishType="vegan" AND visible=1;');
+                                    $dishs = $conn->query('SELECT * FROM dish WHERE dishType="drink" AND visible=1;');
                                     
                                     while($row = $dishs->fetch_assoc()){
 

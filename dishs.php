@@ -247,9 +247,9 @@
                                 <img width="25px" height="25px" src="images/foodType/fish.png" alt="pesce">
                                 <p>Pesce</p>
                             </button>
-                            <button type="button" class="choice" id="vegan"  onclick="SelectType('vegan')"> 
-                                <img width="25px" height="25px" src="images/foodType/vegan.png" alt="vegano">
-                                <p>Vegano</p>
+                            <button type="button" class="choice" id="drink"  onclick="SelectType('drink')"> 
+                                <img width="25px" height="25px" src="images/foodType/drink.png" alt="Bevande">
+                                <p>Bevande</p>
                             </button>
                             <button type="button" class="choice" id="desserts" onclick="SelectType('desserts')"> 
                                 <img width="25px" height="25px"  src="images/foodType/desserts.png" alt="dolci">

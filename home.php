@@ -121,9 +121,9 @@
                     <img width="30px" height="30px" src="images/foodType/fish.png" alt="pesce">
                     <p>Pesce</p>
                 </button>
-                <button class="choice" id="vegan"  onclick="filterSelection('vegan')"> 
-                    <img width="30px" height="30px" src="images/foodType/vegan.png" alt="vegano">
-                    <p>Vegano</p>
+                <button class="choice" id="drink"  onclick="filterSelection('drink')"> 
+                    <img width="30px" height="30px" src="images/foodType/drink.png" alt="Bevande">
+                    <p>Bevande</p>
                 </button>
                 <button class="choice" id="desserts" onclick="filterSelection('desserts')"> 
                     <img width="30px" height="30px"  src="images/foodType/desserts.png" alt="dolci">

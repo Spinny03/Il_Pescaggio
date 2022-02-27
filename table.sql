@@ -84,26 +84,26 @@ CREATE TABLE cart(
     primary key(idUser,idDish,catering)
 );
 
-INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (10,"DESCRIZIONE DEL PIATTO",0,0,"Bigne"            ,"desserts","1.jpg",1);
-INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (10,"DESCRIZIONE DEL PIATTO",0,0,"Tiramisù"         ,"desserts","2.jpg",1);
-INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (10,"DESCRIZIONE DEL PIATTO",0,0,"Fritto Misto"     ,"fish","3.jpg",1);
-INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (10,"DESCRIZIONE DEL PIATTO",0,0,"Polpo e patate"   ,"fish","4.jpg",1);
-INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (10,"DESCRIZIONE DEL PIATTO",0,0,"Margherita"       ,"pizza","5.jpg",1);
-INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (10,"DESCRIZIONE DEL PIATTO",0,0,"Marinara"         ,"pizza","6.jpg",1);
-INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (10,"DESCRIZIONE DEL PIATTO",0,0,"Insalata"         ,"vegan","7.jpg",1);
-INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (10,"DESCRIZIONE DEL PIATTO",0,0,"Minestra"         ,"vegan","8.jpg",1);
-INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (10,"DESCRIZIONE DEL PIATTO",0,0,"Fiorentina"       ,"meat","9.jpg",1);
-INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (10,"DESCRIZIONE DEL PIATTO",0,0,"Spiedini"         ,"meat","10.jpg",1);
-INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (10,"DESCRIZIONE DEL PIATTO",0,0,"Classic Burger"   ,"burger","11.jpg",1);
-INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (10,"DESCRIZIONE DEL PIATTO",0,0,"Cheese and Bacon"  ,"burger","12.jpg",1);
-INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (10,"DESCRIZIONE DEL PIATTO",0,0,"Crostata"         ,"desserts","13.jpg",1);
-INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (10,"DESCRIZIONE DEL PIATTO",0,0,"Profiterol"       ,"desserts","14.jpg",1);
-INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (10,"DESCRIZIONE DEL PIATTO",0,0,"Cheesecake"        ,"desserts","15.jpg",1);
-INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (10,"DESCRIZIONE DEL PIATTO",0,0,"Bufala"           ,"pizza","16.jpg",1);
-INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (10,"DESCRIZIONE DEL PIATTO",0,0,"Chicken Burger"   ,"burger","17.jpg",1);
-INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (10,"DESCRIZIONE DEL PIATTO",0,0,"Tomahawk"         ,"meat","18.jpeg",1);
-INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (10,"DESCRIZIONE DEL PIATTO",0,0,"Spaghetti allo scoglio","fish","19.jpg",1);
-INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (10,"DESCRIZIONE DEL PIATTO",0,0,"Spaghetti al pomodoro","vegan","20.jpg",1);
+INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (2,"È un piccolo dolce composto da un guscio di pasta choux ripieno di creme",0,0,"Bigne","desserts","1.jpg",1);
+INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (4,"Il tiramisù è un dolce e prodotto agroalimentare tradizionale diffuso in tutto il territorio italiano",0,0,"Tiramisù","desserts","2.jpg",1);
+INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (8,"La frittura di paranza è una frittura di pesce di piccolo taglio diffusa in molte zone d'Italia.",0,0,"Fritto Misto","fish","3.jpg",1);
+INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (9,"Questo piatto veneziano di tenero polpo bollito viene ravvivato con un condimento al limone e peperoncino.",0,0,"Polpo e patate"   ,"fish","4.jpg",1);
+INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (5,"La pizza Margherita è la tipica pizza napoletana, condita con pomodoro, mozzarella e origano",0,0,"Margherita","pizza","5.jpg",1);
+INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (4,"La pizza alla marinara è una tipica pizza napoletana condita con pomodoro, aglio, origano, olio",0,0,"Marinara","pizza","6.jpg",1);
+INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (6,"Il vino bianco è un prodotto ottenuto dalla fermentazione alcolica del mosto di uva a bacca bianca o di uva a bacca nera con polpa incolore",0,0,"Vino Bianco","drink","7.jpg",1);
+INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (7,"Il vino rosso è un tipo di vino ottenuto da vitigni di colore scuro",0,0,"Vino Rosso","drink","8.jpg",1);
+INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (25,"La bistecca alla fiorentina è un taglio di carne di scottona di razza Chianina",0,0,"Fiorentina","meat","9.jpg",1);
+INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (12,"Spiedino di carne di maiale e verdure miste",0,0,"Spiedini","meat","10.jpg",1);
+INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (10,"Classico burger americano con carne di angus e patatine di contorno",0,0,"Classic Burger","burger","11.jpg",1);
+INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (13,"Cheesburger con bacon crocante",0,0,"Cheese and Bacon","burger","12.jpg",1);
+INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (4,"Crostata fatta in casa con marmellata di lamponi",0,0,"Crostata","desserts","13.jpg",1);
+INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (6,"Il profiterole è un bignè riempito di crema pasticcera, panna e ricoperto con una crema di cioccolato",0,0,"Profiterol","desserts","14.jpg",1);
+INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (5,"La cheesecake è composto da una base di pasta biscotto su cui poggia un alto strato di crema di formaggio fresco",0,0,"Cheesecake","desserts","15.jpg",1);
+INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (7,"La pizza alla Bufala è condita con pomodoro, mozzarella di bufala e origano",0,0,"Bufala","pizza","16.jpg",1);
+INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (12,"Panino con petto di pollo speziato e salse",0,0,"Chicken Burger","burger","17.jpg",1);
+INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (30,"Taglio pregiato di carne",0,0,"Tomahawk","meat","18.jpeg",1);
+INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (11,"Gli spaghetti allo scoglio sono a base di spaghetti e di frutti di mare come molluschi e crostacei",0,0,"Spaghetti allo scoglio","fish","19.jpg",1);
+INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (6,"Il vino spumante è un vino caratterizzato da rilevante effervescenza, dovuta ad anidride carbonica disciolta",0,0,"Spumante","drink","20.jpg",1);
 
 INSERT INTO rider(email, pasw, riderName, riderSurname, available) VALUES ("mario.rossi@ilpescaggio.it","19513fdc9da4fb72a4a05eb66917548d3c90ff94d5419e1f2363eea89dfee1dd","Mario","Rossi",1);
 INSERT INTO rider(email, pasw, riderName, riderSurname, available) VALUES ("luigi.blu@ilpescaggio.it","19513fdc9da4fb72a4a05eb66917548d3c90ff94d5419e1f2363eea89dfee1dd","Luigi","Blu",1);

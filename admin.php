@@ -34,7 +34,7 @@
         <link rel="stylesheet" href="css/scrollBarStyles.css">
         <script src="js/navbarRes.js" defer></script>
         <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-        <title>GESTIONE MENU</title>
+        <title>ADMIN</title>
     </head>
 
     <body>

@@ -37,7 +37,7 @@
         <script src="js/navbarRes.js" defer></script>
         
         <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-        <title>ORDINI</title>
+        <title>GESTIONE ORDINI</title>
     </head>
     <body>
         <?php 

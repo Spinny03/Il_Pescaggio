@@ -41,9 +41,9 @@
             <div class="left">
                 <img src="images/logo.png" alt="logo" id="logo">
                 <div class="log">
-                    <h1>Accedi</h1>
-                    <span>Accedi con i dati che hai inserito durante la registrazione.</span>
-                    <form action="access/loginDB.php" method="POST">
+                    <h1>Area riservata ai riders</h1>
+                    <span>Accedi con i dati che ti sono stati assegnati.</span>
+                    <form action="access/loginRidersDB.php" method="POST">
                         <label for="email"><b>Email</b></label>
                         <input type="text" placeholder="nome@esempio.com" name="email" 
                             <?php
@@ -60,12 +60,9 @@
                     </form>
                     <div class="pswDiv">
                         <a href="#" class="Link">Password dimenticata?<br><br></a>
-                        <a href="ridersLogin.php" class="Link">Area rider</a>
+                        <a href="index.php" class="Link">Area comune</a>
                     </div>
                 </div>  
-                <div class="bottom">
-                        <span>Non hai un account? <a href="signUp.php" class="Link">Registrati</a></span>
-                </div>
             </div>
             <div class="right">
 

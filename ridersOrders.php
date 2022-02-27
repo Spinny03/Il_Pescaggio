@@ -20,9 +20,6 @@
     if (!isset($_SESSION["typefood"])){
         $_SESSION["typefood"] = "pizza";
     }
-    if(isset($_SESSION["bigNews"]) && $_SESSION["bigNews"] == "news"){
-        $_SESSION["bigNews"] = "";
-    }
 ?>
 
 <!DOCTYPE html>
@@ -67,9 +64,9 @@
             </a>
             <ul class="navItems" data-visible="false">
                 <a href="home.php" class="navLink" >Delivery</a>
-                <a href="admin.php" class="navLink">Admin</a>
+                <a href="admin.php" class="navLink" style="color: #4e60ff">Admin</a>
                 <a href="catering.php" class="navLink">Catering</a>
-                <a href="orders.php" class="navLink" style="color: #4e60ff">Ordini</a>
+                <a href="orders.php" class="navLink">Ordini</a>
             </ul>
             
             <a href="cart.php" class="navBtn" id="shoppingCard">
@@ -97,64 +94,44 @@
             
         <div class="container">
             <?php 
-                $allOrders = $conn->query('SELECT * FROM forder WHERE idUser="'.$_SESSION["user"].'" ORDER BY dateAndTimePay DESC;');
+                $allOrders = $conn->query('SELECT * FROM forder WHERE idRider="'.$_SESSION["user"].'" AND orderStatus = 3  ORDER BY dateAndTimePay DESC;');
                 $i=2;
 
                 while($rowBig = $allOrders->fetch_assoc()){
-
                     echo'<div class="wrap-collabsible">
                             <input id="collapsible'.$i.'" class="toggle" type="checkbox">
                             <label for="collapsible'.$i.'" class="lbl-toggle">
                                 <div class="titleDiv">
                                     <img width="40px" height="40px" src="images/icons/';
                                     if($rowBig['delivery'] == 1){
-                                            echo 'delivery.svg';
-                                        }
-                                        else{
-                                            echo 'catering.svg';
-                                        }echo '" alt="icon" style="margin-right:10px;">
-                                    <h3 class="itemName">Ordine del giorno: <span style="color:#F84F31">'.htmlspecialchars($rowBig['dateAndTimePay']).'</span> </h3>
+                                        echo 'delivery.svg';
+                                    }
+                                    else{
+                                        echo 'catering.svg';
+                                    }
+                                    echo '" alt="icon" style="margin-right:10px;">
+                                    <h3 class="itemName">Ordine di: <span style="color:#F84F31">'.htmlspecialchars($rowBig['firstName'])." ".htmlspecialchars($rowBig['surname']).'</span> alle ore: <span style="color:#F84F31">'.htmlspecialchars($rowBig['dateAndTimePay']).'</span></h3>
                                 </div>
                             </label>
                             <div class="collapsible-content">
                                 <div class="content-inner">
                                     <div class="dishDiv">';
-                    echo '              <div class="itemCard orderTime">     
-                                            '; 
-                                            if($rowBig['delivery'] == 0){
-                                                echo'<h3 class="itemName"> Prenotato per il giorno: <span style="color:green"> '.htmlspecialchars($rowBig['dateAndTimeDelivered']).'</span></h3>';
-                                            }
-                                            if(isset($rowBig['dateAndTimeDelivered']) && $rowBig['delivery'] == 1){
-                                                echo'<h3 class="itemName"> Consegnato il: <span style="color:green"> '.htmlspecialchars($rowBig['dateAndTimeDelivered']).'</span></h3>';
-                                            }
-                                            else{
-                                                if($rowBig['orderStatus'] == -1){
-                                                    echo '<h3 class="itemName"> Stato: <span style="color:#F84F31"> Non accettato</span></h3>';
-                                                }
-                                                if($rowBig['orderStatus'] == 1){
-                                                    echo '<h3 class="itemName"> Stato: <span style="color:#F84F31"> In attesa</span></h3>';
-                                                }
-                                                if($rowBig['orderStatus'] == 2){
-                                                    if($rowBig['delivery'] == 0){
-                                                        echo '<h3 class="itemName"> Stato: <span style="color:#F84F31"> Accettato</span></h3>';
-                                                    }
-                                                    else{
-                                                        echo '<h3 class="itemName"> Stato: <span style="color:#F84F31"> In preparazione</span></h3>';
-                                                    }
-                                                }
-                                                if($rowBig['orderStatus'] == 3){
-                                                    echo '<h3 class="itemName"> Stato: <span style="color:#F84F31"> In consegna</span></h3>';
-                                                }
-                                                if($rowBig['orderStatus'] == 4){
-                                                    echo '<h3 class="itemName"> Stato: <span style="color:#F84F31"> Consegnato</span></h3>';
-                                                }
-                                            } 
-                    echo                '</div>';
+                    echo '              <div class="itemCard orderTime">'; 
+                    if($rowBig['delivery'] == 1){
+                                            echo'
+                                            <h3 class="itemName"> Data compimento ordine: <span style="color:#4E60FF">'.htmlspecialchars($rowBig['dateAndTimePay']).'</span> </h3>
+                                            <h3 class="itemName"> <span style="color:#F84F31">delivery</span></h3>
+                                        </div>';
+                    }
+                    else{
+                                            echo'
+                                            <h3 class="itemName"> Data compimento ordine: <span style="color:#4E60FF">'.htmlspecialchars($rowBig['dateAndTimePay']).'</span> </h3>
+                                            <h3 class="itemName"><span style="color:#23C552">catering</span></h3>
+                                        </div>';
+                    } 
                         
                     $dishs = $conn->query('SELECT * FROM orderedfood WHERE idOrder='.$rowBig["id"].';');
-
                     $totalPrice = 0;
-
                     while($row = $dishs->fetch_assoc()){
 
                         $cart = $conn->query('SELECT * FROM dish WHERE dish.id = '.$row["idDish"].';');
@@ -175,32 +152,19 @@
                                     </div>';
                                     $totalPrice += $cart['dishCost'] * $row['quantity'];
                     }
-
-                    if($rowBig["delivery"] == 0){
-                        $totalPrice = $totalPrice * $rowBig["reservations"];
                         echo '      <div class="itemCard">
                                         <div class="itemRight">
-                                            <h3 class="itemName"> Numero prenotazioni: <span style="font-weight: bold; color: green">'.htmlspecialchars($rowBig['reservations']).'</span></h3>
+                                        <h3 class="itemName"> Indirizzo di spedizione: <span style="font-weight: bold; color: green">'.htmlspecialchars($rowBig['via']).' '.htmlspecialchars($rowBig['civ']).', '.htmlspecialchars($rowBig['cap']).'</span></h3>
                                         </div>
                                         <div class="itemLeft">
-                                            <h3 class="itemName">totale: <span style="margin-right: 10px; font-weight: bold;color: red">'.$totalPrice.'€</span></h3>
+                                            <form action="access/ridersOrdersDB.php" method="POST">
+                                                <input type="hidden" name="idOrder" value="'.$rowBig["id"].'">
+                                                <input type="submit" name="delivered" value="Consegnato" class="logbtn">
+                                            </form>
                                         </div>
                                     </div>';
-                    }
-                    else{
-                        $totalPrice += 10;
-                        echo '      <div class="itemCard">
-                                        <div class="itemRight">
-                                            <h3 class="itemName"> indirizzo di spedizione: <span style="font-weight: bold; color: green">'.htmlspecialchars($rowBig['via']).' '.htmlspecialchars($rowBig['civ']).', '.htmlspecialchars($rowBig['cap']).'</span></h3>
-                                        </div>
-                                        <div class="itemLeft">
-                                            <h3 class="itemName">totale: <span style="margin-right: 10px; font-weight: bold;color: red">'.$totalPrice.'€</span></h3>
-                                        </div>
-                                    </div>';
-                    }
 
-                    echo '    
-                                </div>
+                    echo '      </div>
                             </div>
                         </div>
                     </div>';
@@ -210,4 +174,6 @@
         </div>  
     </body>
     <?php $conn->close(); ?>
+
+
 </html>

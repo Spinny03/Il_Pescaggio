@@ -10,6 +10,12 @@
         exit();
     }
 
+    if(isset($_SESSION["rider"])){
+        $_SESSION["rider"] = "";
+        header("Location: ../ridersLogin.php");
+        exit();
+    }
+
     $conn = new mysqli("localhost", "root", "");
     if ($conn->connect_error){
         exit("Connessione fallita: " . $conn->connect_error);

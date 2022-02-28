@@ -1,6 +1,6 @@
 <?php 
     session_start(); 
-    if(empty($_SESSION["rider"]) && empty($_COOKIE["rider"])){
+    if(empty($_SESSION["rider"])){
         header("Location: ridersLogin.php");
         exit();
     }
@@ -24,21 +24,20 @@
         <link rel="stylesheet" href="css/cateringStyles.css">
         <link rel="stylesheet" href="css/cartStyles.css">
         <link rel="stylesheet" href="css/ordersStyles.css">
-
-        <script src="js/navbarRes.js" defer></script>
-        <script src="js/footer.js" defer></script>
         <link rel="icon" type="image/x-icon" href="images/favicon.ico">
         <title>LAVORO</title>
     </head>
-    <body onload="footerHeight()" onresize="footerHeight()">
+    <body>
         <nav class="navBar">
             <a>
                 <img src="images/smallLogo.png" alt="logo" id="logo">
             </a>
-                <a class="navLink" ><?php echo $rider["riderName"]." ".$rider["riderSurname"]." &nbsp"?></a>
+                <a class="navLink" href="access/profileDB.php" Style="color: red; margin-right:20px;">Esci</a>
+                <a class="navLink" Style="margin-right:20px;"><?php echo $rider["riderName"]." ".$rider["riderSurname"]?></a>
+                
         </nav>
             
-        <div class="container">
+        <div class="container" style="margin-bottom: 0;">
             <?php 
                 $allOrders = $conn->query('SELECT * FROM forder WHERE idRider="'.$_SESSION["rider"].'" AND orderStatus = 3  ORDER BY dateAndTimePay DESC;');
                 $i=2;

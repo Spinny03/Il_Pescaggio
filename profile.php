@@ -75,7 +75,7 @@
                     </style>';
             }
         ?>
-        <div class="container">
+        <div class="container" style="min-height: 100vh;">
             <nav class="navBar">
                 <a href="home.php">
                     <img src="images/smallLogo.png" alt="logo" id="logo">

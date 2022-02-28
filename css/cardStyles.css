@@ -12,7 +12,7 @@
   
   .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(410px, 1fr));
     gap: 1rem;
     padding: 0;
     list-style-type: none;

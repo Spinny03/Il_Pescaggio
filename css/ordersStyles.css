@@ -2,7 +2,7 @@
 
 .container{
     display:block;
-    height: auto;
+    height: calc(100vh - 80px);
     margin-left: auto;
     margin-right: auto;
     width: 85%;

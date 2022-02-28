@@ -55,7 +55,6 @@
                         <button type="submit" name="login" class="logbtn">Accedi</button>
                     </form>
                     <div class="pswDiv">
-                        <a href="#" class="Link">Password dimenticata?<br><br></a>
                         <a href="index.php" class="Link">Area comune</a>
                     </div>
                 </div>  

@@ -49,6 +49,7 @@
             $imageFileType = strtolower(pathinfo($result["photoLink"], PATHINFO_EXTENSION));
             $newname = "../images/PhotoDishes/".$id["id"].".". $imageFileType;
             rename($oldname, $newname);
+            crop_image($newname);
             $conn->query('UPDATE dish SET photoLink="'.$id["id"].".". $imageFileType.'" WHERE id="'.$id["id"].'";');
         
         }
@@ -153,7 +154,7 @@
             $oldname = "../images/PhotoDishes/".htmlspecialchars(basename( $_FILES["pfile"]["name"]));
             $newname = "../images/PhotoDishes/".$_POST["idDishP"] .".". $imageFileType;
             rename($oldname, $newname);
-        
+            crop_image($newname);
             header("Location: ../dishs.php");
             $conn->close();
             exit();
@@ -178,9 +179,39 @@
             $oldname = "../images/PhotoDishes/".htmlspecialchars(basename( $_FILES["pfile"]["name"]));
             $newname = "../images/PhotoDishes/new.". $imageFileType;
             rename($oldname, $newname);
+            crop_image($newname);
         }
     }
     header("Location: ../dishs.php");
     $conn->close();
+    function crop_image($image) {
+        list($w_i, $h_i, $type) = getimagesize($image); 
+        $w_o = $w_i;
+        $h_o = 4 * $w_o / 5;
+
+        if ($h_i < $h_o) {
+            $h_o = $h_i;
+            $w_o = 5 * $h_o / 4;
+        }
+    
+        $x_o = $w_i - $w_o;
+        $y_o = $h_i - $h_o;
+    
+        $types = array("", "gif", "jpeg", "png"); 
+        $ext = $types[$type]; 
+        if ($ext) {
+          $func = 'imagecreatefrom'.$ext; 
+          $img_i = $func($image); 
+        } else {
+          echo 'Incorrect image'; 
+          return false;
+        }
+        if ($x_o + $w_o > $w_i) $w_o = $w_i - $x_o; 
+        if ($y_o + $h_o > $h_i) $h_o = $h_i - $y_o; 
+        $img_o = imagecreatetruecolor($w_o, $h_o);
+        imagecopy($img_o, $img_i, 0, 0, $x_o/2, $y_o/2, $w_o, $h_o); 
+        $func = 'image'.$ext; 
+        return $func($img_o, $image);   
+    }
     exit();
 ?>

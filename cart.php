@@ -19,6 +19,13 @@
     $bag = mysqli_fetch_assoc($bag); 
     $data = $conn->query('SELECT * FROM username WHERE email ="'.$_SESSION["user"].'";');
     $data = mysqli_fetch_assoc($data); 
+    if(!isset($_SESSION["bigNews"]) || $_SESSION["bigNews"] != "news"){
+        $bigNews = $conn->query('SELECT notice FROM username WHERE email="'.$_SESSION["user"].'";');
+        $bigNews = mysqli_fetch_assoc($bigNews); 
+        if($bigNews["notice"] == 1){
+            $_SESSION["bigNews"] = "news";
+        }
+    }
 ?>
 
 <!DOCTYPE html>

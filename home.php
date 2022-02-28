@@ -10,7 +10,8 @@
             $_SESSION["user"] = $_COOKIE["user"];
         }
     }
-    
+
+
     $conn = new mysqli("localhost", "root", "");  
     if ($conn->connect_error){
         exit("Connessione fallita: " . $conn->connect_error);
@@ -20,6 +21,13 @@
     $bag = mysqli_fetch_assoc($bag); 
     if (!isset($_SESSION["typefood"])){
         $_SESSION["typefood"] = "pizza";
+    }
+    if(!isset($_SESSION["bigNews"]) || $_SESSION["bigNews"] != "news"){
+        $bigNews = $conn->query('SELECT notice FROM username WHERE email="'.$_SESSION["user"].'";');
+        $bigNews = mysqli_fetch_assoc($bigNews); 
+        if($bigNews["notice"] == 1){
+            $_SESSION["bigNews"] = "news";
+        }
     }
 ?>
 

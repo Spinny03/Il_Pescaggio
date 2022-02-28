@@ -21,6 +21,13 @@
     $data = mysqli_fetch_assoc($data); 
 
     $totalPrice = 0;
+    if(!isset($_SESSION["bigNews"]) || $_SESSION["bigNews"] != "news"){
+        $bigNews = $conn->query('SELECT notice FROM username WHERE email="'.$_SESSION["user"].'";');
+        $bigNews = mysqli_fetch_assoc($bigNews); 
+        if($bigNews["notice"] == 1){
+            $_SESSION["bigNews"] = "news";
+        }
+    }
 ?>
 
 <!DOCTYPE html>

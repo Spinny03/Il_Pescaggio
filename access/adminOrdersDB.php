@@ -16,8 +16,9 @@
     }
     elseif(isset($_POST["send"]) && isset($_POST["rider"])){
         $conn->query('UPDATE FOrder SET dateAndTimePay = dateAndTimePay, orderStatus = 3, idRider="'.$_POST["rider"].'" WHERE id = "'.$_POST["idOrder"].'";'); 
-        $conn->query('UPDATE rider SET available = 0  WHERE email="'.$_POST["rider"].'";');     
+        $conn->query('UPDATE rider SET available = 0  WHERE email="'.$_POST["rider"].'";');  
     }
+    $conn->query('UPDATE username, FOrder SET registrationDate = registrationDate, notice = 1 WHERE id = "'.$_POST["idOrder"].'" AND idUser=email' ); 
     header("Location: ../adminOrders.php");
     $conn->close();
     exit();

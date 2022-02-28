@@ -64,8 +64,11 @@
                 $conn->query('DELETE cart FROM cart WHERE idUser = "'.$_SESSION["user"].'"AND idDish = "'.$row["idDish"].'" AND cart.catering = 0;');
             }
         }
-        $conn->close();
         $_SESSION["bigNews"] = "news";
+        $conn->query('UPDATE username SET registrationDate = registrationDate, notice=1 WHERE email = "'.$_SESSION["user"].'"');
+        $conn->close();
+        
+        
         header('Location: ../home.php');
         exit;
     }

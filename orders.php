@@ -19,6 +19,7 @@
     $bag = mysqli_fetch_assoc($bag); 
     if(isset($_SESSION["bigNews"]) && $_SESSION["bigNews"] == "news"){
         $_SESSION["bigNews"] = "";
+        $conn->query('UPDATE username SET registrationDate = registrationDate, notice=0 WHERE email = "'.$_SESSION["user"].'"');
     }
 ?>
 

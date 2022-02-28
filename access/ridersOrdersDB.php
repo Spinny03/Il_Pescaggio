@@ -12,6 +12,7 @@
         $date = $data ." ".$time;
         $conn->query('UPDATE rider SET available = 1 WHERE email = "'.$_SESSION["rider"].'";'); 
         $conn->query('UPDATE FOrder SET dateAndTimePay = dateAndTimePay, dateAndTimeDelivered = "'.$date.'", orderStatus = 4 WHERE id = "'.$_POST["idOrder"].'";');
+        $conn->query('UPDATE username, FOrder SET registrationDate = registrationDate, notice = 1 WHERE id = "'.$_POST["idOrder"].'" AND idUser=email' ); 
     }
     header("Location: ../ridersOrders.php");
     $conn->close();

@@ -59,7 +59,6 @@
                         <button type="submit" name="login" class="logbtn">Accedi</button>
                     </form>
                     <div class="pswDiv">
-                        <a href="#" class="Link">Password dimenticata?<br><br></a>
                         <a href="ridersLogin.php" class="Link">Area rider</a>
                     </div>
                 </div>  

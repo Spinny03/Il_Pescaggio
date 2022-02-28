@@ -4,12 +4,13 @@
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 15px;
-    height: calc(100vh - 80px);
-    height: auto;
+    min-height: calc(100vh - 80px);
+    margin-bottom: 16px;
 }
 .left{
     margin-left: 15px;
     overflow-y:scroll;
+    max-height: calc(100vh - 80px);
 }
 .right{
     position: sticky;
@@ -156,6 +157,7 @@
         width: 100%;
         margin: 0;
         overflow-y:visible;
+        max-height: none;
     }
     .right{
         width: 100%;

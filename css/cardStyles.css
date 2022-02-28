@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300&display=swap');
+
+:root {
+    --surface-color: #fff;
+    --curve: 40;
+  }
+  
+  * {
+    box-sizing: border-box;
+    border:0;
+  }
+  
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(410px, 1fr));
+    gap: 1rem;
+    padding: 0;
+    list-style-type: none;
+  }
+  
+  .card {
+    font-family: 'nunito';
+    position: relative;
+    display: none;
+    min-height: 350px;
+    height: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    text-decoration: none;
+    padding: 0;
+  }
+
+  .card.cart {
+    background-color: #4e60ff;
+    border: 2px solid #4e60ff;
+  }
+
+  .card__overlay.cart {
+    background-color: #f3f4ff;
+  }
+
+  .card__image { 
+    border-radius: 18px; 
+    width: 100%;
+    height: 100%;
+  }
+  
+  .card__overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;          
+    background-color: #f8f9ff;
+    display: flex;
+    min-height: 9rem;
+    height: 40%;
+  }
+  
+  
+  .card__header {
+    position: relative;
+    display: flex;
+    gap: 2em;
+    padding: 2em;
+    /*border-radius: calc(var(--curve) * 1px) 0 0 0; */   
+    width: 18.75rem;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+  
+.divPrice{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  flex-direction: column;
+}
+
+.smallBtn{
+  font-family: 'nunito';
+  border: 0;
+  display: inline-block;
+  background-color: #4e60ff;
+  width: 1.5rem;
+  height: 1.5rem;
+  text-align: center;
+  border-radius: 1rem;
+  color: white;
+  cursor: pointer;
+}
+.dishNumber{
+  font-family: 'nunito';
+  border: 0;
+  display: inline-block;
+  background-color: #dcdada;
+  width: 3rem;
+  height: 1.5rem;
+  text-align: center;
+  border-radius: 1rem;
+  color: black;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+  .card__title {
+    font-size: 1em;
+    margin: 0 0 .3em;
+    color: #6A515E;
+  }
+  
+  .card__status {
+    font-size: .8em;
+    color: #D7BDCA;
+  }
+  
+  .card__description {
+    padding: 0 2em 2em;
+    margin: 0;
+    color: #D7BDCA;
+    font-family: 'nunito'; 
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }    
+
+  @media screen and (max-width: 660px) {
+    .cards {
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    }
+  }
+  @media screen and (max-width: 530px) {
+    .card__header{
+      max-width: 10rem;
+    }
+  }

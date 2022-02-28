@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300&display=swap');
+
+body{
+    margin: 0;
+    font-family: 'nunito';
+    overflow-x: hidden;
+}
+.container{
+    display: grid;
+    grid-template-rows: 80px minmax(80px, 10vh) minmax(20px, 3vh) 1fr;
+    width: calc(100vw - (100vw - 100%));
+    gap: 24px;
+    margin-bottom: 12px;
+}
+
+.new{
+    font-size: 1.3rem;
+    color: white;
+    border-radius: 0px 16px 0px;
+    position: absolute;
+    margin: 0;
+    top: 0;
+    right: 0;
+    padding: 3px;
+    background-color: #4e60ff;
+}
+
+.chooseDish{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    background-color: white;
+    display: flex;
+    justify-content: space-evenly;
+    overflow: auto;
+}
+
+.choice{
+    font-family: 'nunito';
+    width: 160px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+    background-color: white;
+    border: 1px solid #EDEEF2;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.choice:hover {
+    background-color: #ddd;
+}
+  
+.choice.active {
+    color: #4e60ff;
+    background-color: #f3f4ff;
+    border: 2px solid #4e60ff;
+}
+
+.choice p{
+    margin: 0;
+}
+.title{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+  
+.container h2{
+    margin: 0;
+    font-family: 'nunito';
+}
+.dish{
+
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.show {
+    display: block;
+}
+
+
+@media screen and (max-width: 1300px) {
+    .container{
+        grid-template-rows: 80px minmax(80px, 176px) minmax(20px, 3vh) 1fr;
+    }
+    .chooseDish{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        justify-items: center;
+        gap: 16px;
+        width: 60%;
+    }
+    .choice{
+        height: 80px;
+        width: 160px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 16px;
+        border: 1px solid #EDEEF2;
+    }
+
+}
+
+@media screen and (max-width: 900px) {
+    .chooseDish{
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 660px) {
+    .chooseDish{
+        width: 100%;
+    }
+    .choice{
+        width: 110px;
+    }
+}
+

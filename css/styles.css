@@ -43,34 +43,6 @@ span{
     font-weight: 300;
     margin-bottom: 20px;
 }
-b{
-    display:inline-block;
-    text-decoration: none;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 0.8rem;
-    line-height: 16px;
-}
-input[type=text], input[type=password]{
-    border: 1px solid #C7C8D2;
-    box-sizing: border-box;
-    border-radius: 8px;
-    padding: 16px 12px;
-    width: 100%;
-    margin-bottom: 20px;
-}
-::placeholder{
-    font-family: 'nunito';
-}
-input[type=checkbox]{
-    display: inline-block;
-    border: 1px solid #C7C8D2;
-    box-sizing: border-box;
-    border-radius: 8px;
-    height: 20px;
-    width: 20px;
-    vertical-align: middle;
-}
 #labelCheck{
     text-decoration: none;
     padding-left: 10px;
@@ -117,7 +89,7 @@ input[type=checkbox]{
     background-size: cover;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
     .container{
         grid-template-columns: 1fr;
     }

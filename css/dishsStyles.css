@@ -1,0 +1,313 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300&display=swap');
+*{
+    box-sizing: border-box;
+}
+.chooseDish{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    background-color: white;
+    display: flex;
+    justify-content: space-evenly;
+    overflow: auto;
+}
+
+.choice{
+    margin-left: 10px;
+    margin-right: 10px;
+    font-family: 'nunito';
+    width: 160px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 16px;
+    background-color: white;
+    border: 1px solid #EDEEF2;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+
+.choice.active {
+    color: #4e60ff;
+    background-color: #f3f4ff;
+    border: 2px solid #4e60ff;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 15px;
+    height: auto;
+    margin-bottom: 15px;
+}
+.left{
+    margin-left: 15px;
+    overflow-y:scroll;
+}
+.right{
+    position: sticky;
+    top: 80px;
+    margin-right: 15px;
+}
+
+.itemCard{
+    width: calc(100% - 15px);
+    background-color: #ffffff;
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #C7C8D2;
+    border-radius: 8px;
+}
+.addDish{
+    background-color: green; 
+    font-family:'nunito';
+    justify-content: center;
+    cursor: pointer;
+}
+.itemNumber{
+    display: inline-block;
+    background-color: #4E60FF;
+    width: 22px;
+    height: 22px;
+    border-radius: 16px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.formBtn{
+    border: 0;
+    font-size: 1.2rem;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.itemName{
+    display: inline-block;
+    margin: 0;
+}
+
+.itemLeft{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#p25{
+    width: 25%;
+}
+#p50{
+    width: 50%;
+}
+#p70{
+    width: 70%;
+}
+#p100{
+    width: 100%;
+}
+#p30{
+    width: 30%;
+}
+#p10{
+    width: 10%;
+}
+
+
+.inPhoto { 
+	border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px; 
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.profilePhotoBig{
+    margin-top: 0.5%;
+    margin-bottom: 1%;
+    border-radius: 16px;
+}
+
+.pSettings{
+    height: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    border: 1px solid #EDEEF2;
+    background-color: white;
+    padding: 10px;
+    border-radius: 16px;
+}
+
+#pform{
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+}
+
+.photoBtn{
+    margin-top: 30px;
+    width: 20%;
+    background-color: #4E60FF;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-family: 'nunito';
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    margin-right: 20px;
+    margin-left: 20px;
+    min-width: 145px;
+}
+
+.removeBtn{
+    background-color: #ffffff;
+    border: 1px solid red;
+    color: red;
+}
+
+input{
+    padding-right: 10px;
+}
+.logbtn{
+    margin-top: 30px;
+    width: 100%;
+    background-color: #4E60FF;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-family: 'nunito';
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+.data{
+    margin: 0; 
+    float:left;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+@media screen and (max-width: 1500px) {
+    #p25{
+        width: 50%;
+    }
+    #p30{
+        width: 100%;
+    }
+    #p10{
+        width: 50%;
+    }
+    #p50{
+        width: 100%;
+    }
+    .confBtn{
+        width: 100%;
+    }
+    .delBtn  {
+        width: 100%;
+    }
+    .chooseDish{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        justify-items: center;
+        gap: 16px;
+        width: 60%;
+        overflow-x: hidden;
+    }
+    .choice{
+        height: 80px;
+        width: 90px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 16px;
+        border: 1px solid #EDEEF2;
+    }
+    .pSettings{
+        height: 95%;
+    }
+}
+
+
+@media screen and (max-width: 750px) {
+    .removeBtn{
+        margin-bottom: 5%;
+    }
+    .profilePhotoBig{
+        margin-top: 3%;
+        margin-bottom: 0%;
+    }
+    #pform{
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 660px) {
+    .itemCard{
+        width: 100%;
+    }
+    .pSettings{
+        width: 90%;
+        height: 100%;
+    }
+    .chooseDish{
+        width: 100%;
+    }
+    .choice{
+        width: 80px;
+    }
+}
+
+
+@media screen and (max-width: 1000px) {
+    .container{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+        margin: 10px;
+    }
+    .left{
+        width: 100%;
+        margin: 0;
+        overflow-y:visible;
+    }
+    .right{
+        width: 100%;
+    }
+    .confBtn{
+        margin-bottom: 1rem;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .chooseDish{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .chooseDish{
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+    }
+}

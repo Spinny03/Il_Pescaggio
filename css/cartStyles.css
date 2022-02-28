@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300&display=swap');
+
+.container{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 15px;
+    min-height: calc(100vh - 80px);
+    margin-bottom: 16px;
+}
+.left{
+    margin-left: 15px;
+    overflow-y:scroll;
+    max-height: calc(100vh - 80px);
+}
+.right{
+    position: sticky;
+    top: 80px;
+    margin-right: 15px;
+}
+
+.itemCard{
+    width: 100%;
+    background-color: #ffffff;
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #C7C8D2;
+    border-radius: 8px;
+}
+
+.itemNumber{
+    display: inline-block;
+    background-color: #4E60FF;
+    width: 22px;
+    height: 22px;
+    border-radius: 16px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.formBtn{
+    border: 0;
+    font-size: 1.2rem;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.itemName{
+    display: inline-block;
+    margin: 0;
+}
+
+.itemLeft{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.priceRecap{
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.innerPrice{
+    display: flex;
+    justify-content: space-between;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+.totalPrice{
+    border-top: 1px solid black;
+}
+
+.data{
+    margin: 0; 
+    float:left;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.confBtn{
+    margin-top: 30px;
+    width: 69%;
+    background-color: #4E60FF;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-family: 'nunito';
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+.delBtn{
+    margin-top: 30px;
+    width: 30%;
+    background-color: #FFFFFF;
+    border: none;
+    color: red;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-family: 'nunito';
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    background-color: white;
+    border: 1px solid red;
+}
+
+#p25{
+    width: 25%;
+}
+#p50{
+    width: 50%;
+}
+#p70{
+    width: 70%;
+}
+#p100{
+    width: 100%;
+}
+#p30{
+    width: 30%;
+}
+#p10{
+    width: 10%;
+}
+
+@media screen and (max-width: 1300px) {
+    .confBtn{
+        width: 100%;
+    }
+    .delBtn  {
+        width: 100%;
+    }
+}
+@media screen and (max-width: 1000px) {
+    .container{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+        margin: 10px;
+    }
+    .left{
+        width: 100%;
+        margin: 0;
+        overflow-y:visible;
+        max-height: none;
+    }
+    .right{
+        width: 100%;
+    }
+    .confBtn{
+        margin-bottom: 1rem;
+    }
+}

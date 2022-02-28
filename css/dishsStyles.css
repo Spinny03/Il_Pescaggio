@@ -41,7 +41,8 @@
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 15px;
-    height: calc(100vh - 80px);
+    height: auto;
+    margin-bottom: 15px;
 }
 .left{
     margin-left: 15px;

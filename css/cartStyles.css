@@ -5,6 +5,7 @@
     grid-template-columns: 2fr 1fr;
     gap: 15px;
     height: calc(100vh - 80px);
+    height: auto;
 }
 .left{
     margin-left: 15px;

@@ -8,19 +8,44 @@
     border-radius: 16px;
     text-decoration: none;
     color: #4e60ff;
+    font-size: 2em;
+}
+.adminSetting:hover{
+   box-shadow: 0px 0px 20px 13px rgba(78,96,255,0.25);
 }
 body{
     overflow-y: hidden;
 }
+
 .containerAdmin{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    width: calc(100vw - (100vw - 100%));
+    width: 95%;
     height: calc(100vh - 80px);
     gap: 24px;
     justify-content: center;
     align-items: center;
+    margin-left: auto;
+    margin-right: auto;
 }
+
+body{
+    overflow-y: scroll;
+}
+
+@media screen and (max-width: 900px) {
+
+    .containerAdmin{
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-top: 24px;
+        margin-bottom: 24px;
+    }
+    .adminSetting{
+        height: 100%;
+    }
+}
+
 @media screen and (max-width: 660px) {
     .pSettings{
         width: 90%;

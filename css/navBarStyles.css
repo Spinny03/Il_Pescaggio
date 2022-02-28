@@ -29,6 +29,10 @@ body{
     list-style-type: none;
 }
 
+.navLink:hover {
+    color: #4e60ff;
+  }
+
 #itemsNumber{
     display: block;
     position: absolute;
@@ -121,6 +125,43 @@ body{
     top: 1px;
 }
 
+footer{
+    position:absolute;
+    left: 0;
+    right: 0;
+    height: 350px;
+    background-color: #4e60ff; 
+    color: white;
+    bottom: auto;
+    display: flex;
+    gap: 20px;
+    justify-content: space-around;
+}
+
+footer p {
+    max-width: 30ch;
+}
+
+footer h2{
+    position: relative;
+}
+
+footer h2::before{
+    content: "";
+    position: absolute;
+    background-color: white;
+    height: 2px;
+    width: 60px;
+    bottom: -3px;
+}
+
+
+.footerLink{
+    text-decoration: underline;
+    color: white;
+    margin-bottom: 10px;
+}
+
 @media screen and (max-width: 900px) {
 
     .navItems{
@@ -148,5 +189,20 @@ body{
     }
     #profileBtn{
         margin-right: 1vw;
+    }
+
+    footer{
+        flex-direction: column;
+        bottom: auto;
+        min-height: 1000px;
+        height: 100vh;
+    }
+    .footerDiv{
+        text-align: center;
+    }
+    footer p {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 30ch;
     }
 }

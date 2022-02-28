@@ -1,7 +1,7 @@
 /*
 ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD HH24:MI:SS';
 *//*
-1. in attesa, 2. in preparazione, 3. in consegna , -1 non accettato
+1. in attesa, 2. in preparazione, 3. in consegna, 4. cosegnato, -1 non accettato
 *//*
 admin:
     email: admin@ilpescaggio.it
@@ -19,8 +19,7 @@ CREATE TABLE rider(
     riderName varchar(255) NOT NULL,
     riderSurname varchar(255) NOT NULL,
     available TINYINT(1),
-    salary int,
-    ordersDelivered int
+    fired TINYINT(1)
 );
 
 CREATE TABLE username(
@@ -106,8 +105,8 @@ INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, ph
 INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (11,"Gli spaghetti allo scoglio sono a base di spaghetti e di frutti di mare come molluschi e crostacei",0,0,"Spaghetti allo scoglio","fish","19.jpg",1);
 INSERT INTO dish( dishCost, description, gluten, lactose, dishName, dishType, photoLink, visible) VALUES (6,"Il vino spumante è un vino caratterizzato da rilevante effervescenza, dovuta ad anidride carbonica disciolta",0,0,"Spumante","drink","20.jpg",1);
 
-INSERT INTO rider(email, pasw, riderName, riderSurname, available) VALUES ("mario.rossi@ilpescaggio.it","19513fdc9da4fb72a4a05eb66917548d3c90ff94d5419e1f2363eea89dfee1dd","Mario","Rossi",1);
-INSERT INTO rider(email, pasw, riderName, riderSurname, available) VALUES ("luigi.blu@ilpescaggio.it","19513fdc9da4fb72a4a05eb66917548d3c90ff94d5419e1f2363eea89dfee1dd","Luigi","Blu",1);
+INSERT INTO rider(fired, email, pasw, riderName, riderSurname, available) VALUES (0, "mario.rossi@ilpescaggio.it","19513fdc9da4fb72a4a05eb66917548d3c90ff94d5419e1f2363eea89dfee1dd","Mario","Rossi",1);
+INSERT INTO rider(fired, email, pasw, riderName, riderSurname, available) VALUES (0, "luigi.blu@ilpescaggio.it","19513fdc9da4fb72a4a05eb66917548d3c90ff94d5419e1f2363eea89dfee1dd","Luigi","Blu",1);
 INSERT INTO username (email, firstName, surname, registrationDate, nCard, via, civ, cap, tel, photoLink, pasw) VALUES('filippo.spinella.2003@calvino.edu.it', 'Filippo', 'Spinella', '2022-02-24 11:53:43', '0123 4567 7890', 'via Sestri', '17/11', '16154', '1234567891', 'filippo.spinella.2003@calvino.edu.it.jpg', '19513fdc9da4fb72a4a05eb66917548d3c90ff94d5419e1f2363eea89dfee1dd');
 INSERT INTO username (email, firstName, surname, registrationDate, nCard, via, civ, cap, tel, photoLink, pasw) VALUES('filippo.spinella2003@hotmail.com', 'Filippo', 'Spinella', '2022-02-24 11:53:43', '0123 4567 7890', 'via Sestri', '17/11', '16154', '1234567891', 'filippo.spinella2003@hotmail.com.jpg', '19513fdc9da4fb72a4a05eb66917548d3c90ff94d5419e1f2363eea89dfee1dd');
 INSERT INTO username (email, firstName, surname, registrationDate, nCard, via, civ, cap, tel, photoLink, pasw) VALUES ('barle.ale@gmail.com', 'Alessio', 'Barletta', '2022-02-25 10:08:50', '1234 1234 1234', 'via San Giovanni Battista', '12/89', '16654', '3333333333', 'barle.ale@gmail.com.jpg', '267f761ffdb09daa1d2ff11dc825dc94edd53a086b410972e6a0d6826b020c54');

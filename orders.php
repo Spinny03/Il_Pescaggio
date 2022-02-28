@@ -19,6 +19,7 @@
     $bag = mysqli_fetch_assoc($bag); 
     if(isset($_SESSION["bigNews"]) && $_SESSION["bigNews"] == "news"){
         $_SESSION["bigNews"] = "";
+        $conn->query('UPDATE username SET registrationDate = registrationDate, notice=0 WHERE email = "'.$_SESSION["user"].'"');
     }
 ?>
 
@@ -126,7 +127,7 @@
                                             if($rowBig['delivery'] == 0){
                                                 echo'<h3 class="itemName"> Prenotato per il giorno: <span style="color:green"> '.htmlspecialchars($rowBig['dateAndTimeDelivered']).'</span></h3>';
                                             }
-                                            if(isset($rowBig['dateAndTimeDelivered']) && $rowBig['delivery'] == 1){
+                                            if(isset($rowBig['dateAndTimeDelivered']) && $rowBig['delivery'] == 1 && $rowBig['orderStatus'] == 4){
                                                 echo'<h3 class="itemName"> Consegnato il: <span style="color:green"> '.htmlspecialchars($rowBig['dateAndTimeDelivered']).'</span></h3>';
                                             }
                                             else{
@@ -146,9 +147,6 @@
                                                 }
                                                 if($rowBig['orderStatus'] == 3){
                                                     echo '<h3 class="itemName"> Stato: <span style="color:#F84F31"> In consegna</span></h3>';
-                                                }
-                                                if($rowBig['orderStatus'] == 4){
-                                                    echo '<h3 class="itemName"> Stato: <span style="color:#F84F31"> Consegnato</span></h3>';
                                                 }
                                             } 
                     echo                '</div>';

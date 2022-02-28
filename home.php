@@ -1,26 +1,36 @@
-<?php
-session_start();
-if (empty($_SESSION["user"]) && empty($_COOKIE["user"])) {
-    header("Location: index.php");
-    exit();
-}
 
-if (empty($_SESSION["user"])) {
-    if (isset($_COOKIE["user"])) {
-        $_SESSION["user"] = $_COOKIE["user"];
+<?php 
+    session_start(); 
+    if(empty($_SESSION["user"]) && empty($_COOKIE["user"])){
+        header("Location: index.php");
+        exit();
     }
-}
+    
+    if(empty($_SESSION["user"])){
+        if(isset($_COOKIE["user"])){
+            $_SESSION["user"] = $_COOKIE["user"];
+        }
+    }
 
-$conn = new mysqli("localhost", "root", "");
-if ($conn->connect_error) {
-    exit("Connessione fallita: " . $conn->connect_error);
-}
-$conn->query("USE Il_Pescaggio");
-$bag = $conn->query('SELECT SUM(quantity) FROM cart WHERE idUser="' . $_SESSION["user"] . '" AND cart.catering = 0;');
-$bag = mysqli_fetch_assoc($bag);
-if (!isset($_SESSION["typefood"])) {
-    $_SESSION["typefood"] = "pizza";
-}
+
+    $conn = new mysqli("localhost", "root", "");  
+    if ($conn->connect_error){
+        exit("Connessione fallita: " . $conn->connect_error);
+    }
+    $conn->query("USE Il_Pescaggio");
+    $bag = $conn->query('SELECT SUM(quantity) FROM cart WHERE idUser="'.$_SESSION["user"].'" AND cart.catering = 0;');
+    $bag = mysqli_fetch_assoc($bag); 
+    if (!isset($_SESSION["typefood"])){
+        $_SESSION["typefood"] = "pizza";
+    }
+    if(!isset($_SESSION["bigNews"]) || $_SESSION["bigNews"] != "news"){
+        $bigNews = $conn->query('SELECT notice FROM username WHERE email="'.$_SESSION["user"].'";');
+        $bigNews = mysqli_fetch_assoc($bigNews); 
+        if($bigNews["notice"] == 1){
+            $_SESSION["bigNews"] = "news";
+        }
+    }
+
 ?>
 
 <!DOCTYPE html>

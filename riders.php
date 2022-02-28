@@ -24,6 +24,13 @@
     else{
         $link = "images/photoDishes/".$dataPL;
     } 
+    if(!isset($_SESSION["bigNews"]) || $_SESSION["bigNews"] != "news"){
+        $bigNews = $conn->query('SELECT notice FROM username WHERE email="'.$_SESSION["user"].'";');
+        $bigNews = mysqli_fetch_assoc($bigNews); 
+        if($bigNews["notice"] == 1){
+            $_SESSION["bigNews"] = "news";
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -106,7 +113,7 @@
             <div class="left">
                 <h2>Riders</h2>
                 <?php 
-                    $sql = 'SELECT * FROM rider ORDER BY riderName DESC;';
+                    $sql = 'SELECT * FROM rider WHERE fired=0 ORDER BY riderName DESC;';
                     $result = $conn->query($sql); 
                     $totalPrice = 0;
                     while($row = $result->fetch_assoc()){   

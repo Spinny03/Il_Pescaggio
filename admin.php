@@ -10,13 +10,22 @@ if (empty($_SESSION["user"])) {
     }
 }
 
-$conn = new mysqli("localhost", "root", "");
-if ($conn->connect_error) {
-    exit("Connessione fallita: " . $conn->connect_error);
-}
-$conn->query("USE Il_Pescaggio");
-$bag = $conn->query('SELECT SUM(quantity) FROM cart WHERE idUser = "' . $_SESSION["user"] . '" AND cart.catering = 0;');
-$bag = mysqli_fetch_assoc($bag);
+
+    $conn = new mysqli("localhost", "root", "");
+    if ($conn->connect_error) {
+        exit("Connessione fallita: " . $conn->connect_error);
+    }
+    $conn->query("USE Il_Pescaggio");
+    $bag = $conn->query('SELECT SUM(quantity) FROM cart WHERE idUser = "' . $_SESSION["user"] . '" AND cart.catering = 0;');
+    $bag = mysqli_fetch_assoc($bag);
+    if(!isset($_SESSION["bigNews"]) || $_SESSION["bigNews"] != "news"){
+        $bigNews = $conn->query('SELECT notice FROM username WHERE email="'.$_SESSION["user"].'";');
+        $bigNews = mysqli_fetch_assoc($bigNews); 
+        if($bigNews["notice"] == 1){
+            $_SESSION["bigNews"] = "news";
+        }
+    }
+
 ?>
 
 <!DOCTYPE html>

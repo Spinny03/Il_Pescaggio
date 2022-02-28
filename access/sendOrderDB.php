@@ -28,6 +28,7 @@
                             surname = "'.$_POST["surname"].'" , 
                             reservations = "'.$_POST["reservations"].'" , 
                             note = "'.$_POST["notes"].'",
+                            tel = "'.$_POST["tel"].'",
                             dateAndTimeDelivered = "'.$date.'";');
             $order = $conn->query('SELECT id FROM forder WHERE delivery = 0 ORDER BY dateAndTimePay DESC, idUser = "'.$_SESSION["user"].'";');
         }
@@ -40,7 +41,8 @@
                             firstName = "'.$_POST["name"].'" ,
                             surname = "'.$_POST["surname"].'" , 
                             via = "'.$_POST["via"].'" , 
-                            civ = "'.$_POST["civ"].'" , 
+                            civ = "'.$_POST["civ"].'" ,
+                            tel = "'.$_POST["tel"].'", 
                             cap = "'.$_POST["cap"].'";');
             $order = $conn->query('SELECT id FROM forder WHERE delivery = 1 ORDER BY dateAndTimePay DESC, idUser = "'.$_SESSION["user"].'";');
         }
@@ -62,8 +64,11 @@
                 $conn->query('DELETE cart FROM cart WHERE idUser = "'.$_SESSION["user"].'"AND idDish = "'.$row["idDish"].'" AND cart.catering = 0;');
             }
         }
-        $conn->close();
         $_SESSION["bigNews"] = "news";
+        $conn->query('UPDATE username SET registrationDate = registrationDate, notice=1 WHERE email = "'.$_SESSION["user"].'"');
+        $conn->close();
+        
+        
         header('Location: ../home.php');
         exit;
     }

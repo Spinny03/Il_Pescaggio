@@ -65,8 +65,8 @@
                     echo '              <div class="itemCard orderTime">'; 
                     if($rowBig['delivery'] == 1){
                                             echo'
-                                            <h3 class="itemName"> Data compimento ordine: <span style="color:#4E60FF">'.htmlspecialchars($rowBig['dateAndTimePay']).'</span> </h3>
-                                            <h3 class="itemName"> <span style="color:#F84F31">delivery</span></h3>
+                                            <h3 class="itemName"> Telefono: <span style="color:#4E60FF">'.htmlspecialchars($rowBig['tel']).'</span> </h3>
+
                                         </div>';
                     }
                     else{

@@ -115,20 +115,11 @@
                             </label>
                             <div class="collapsible-content">
                                 <div class="content-inner">
-                                    <div class="dishDiv">';
-                    echo '              <div class="itemCard orderTime">'; 
-                    if($rowBig['delivery'] == 1){
-                                            echo'
-                                            <h3 class="itemName"> Data compimento ordine: <span style="color:#4E60FF">'.htmlspecialchars($rowBig['dateAndTimePay']).'</span> </h3>
-                                            <h3 class="itemName"> <span style="color:#F84F31">delivery</span></h3>
-                                        </div>';
-                    }
-                    else{
-                                            echo'
-                                            <h3 class="itemName"> Data compimento ordine: <span style="color:#4E60FF">'.htmlspecialchars($rowBig['dateAndTimePay']).'</span> </h3>
-                                            <h3 class="itemName"><span style="color:#23C552">catering</span></h3>
-                                        </div>';
-                    } 
+                                    <div class="dishDiv">
+                                        <div class="itemCard orderTime">
+                                            <h3 class="itemName"> Email: <span style="color:#4E60FF">'.htmlspecialchars($rowBig['idUser']).'</span> </h3>
+                                            <h3 class="itemName"> Telefono: <span style="color:#4E60FF">'.htmlspecialchars($rowBig['tel']).'</span> </h3>
+                                        </div> ';
                         
                     $dishs = $conn->query('SELECT * FROM orderedfood WHERE idOrder='.$rowBig["id"].';');
                     $totalPrice = 0;

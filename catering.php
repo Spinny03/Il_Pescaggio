@@ -398,6 +398,17 @@
                                 ?> 
                             required>
                         </div>
+                        
+                        <div class="data" id="p100">
+                            <label for="tel"><b>Telefono</b></label>
+                            <input type="text" placeholder="+39 123-456-7890" name="tel" 
+                                <?php
+                                    if(isset($data["tel"])){
+                                        echo "value='".$data["tel"]."'";
+                                    }
+                                ?> 
+                            required>
+                        </div>
 
                         <div class="data" id="p50">
                             <label for="day"><b>Data</b></label>

@@ -59,6 +59,6 @@
         exit;
     }
 
-    header('Location: ../home.php#'.$id);
+    header('Location: ../home.php');
     exit;
 ?>

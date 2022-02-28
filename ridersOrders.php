@@ -118,33 +118,6 @@
                 }
             ?>    
         </div>  
-        <footer>
-
-            <div class="footerDiv">
-                <h2>Chi siamo</h2>
-                <p>Il pescaggio è un ristornate di alta cucina specializzato nella cucina di mare, ex detentore di 3 stelle michelin, in questi ultimi hanni
-                    ha deciso di avventurarsi anche verso una cucina meno sofisticata ma sempre di altissimo livello.
-                </p>
-            </div>
-            <div class="footerDiv">
-                <h2>Contatti</h2>
-                <p>Telefono: +39 324 907 7196</p>
-                <p>Mail: barscor75@gmail.com</p>
-                <p>Partita iva: 86334519757</p>
-                <h3>Sviluppato Da:</h3>
-                <p>alessio.barletta.2003@calvino.edu.it</p>
-                <p>filippo.spinella.2003@calvino.edu.it</p>
-            </div>
-            <div class="footerDiv">
-                <h2>Link utili</h2>
-                <p><a class="footerLink" href="home.php">Home</a></p>
-                <p><a class="footerLink" href="catering.php">Catering</a></p>
-                <p><a class="footerLink" href="orders.php">Ordini</a></p>
-                <p><a class="footerLink" href="cart.php">Carrello</a></p>
-                <p><a class="footerLink" href="profile.php">Profilo</a></p>
-            </div>
-
-    </footer>
     </body>
     <?php $conn->close(); ?>
 

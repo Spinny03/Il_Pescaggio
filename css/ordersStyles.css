@@ -2,7 +2,7 @@
 
 .container{
     display:block;
-    height: calc(100vh - 80px);
+    min-height: calc(100vh - 80px);
     margin-left: auto;
     margin-right: auto;
     width: 85%;
@@ -58,6 +58,8 @@
 
 .collapsible-content .content-inner {
     padding-top: 1px;
+    overflow-y: scroll;
+    max-height: 50vh;
     /*border-left: 2px solid #ddd !important;
     border-right: 2px solid #ddd !important;
     border-bottom: 2px solid #ddd !important;

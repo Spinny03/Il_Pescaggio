@@ -227,6 +227,32 @@
                                             </div>
                                         </form>';
                         }
+                        if($rowBig['orderStatus'] == 3){
+                            $rider = $conn->query('SELECT * FROM FOrder, rider WHERE id = '.$rowBig['id'].' and email = idRider;');  
+                            $rider = mysqli_fetch_assoc($rider); 
+                            echo'       <div class="itemCard">
+                                                <div class="itemRight">
+                                                    <h3 class="itemName">Rider: <span style="font-weight: bold; color: green">'.htmlspecialchars($rider['riderName']).' '.htmlspecialchars($rider['riderSurname']).'</span></h3>
+                                                </div>
+                                                <div class="itemLeft">
+                                                    <h3 class="itemName"><span style="margin-right: 10px; font-weight: bold;color: red">In consegna</span></h3>
+                                                </div>   
+                                            </div>
+                                        ';
+                        }
+                        if($rowBig['orderStatus'] == 4){
+                            $rider = $conn->query('SELECT * FROM FOrder, rider WHERE id = '.$rowBig['id'].' and email = idRider;');  
+                            $rider = mysqli_fetch_assoc($rider); 
+                            echo'       <div class="itemCard">
+                                                <div class="itemRight">
+                                                    <h3 class="itemName">Rider: <span style="font-weight: bold; color: green">'.htmlspecialchars($rider['riderName']).' '.htmlspecialchars($rider['riderSurname']).'</span></h3>
+                                                </div>
+                                                <div class="itemLeft">
+                                                    <h3 class="itemName">Consegnato alle: <span style="font-weight: bold; color: green">'.htmlspecialchars($rider['dateAndTimeDelivered']).'</span></h3>
+                                                </div>   
+                                            </div>
+                                        ';
+                        }
                     }
                     echo '      </div>
                             </div>

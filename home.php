@@ -116,28 +116,28 @@
 
         <div class="chooseDish">
 
-            <button class="choice" id="pizza" onclick="filterSelection('pizza')">
+            <button class="choice" id="pizza" onclick="filterSelection('pizza')" onmouseup="setTimeout(footerHeight, 10)">
                 <img width="30px" height="30px" src="images/foodType/pizza.png" alt="pizza">
                 <p>Pizza</p>
             </button>
 
-            <button class="choice" id="burger" onclick="filterSelection('burger')">
+            <button class="choice" id="burger" onclick="filterSelection('burger')" onmouseup="setTimeout(footerHeight, 10)">
                 <img width="30px" height="30px" src="images/foodType/burger.png" alt="burger">
                 <p>Burger</p>
             </button>
-            <button class="choice" id="meat" onclick="filterSelection('meat')">
+            <button class="choice" id="meat" onclick="filterSelection('meat')" onmouseup="setTimeout(footerHeight, 10)">
                 <img width="30px" height="30px" src="images/foodType/meat.png" alt="carne">
                 <p>Carne</p>
             </button>
-            <button class="choice" id="fish" onclick="filterSelection('fish')">
+            <button class="choice" id="fish" onclick="filterSelection('fish')" onmouseup="setTimeout(footerHeight, 10)">
                 <img width="30px" height="30px" src="images/foodType/fish.png" alt="pesce">
                 <p>Pesce</p>
             </button>
-            <button class="choice" id="drink" onclick="filterSelection('drink')">
+            <button class="choice" id="drink" onclick="filterSelection('drink')" onmouseup="setTimeout(footerHeight, 10)">
                 <img width="30px" height="30px" src="images/foodType/drink.png" alt="Bevande">
                 <p>Bevande</p>
             </button>
-            <button class="choice" id="desserts" onclick="filterSelection('desserts')">
+            <button class="choice" id="desserts" onclick="filterSelection('desserts')" onmouseup="setTimeout(footerHeight, 10)">
                 <img width="30px" height="30px" src="images/foodType/desserts.png" alt="dolci">
                 <p>Dolci</p>
             </button>

@@ -14,7 +14,7 @@
     if ($conn->connect_error){
         exit("Connessione fallita: " . $conn->connect_error);
     }
-    $conn->query("USE Il_Pescaggio");
+    $conn->query("USE my_ilpescaggio");
     $bag = $conn->query('SELECT SUM(quantity) FROM cart WHERE idUser="'.$_SESSION["user"].'" AND cart.catering = 0;');
     $bag = mysqli_fetch_assoc($bag); 
     if (!isset($_SESSION["typefood"])){
@@ -235,7 +235,7 @@
                                         </form>';
                         }
                         if($rowBig['orderStatus'] == 3){
-                            $rider = $conn->query('SELECT * FROM FOrder, rider WHERE id = '.$rowBig['id'].' and email = idRider;');  
+                            $rider = $conn->query('SELECT * FROM forder, rider WHERE id = '.$rowBig['id'].' and email = idRider;');  
                             $rider = mysqli_fetch_assoc($rider); 
                             echo'       <div class="itemCard">
                                                 <div class="itemRight">
@@ -248,7 +248,7 @@
                                         ';
                         }
                         if($rowBig['orderStatus'] == 4){
-                            $rider = $conn->query('SELECT * FROM FOrder, rider WHERE id = '.$rowBig['id'].' and email = idRider;');  
+                            $rider = $conn->query('SELECT * FROM forder, rider WHERE id = '.$rowBig['id'].' and email = idRider;');  
                             $rider = mysqli_fetch_assoc($rider); 
                             echo'       <div class="itemCard">
                                                 <div class="itemRight">

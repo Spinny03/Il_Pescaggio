@@ -4,7 +4,7 @@
     if ($conn->connect_error){
         exit("Connessione fallita: " . $conn->connect_error);
     }
-    $conn->query("USE Il_Pescaggio");
+    $conn->query("USE my_ilpescaggio");
 
     if(isset($_POST["del"])){
         $conn->query('UPDATE rider SET fired=1, pasw="fired" WHERE email = "'.$_POST["del"].'";');

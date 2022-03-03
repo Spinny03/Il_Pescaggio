@@ -5,7 +5,7 @@
     if ($conn->connect_error){
         exit("Connessione fallita: " . $conn->connect_error);
     }
-    $conn->query("USE Il_Pescaggio");
+    $conn->query("USE my_ilpescaggio");
 
     if($_POST["change"] == "False"){
         $old ="SELECT photoLink FROM username WHERE email = '".$_SESSION["user"]."'";

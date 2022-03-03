@@ -4,7 +4,7 @@
     if ($conn->connect_error){
         exit("Connessione fallita: " . $conn->connect_error);
     }
-    $conn->query("USE Il_Pescaggio");
+    $conn->query("USE my_ilpescaggio");
     if(isset($_POST["del"])){
         $delPhoto = 'SELECT photoLink FROM dish WHERE id = "'.$_POST["del"].'";';
         $result = $conn->query($delPhoto); 

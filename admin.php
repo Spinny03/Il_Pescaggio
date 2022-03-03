@@ -15,7 +15,7 @@ if (empty($_SESSION["user"])) {
     if ($conn->connect_error) {
         exit("Connessione fallita: " . $conn->connect_error);
     }
-    $conn->query("USE Il_Pescaggio");
+    $conn->query("USE my_ilpescaggio");
     $bag = $conn->query('SELECT SUM(quantity) FROM cart WHERE idUser = "' . $_SESSION["user"] . '" AND cart.catering = 0;');
     $bag = mysqli_fetch_assoc($bag);
     if(!isset($_SESSION["bigNews"]) || $_SESSION["bigNews"] != "news"){

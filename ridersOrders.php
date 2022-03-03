@@ -9,7 +9,7 @@
     if ($conn->connect_error){
         exit("Connessione fallita: " . $conn->connect_error);
     }
-    $conn->query("USE Il_Pescaggio");
+    $conn->query("USE my_ilpescaggio");
     $rider = $conn->query('SELECT * FROM rider WHERE email="'.$_SESSION["rider"].'";');
     $rider = mysqli_fetch_assoc($rider); 
 ?>

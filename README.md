@@ -11,6 +11,7 @@ Il Pescaggio is a Web Application for an imaginary restaurant, with the possibil
 - Catering (with costumizable menù)
 - Profile costumization
 - Online payment
+- Order status
 
 ### For the restaurant manager
 - Menù management
